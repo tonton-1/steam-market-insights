@@ -1,0 +1,42 @@
+[2026-09-04T15:30:40.858+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2026-09-04T15:30:40.874+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: steam_etl_dag.verify_pipeline manual__2026-09-04T15:30:02.476798+00:00 [queued]>
+[2026-09-04T15:30:40.884+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: steam_etl_dag.verify_pipeline manual__2026-09-04T15:30:02.476798+00:00 [queued]>
+[2026-09-04T15:30:40.884+0000] {taskinstance.py:2866} INFO - Starting attempt 1 of 3
+[2026-09-04T15:30:40.897+0000] {taskinstance.py:2889} INFO - Executing <Task(PythonOperator): verify_pipeline> on 2026-09-04 15:30:02.476798+00:00
+[2026-09-04T15:30:40.902+0000] {warnings.py:112} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:70: DeprecationWarning: This process (pid=173) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2026-09-04T15:30:40.904+0000] {standard_task_runner.py:72} INFO - Started process 174 to run task
+[2026-09-04T15:30:40.904+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'steam_etl_dag', 'verify_pipeline', 'manual__2026-09-04T15:30:02.476798+00:00', '--job-id', '45', '--raw', '--subdir', 'DAGS_FOLDER/07_etl_steam.py', '--cfg-path', '/tmp/tmpxqr1k0ui']
+[2026-09-04T15:30:40.905+0000] {standard_task_runner.py:105} INFO - Job 45: Subtask verify_pipeline
+[2026-09-04T15:30:40.961+0000] {task_command.py:467} INFO - Running <TaskInstance: steam_etl_dag.verify_pipeline manual__2026-09-04T15:30:02.476798+00:00 [running]> on host 73138d5a5d67
+[2026-09-04T15:30:41.048+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='steam_project' AIRFLOW_CTX_DAG_ID='steam_etl_dag' AIRFLOW_CTX_TASK_ID='verify_pipeline' AIRFLOW_CTX_EXECUTION_DATE='2026-09-04T15:30:02.476798+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2026-09-04T15:30:02.476798+00:00'
+[2026-09-04T15:30:41.049+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2026-09-04T15:30:41.072+0000] {base.py:84} INFO - Retrieving connection 'postgres_target'
+[2026-09-04T15:30:41.078+0000] {sql.py:553} INFO - Running statement: SELECT COUNT(*) FROM steam_games WHERE snapshot_date = %s;, parameters: ('2026-09-04',)
+[2026-09-04T15:30:41.080+0000] {sql.py:562} INFO - Rows affected: 1
+[2026-09-04T15:30:41.085+0000] {sql.py:553} INFO - Running statement: 
+        SELECT name, ccu, price_thb, discount_pct
+        FROM steam_games
+        WHERE snapshot_date = %s
+        ORDER BY ccu DESC
+        LIMIT 5;
+        , parameters: ('2026-09-04',)
+[2026-09-04T15:30:41.087+0000] {sql.py:562} INFO - Rows affected: 5
+[2026-09-04T15:30:41.088+0000] {logging_mixin.py:190} INFO - 
+==================================================
+[2026-09-04T15:30:41.088+0000] {logging_mixin.py:190} INFO - 🎮 สรุปรายงาน Steam ETL ประจำวันที่ 2026-09-04
+[2026-09-04T15:30:41.089+0000] {logging_mixin.py:190} INFO - 📊 จำนวนเกมที่บันทึกสำเร็จวันนี้: 25 เกม
+[2026-09-04T15:30:41.089+0000] {logging_mixin.py:190} INFO - 🏆 Top 5 เกมที่มีผู้เล่นพร้อมกันสูงสุด (CCU):
+[2026-09-04T15:30:41.089+0000] {logging_mixin.py:190} INFO -    #1 Counter-Strike 2 — 1,013,936 คน | ฟรี
+[2026-09-04T15:30:41.090+0000] {logging_mixin.py:190} INFO -    #2 PUBG: BATTLEGROUNDS — 314,682 คน | ฟรี
+[2026-09-04T15:30:41.090+0000] {logging_mixin.py:190} INFO -    #3 Rust — 143,870 คน | ฿799.00
+[2026-09-04T15:30:41.090+0000] {logging_mixin.py:190} INFO -    #4 Apex Legends™ — 124,262 คน | ฟรี
+[2026-09-04T15:30:41.091+0000] {logging_mixin.py:190} INFO -    #5 Wallpaper Engine — 91,184 คน | ฿115.00
+[2026-09-04T15:30:41.091+0000] {logging_mixin.py:190} INFO - ==================================================
+[2026-09-04T15:30:41.091+0000] {python.py:240} INFO - Done. Returned value was: None
+[2026-09-04T15:30:41.103+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2026-09-04T15:30:41.103+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=steam_etl_dag, task_id=verify_pipeline, run_id=manual__2026-09-04T15:30:02.476798+00:00, execution_date=20260904T153002, start_date=20260904T153040, end_date=20260904T153041
+[2026-09-04T15:30:41.159+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2026-09-04T15:30:41.174+0000] {taskinstance.py:3895} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2026-09-04T15:30:41.177+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

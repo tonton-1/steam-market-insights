@@ -1,0 +1,40 @@
+[2026-09-04T16:10:46.867+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2026-09-04T16:10:46.888+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: steam_ccu_pipeline_dag.extract_today_ccu manual__2026-09-04T16:10:35.867428+00:00 [queued]>
+[2026-09-04T16:10:46.898+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: steam_ccu_pipeline_dag.extract_today_ccu manual__2026-09-04T16:10:35.867428+00:00 [queued]>
+[2026-09-04T16:10:46.899+0000] {taskinstance.py:2866} INFO - Starting attempt 1 of 2
+[2026-09-04T16:10:46.915+0000] {taskinstance.py:2889} INFO - Executing <Task(PythonOperator): extract_today_ccu> on 2026-09-04 16:10:35.867428+00:00
+[2026-09-04T16:10:46.924+0000] {warnings.py:112} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:70: DeprecationWarning: This process (pid=345) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2026-09-04T16:10:46.926+0000] {standard_task_runner.py:72} INFO - Started process 347 to run task
+[2026-09-04T16:10:46.926+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'steam_ccu_pipeline_dag', 'extract_today_ccu', 'manual__2026-09-04T16:10:35.867428+00:00', '--job-id', '50', '--raw', '--subdir', 'DAGS_FOLDER/ml_03_steam_ccu.py', '--cfg-path', '/tmp/tmp5ha_czdy']
+[2026-09-04T16:10:46.928+0000] {standard_task_runner.py:105} INFO - Job 50: Subtask extract_today_ccu
+[2026-09-04T16:10:47.016+0000] {task_command.py:467} INFO - Running <TaskInstance: steam_ccu_pipeline_dag.extract_today_ccu manual__2026-09-04T16:10:35.867428+00:00 [running]> on host f2a568a9a0b0
+[2026-09-04T16:10:47.281+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='steam_project' AIRFLOW_CTX_DAG_ID='steam_ccu_pipeline_dag' AIRFLOW_CTX_TASK_ID='extract_today_ccu' AIRFLOW_CTX_EXECUTION_DATE='2026-09-04T16:10:35.867428+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2026-09-04T16:10:35.867428+00:00'
+[2026-09-04T16:10:47.283+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2026-09-04T16:10:47.433+0000] {base.py:84} INFO - Retrieving connection 'postgres_target'
+[2026-09-04T16:10:47.441+0000] {sql.py:553} INFO - Running statement: 
+        INSERT INTO steam_games (
+            snapshot_date, appid, name, developer, publisher,
+            price_thb, original_price, discount_pct, ccu,
+            positive_reviews, negative_reviews, review_score,
+            owners_estimate, genres, header_image, is_free
+        ) VALUES (
+            %s, %s, %s, 'Valve', 'Valve',
+            0.0, 0.0, 0, %s,
+            7640000, 1173000, 86.7,
+            '100,000,000 .. 200,000,000', 'Action, Free to Play',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/730/header.jpg', TRUE
+        )
+        ON CONFLICT (snapshot_date, appid) DO UPDATE SET
+            ccu = EXCLUDED.ccu,
+            ingested_at = NOW();
+        , parameters: ('2026-09-04', 730, 'Counter-Strike 2', 1013936)
+[2026-09-04T16:10:47.445+0000] {sql.py:562} INFO - Rows affected: 1
+[2026-09-04T16:10:47.448+0000] {logging_mixin.py:190} INFO - 🎯 อัปเดต CCU วันนี้ (2026-09-04) ของ Counter-Strike 2: 1,013,936 คน
+[2026-09-04T16:10:47.449+0000] {python.py:240} INFO - Done. Returned value was: None
+[2026-09-04T16:10:47.462+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2026-09-04T16:10:47.463+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=steam_ccu_pipeline_dag, task_id=extract_today_ccu, run_id=manual__2026-09-04T16:10:35.867428+00:00, execution_date=20260904T161035, start_date=20260904T161046, end_date=20260904T161047
+[2026-09-04T16:10:47.503+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2026-09-04T16:10:47.732+0000] {taskinstance.py:3895} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2026-09-04T16:10:47.735+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

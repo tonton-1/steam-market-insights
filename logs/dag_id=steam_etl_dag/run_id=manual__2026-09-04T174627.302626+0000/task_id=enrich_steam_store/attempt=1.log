@@ -1,0 +1,47 @@
+[2026-09-04T17:46:33.935+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2026-09-04T17:46:33.957+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: steam_etl_dag.enrich_steam_store manual__2026-09-04T17:46:27.302626+00:00 [queued]>
+[2026-09-04T17:46:33.966+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: steam_etl_dag.enrich_steam_store manual__2026-09-04T17:46:27.302626+00:00 [queued]>
+[2026-09-04T17:46:33.966+0000] {taskinstance.py:2866} INFO - Starting attempt 1 of 3
+[2026-09-04T17:46:33.980+0000] {taskinstance.py:2889} INFO - Executing <Task(PythonOperator): enrich_steam_store> on 2026-09-04 17:46:27.302626+00:00
+[2026-09-04T17:46:33.987+0000] {warnings.py:112} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:70: DeprecationWarning: This process (pid=1867) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2026-09-04T17:46:33.989+0000] {standard_task_runner.py:72} INFO - Started process 1868 to run task
+[2026-09-04T17:46:33.988+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'steam_etl_dag', 'enrich_steam_store', 'manual__2026-09-04T17:46:27.302626+00:00', '--job-id', '80', '--raw', '--subdir', 'DAGS_FOLDER/07_etl_steam.py', '--cfg-path', '/tmp/tmpvz0yvaqi']
+[2026-09-04T17:46:33.990+0000] {standard_task_runner.py:105} INFO - Job 80: Subtask enrich_steam_store
+[2026-09-04T17:46:34.046+0000] {task_command.py:467} INFO - Running <TaskInstance: steam_etl_dag.enrich_steam_store manual__2026-09-04T17:46:27.302626+00:00 [running]> on host f2a568a9a0b0
+[2026-09-04T17:46:34.138+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='steam_project' AIRFLOW_CTX_DAG_ID='steam_etl_dag' AIRFLOW_CTX_TASK_ID='enrich_steam_store' AIRFLOW_CTX_EXECUTION_DATE='2026-09-04T17:46:27.302626+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2026-09-04T17:46:27.302626+00:00'
+[2026-09-04T17:46:34.139+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2026-09-04T17:46:34.166+0000] {logging_mixin.py:190} INFO - 🔍 กำลังดึงข้อมูลเสริมจาก Steam Store API (cc=th)...
+[2026-09-04T17:46:34.507+0000] {logging_mixin.py:190} INFO -   [1/25] ✅ Counter-Strike 2: ฿0.0 (ลด 0%) | CCU: 1,013,936
+[2026-09-04T17:46:35.643+0000] {logging_mixin.py:190} INFO -   [2/25] ✅ PUBG: BATTLEGROUNDS: ฿0.0 (ลด 0%) | CCU: 314,682
+[2026-09-04T17:46:36.869+0000] {logging_mixin.py:190} INFO -   [3/25] ✅ Apex Legends™: ฿0.0 (ลด 0%) | CCU: 124,262
+[2026-09-04T17:46:37.983+0000] {logging_mixin.py:190} INFO -   [4/25] ✅ ELDEN RING: ฿1790.0 (ลด 0%) | CCU: 29,529
+[2026-09-04T17:46:39.098+0000] {logging_mixin.py:190} INFO -   [5/25] ✅ Baldur's Gate 3: ฿1799.0 (ลด 0%) | CCU: 54,771
+[2026-09-04T17:46:40.219+0000] {logging_mixin.py:190} INFO -   [6/25] ✅ Black Myth: Wukong: ฿1799.0 (ลด 0%) | CCU: 15,004
+[2026-09-04T17:46:41.510+0000] {logging_mixin.py:190} INFO -   [7/25] ✅ Monster Hunter Wilds: ฿1090.0 (ลด 0%) | CCU: 12,494
+[2026-09-04T17:46:42.625+0000] {logging_mixin.py:190} INFO -   [8/25] ✅ HELLDIVERS™ 2: ฿1290.0 (ลด 0%) | CCU: 53,399
+[2026-09-04T17:46:43.749+0000] {logging_mixin.py:190} INFO -   [9/25] ✅ Palworld: ฿413.0 (ลด 30%) | CCU: 18,028
+[2026-09-04T17:46:44.895+0000] {logging_mixin.py:190} INFO -   [10/25] ✅ Terraria: ฿110.0 (ลด 50%) | CCU: 24,580
+[2026-09-04T17:46:46.110+0000] {logging_mixin.py:190} INFO -   [11/25] ✅ Team Fortress 2: ฿0.0 (ลด 0%) | CCU: 43,819
+[2026-09-04T17:46:47.271+0000] {logging_mixin.py:190} INFO -   [12/25] ✅ Grand Theft Auto V Legacy: ฿704.0 (ลด 0%) | CCU: 67,851
+[2026-09-04T17:46:48.405+0000] {logging_mixin.py:190} INFO -   [13/25] ✅ Left 4 Dead 2: ฿220.0 (ลด 0%) | CCU: 25,122
+[2026-09-04T17:46:49.642+0000] {logging_mixin.py:190} INFO -   [14/25] ✅ War Thunder: ฿0.0 (ลด 0%) | CCU: 50,478
+[2026-09-04T17:46:50.817+0000] {logging_mixin.py:190} INFO -   [15/25] ✅ Warframe: ฿0.0 (ลด 0%) | CCU: 36,195
+[2026-09-04T17:46:51.915+0000] {logging_mixin.py:190} INFO -   [16/25] ✅ Path of Exile 2: ฿798.0 (ลด 0%) | CCU: 16,727
+[2026-09-04T17:46:52.989+0000] {logging_mixin.py:190} INFO -   [17/25] ✅ Wallpaper Engine: ฿115.0 (ลด 0%) | CCU: 91,184
+[2026-09-04T17:46:54.260+0000] {logging_mixin.py:190} INFO -   [18/25] ✅ Brawlhalla: ฿0.0 (ลด 0%) | CCU: 14,169
+[2026-09-04T17:46:55.379+0000] {logging_mixin.py:190} INFO -   [19/25] ✅ Rust: ฿799.0 (ลด 0%) | CCU: 143,870
+[2026-09-04T17:46:56.526+0000] {logging_mixin.py:190} INFO -   [20/25] ✅ Tom Clancy's Rainbow Six Siege: ฿0.0 (ลด 0%) | CCU: 51,847
+[2026-09-04T17:46:57.616+0000] {logging_mixin.py:190} INFO -   [21/25] ✅ Cyberpunk 2077: ฿1799.0 (ลด 0%) | CCU: 22,265
+[2026-09-04T17:46:58.717+0000] {logging_mixin.py:190} INFO -   [22/25] ✅ Hades: ฿495.0 (ลด 0%) | CCU: 2,253
+[2026-09-04T17:46:59.874+0000] {logging_mixin.py:190} INFO -   [23/25] ✅ Sekiro™: Shadows Die Twice - GOTY Edition: ฿2099.0 (ลด 0%) | CCU: 6,767
+[2026-09-04T17:47:00.989+0000] {logging_mixin.py:190} INFO -   [24/25] ✅ Red Dead Redemption 2: ฿474.75 (ลด 75%) | CCU: 29,885
+[2026-09-04T17:47:02.164+0000] {logging_mixin.py:190} INFO -   [25/25] ✅ Sid Meier’s Civilization® VI: ฿160.0 (ลด 90%) | CCU: 25,420
+[2026-09-04T17:47:02.981+0000] {logging_mixin.py:190} INFO - ✨ Enrich ข้อมูลสำเร็จทั้งหมด 25 เกม
+[2026-09-04T17:47:02.982+0000] {python.py:240} INFO - Done. Returned value was: None
+[2026-09-04T17:47:02.993+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2026-09-04T17:47:02.994+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=steam_etl_dag, task_id=enrich_steam_store, run_id=manual__2026-09-04T17:46:27.302626+00:00, execution_date=20260904T174627, start_date=20260904T174633, end_date=20260904T174702
+[2026-09-04T17:47:03.023+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2026-09-04T17:47:03.049+0000] {taskinstance.py:3895} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2026-09-04T17:47:03.051+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

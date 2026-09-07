@@ -270,11 +270,19 @@ def load_discount_predictions():
 
 
 @st.cache_data(ttl=60)
-def load_regional_player_data(appid=None):
-    """โหลดสถิติผู้เล่นแยกตามภูมิภาคและประเทศจากตาราง steam_game_regions"""
+def load_regional_player_data(appid=None, snapshot_date=None):
+    """โหลดสถิติผู้เล่นแยกตามภูมิภาคและประเทศตามวันที่ที่เลือก"""
     engine = get_engine()
     try:
-        if appid:
+        s_date_str = str(snapshot_date)[:10] if snapshot_date else None
+        if appid and s_date_str:
+            query = text("SELECT * FROM steam_game_regions WHERE appid = :appid AND snapshot_date = :s_date ORDER BY player_count DESC")
+            df = pd.read_sql(query, engine.connect(), params={"appid": int(appid), "s_date": s_date_str})
+            if df.empty:
+                # ถ้าวันที่เลือกยังไม่มีในตาราง ให้ fallback ไปวันล่าสุดที่มี
+                query_fb = text("SELECT * FROM steam_game_regions WHERE appid = :appid AND snapshot_date = (SELECT MAX(snapshot_date) FROM steam_game_regions) ORDER BY player_count DESC")
+                df = pd.read_sql(query_fb, engine.connect(), params={"appid": int(appid)})
+        elif appid:
             query = text("SELECT * FROM steam_game_regions WHERE appid = :appid AND snapshot_date = (SELECT MAX(snapshot_date) FROM steam_game_regions) ORDER BY player_count DESC")
             df = pd.read_sql(query, engine.connect(), params={"appid": int(appid)})
         else:
@@ -506,16 +514,14 @@ st.markdown("<div style='height: 14px;'></div>", unsafe_allow_html=True)
 
 
 # -----------------------------------------------------------------
-# 7. Navigation Tabs (7 Minimal Tabs)
+# 7. Navigation Tabs (5 Minimal Tabs)
 # -----------------------------------------------------------------
-tab1, tab2, tab3, tab4, tab5, tab6, tab7 = st.tabs([
+tab1, tab2, tab3, tab4, tab5 = st.tabs([
     "อันดับเกมยอดนิยม",
     "ดีลและส่วนลด AI",
     "สถิติแนวโน้มผู้เล่น",
     "ผู้เล่นแยกตามโซน",
-    "พยากรณ์ AI (CS2)",
     "วิเคราะห์ความคุ้มค่า",
-    "ประวัติการเปลี่ยนราคา",
 ])
 
 
@@ -628,7 +634,7 @@ with tab2:
                     elif rec_code == "WATCH" or prob_pct >= 40:
                         rec_badge = "<span style='background: rgba(56, 189, 248, 0.15); color: #0284c7; border: 1px solid rgba(56, 189, 248, 0.3); font-weight: 700; font-size: 11px; padding: 2px 8px; border-radius: 6px;'><i class='ri-eye-line'></i> จับตาดูราคา</span>"
                     else:
-                        rec_badge = "<span style='background: rgba(100, 116, 139, 0.15); color: #64748b; border: 1px solid rgba(100, 116, 139, 0.3); font-weight: 700; font-size: 11px; padding: 2px 8px; border-radius: 6px;'><i class='ri-shopping-cart-2-line'></i> ซื้อได้เลย</span>"
+                        rec_badge = "<span style='background: rgba(100, 116, 139, 0.15); color: #64748b; border: 1px solid rgba(100, 116, 139, 0.3); font-weight: 700; font-size: 11px; padding: 2px 8px; border-radius: 6px;'><i class='ri-shopping-cart-2-line'></i> ไม่ต้องรอ (โอกาสลดต่ำ)</span>"
 
                     st.markdown(f"""
                     <div class='game-item-card'>
@@ -637,26 +643,32 @@ with tab2:
                             {rec_badge}
                         </div>
                         <div style='font-size: 12px; margin-bottom: 6px;'>
-                            ราคาปัจจุบัน: <b>฿{pred_row['current_price_thb']:,.2f}</b> ➔ คาดว่าจะลดเหลือ <b style='color: #16a34a;'>฿{pred_row['predicted_price_thb']:,.2f}</b> (-{pred_row['predicted_discount_pct']}%)
+                            ราคาปัจจุบัน: <b>฿{pred_row['current_price_thb']:,.2f}</b> ➔ คาดว่าจะลดเหลือ <b style='color: #16a34a;'>฿{pred_row['predicted_price_thb']:,.2f}</b>
                         </div>
                         <div style='display: flex; justify-content: space-between; font-size: 11px; opacity: 0.8;'>
                             <span>โอกาสลดราคาใน 7 วัน:</span>
-                            <b>{prob_pct}%</b>
+                            <b style='color: #6366f1; font-size: 12px;'>{prob_pct}%</b>
                         </div>
                     </div>
                     """, unsafe_allow_html=True)
 
         with st.expander("ดูตารางผลการพยากรณ์โอกาสลดราคาของทุกเกม"):
+            rec_map = {
+                "WAIT": "⏳ แนะนำให้รอก่อน",
+                "WATCH": "👀 จับตาดูราคา",
+                "BUY_NOW": "🛒 ไม่ต้องรอ (โอกาสลดต่ำ)",
+                "BUY_NOW_ON_SALE": "🔥 กำลังลดราคาอยู่แล้ว",
+                "FREE_TO_PLAY": "🎁 เล่นฟรี (Free to Play)",
+            }
+            df_tbl = df_preds.copy()
+            df_tbl["สถานะปัจจุบัน"] = df_tbl["is_currently_on_sale"].apply(lambda x: "🔥 กำลังลดราคา" if x else "🏷️ ราคาปกติ")
+            df_tbl["โอกาสลดราคาใน 7 วัน"] = (df_tbl["discount_probability"] * 100).round().astype(int).apply(lambda x: f"{x}%")
+            df_tbl["คำแนะนำ AI"] = df_tbl["recommendation"].map(lambda r: rec_map.get(r, str(r)))
+            df_tbl["ราคาปัจจุบัน"] = df_tbl["current_price_thb"].apply(lambda p: f"฿{p:,.2f}" if p > 0 else "ฟรี")
+            df_tbl["ราคาคาดการณ์หลังลด"] = df_tbl["predicted_price_thb"].apply(lambda p: f"฿{p:,.2f}" if p > 0 else "ฟรี")
+            
             st.dataframe(
-                df_preds.rename(columns={
-                    "game_name": "ชื่อเกม",
-                    "current_price_thb": "ราคาปัจจุบัน (บาท)",
-                    "is_currently_on_sale": "ลดราคาอยู่แล้ว",
-                    "discount_probability": "ความน่าจะเป็นที่จะลด (0-1)",
-                    "predicted_discount_pct": "ส่วนลดคาดการณ์ (%)",
-                    "predicted_price_thb": "ราคาคาดการณ์หลังลด (บาท)",
-                    "recommendation": "คำแนะนำ AI",
-                })[["ชื่อเกม", "ราคาปัจจุบัน (บาท)", "ลดราคาอยู่แล้ว", "ความน่าจะเป็นที่จะลด (0-1)", "ส่วนลดคาดการณ์ (%)", "ราคาคาดการณ์หลังลด (บาท)", "คำแนะนำ AI"]],
+                df_tbl[["game_name", "สถานะปัจจุบัน", "ราคาปัจจุบัน", "โอกาสลดราคาใน 7 วัน", "ราคาคาดการณ์หลังลด", "คำแนะนำ AI"]].rename(columns={"game_name": "ชื่อเกม"}),
                 use_container_width=True,
                 hide_index=True,
             )
@@ -786,9 +798,17 @@ with tab4:
     selected_game_row = df_current[df_current["name"] == selected_zone_game]
     selected_appid = selected_game_row["appid"].values[0] if not selected_game_row.empty else None
 
-    df_region_game = load_regional_player_data(appid=selected_appid)
+    df_region_game = load_regional_player_data(appid=selected_appid, snapshot_date=selected_date)
 
     if not df_region_game.empty:
+        # Date badge indicator
+        active_date_str = pd.to_datetime(selected_date).strftime("%d %B %Y")
+        st.markdown(f"""
+        <div style='margin-bottom: 10px;'>
+            <span class='status-pill highlight'><i class='ri-calendar-line'></i> ข้อมูลประจำวันที่ Snapshot: <b>{active_date_str}</b></span>
+        </div>
+        """, unsafe_allow_html=True)
+
         # 1. 4 Metric Cards for Selected Game
         total_game_players = df_region_game["player_count"].sum()
         
@@ -950,66 +970,9 @@ with tab4:
 
 
 # -----------------------------------------------------------------
-# TAB 5: พยากรณ์ AI (Forecast CS2)
+# TAB 5: วิเคราะห์ความคุ้มค่า (Value Score)
 # -----------------------------------------------------------------
 with tab5:
-    st.markdown("""
-    <div style='color: #94a3b8; font-size: 13px; margin-bottom: 14px;'>
-        โมเดล <b>RandomForestRegressor</b> ทำงานแบบอัตโนมัติบน Airflow โดยวิเคราะห์ค่าผู้เล่นย้อนหลัง (Lag 1-7),
-        Weekend Effect และสถานะส่วนลด เพื่อทำนายจำนวนผู้เล่นของ <b>Counter-Strike 2</b>
-    </div>
-    """, unsafe_allow_html=True)
-
-    df_metrics = load_model_metrics()
-    
-    col_p1, col_p2 = st.columns(2)
-    
-    with col_p1:
-        cs2_data = df_latest[df_latest["appid"] == 730]
-        current_cs2_ccu = int(cs2_data["ccu"].values[0]) if not cs2_data.empty else 1020000
-
-        tomorrow = date.today() + timedelta(days=1)
-        is_tom_weekend = tomorrow.weekday() >= 5
-        pred_val = current_cs2_ccu * (1.12 if is_tom_weekend else 0.98)
-        delta_val = pred_val - current_cs2_ccu
-
-        st.metric(
-            label=f"คาดการณ์ CCU วันพรุ่งนี้ ({tomorrow.strftime('%d %b %Y')})",
-            value=f"{pred_val:,.0f} คน",
-            delta=f"{'+' if delta_val > 0 else ''}{delta_val:,.0f} ({'Weekend Boost' if is_tom_weekend else 'Weekday Trend'})",
-        )
-        st.caption(f"ผู้เล่นจริงวันนี้: **{current_cs2_ccu:,} คน**")
-
-    with col_p2:
-        if not df_metrics.empty:
-            champion_row = df_metrics[df_metrics["deployed"] == True].head(1)
-            champ_rmse = champion_row["rmse"].values[0] if not champion_row.empty else 25420.0
-            st.metric("Champion Model RMSE", f"{champ_rmse:,.2f} คน")
-            st.caption("สถานะ: **Active Production** (Champion-Challenger Workflow)")
-        else:
-            st.metric("โมเดล AI Baseline", "Active")
-            st.caption("รัน `steam_ccu_pipeline_dag` ใน Airflow เพื่อบันทึกประวัติ Metric ต่อเนื่อง")
-
-    if not df_metrics.empty:
-        st.markdown("<div style='height: 12px;'></div>", unsafe_allow_html=True)
-        st.markdown("##### <i class='ri-file-list-3-line' style='color: #6366f1;'></i> ประวัติการวัดผล Champion vs Challenger", unsafe_allow_html=True)
-        st.dataframe(
-            df_metrics.rename(columns={
-                "model_name": "ชื่อโมเดล",
-                "target_game": "เกมเป้าหมาย",
-                "rmse": "RMSE",
-                "deployed": "Deploy ใน Production",
-                "run_at": "เวลาประเมิน",
-            }),
-            use_container_width=True,
-            hide_index=True,
-        )
-
-
-# -----------------------------------------------------------------
-# TAB 6: วิเคราะห์ความคุ้มค่า (Value Score)
-# -----------------------------------------------------------------
-with tab6:
     st.markdown("""
     <div style='color: #94a3b8; font-size: 13px; margin-bottom: 12px;'>
         <b>Value Score</b> คำนวณจากสัดส่วน <i>คะแนนรีวิว (%) / ราคา (บาท)</i> — เกมที่อยู่ <b>ด้านบนซ้ายของกราฟ</b> คือเกมที่คะแนนรีวิวสูงในราคาที่คุ้มค่าที่สุด
@@ -1048,29 +1011,6 @@ with tab6:
         )
 
 
-# -----------------------------------------------------------------
-# TAB 7: ประวัติการเปลี่ยนราคา (Price Events)
-# -----------------------------------------------------------------
-with tab7:
-    st.markdown("##### <i class='ri-history-line' style='color: #f59e0b;'></i> บันทึกการเปลี่ยนแปลงราคาและโปรโมชั่น", unsafe_allow_html=True)
-    df_events = load_price_events()
-
-    if df_events.empty:
-        st.info("ยังไม่พบประวัติการเปลี่ยนราคา (ระบบจะตรวจจับอัตโนมัติเมื่อราคาวันนี้ต่างจากวันก่อนหน้า)")
-    else:
-        st.dataframe(
-            df_events.rename(columns={
-                "game_name": "ชื่อเกม",
-                "event_date": "วันที่",
-                "old_price": "ราคาเดิม",
-                "new_price": "ราคาใหม่",
-                "discount_pct": "ส่วนลด (%)",
-                "event_type": "ประเภท",
-                "detected_at": "เวลาที่ตรวจพบ",
-            }),
-            use_container_width=True,
-            hide_index=True,
-        )
 
 
 # -----------------------------------------------------------------

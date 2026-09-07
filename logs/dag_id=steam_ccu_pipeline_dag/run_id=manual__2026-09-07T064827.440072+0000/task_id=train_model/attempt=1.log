@@ -1,0 +1,22 @@
+[2026-09-07T06:48:39.416+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2026-09-07T06:48:39.436+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: steam_ccu_pipeline_dag.train_model manual__2026-09-07T06:48:27.440072+00:00 [queued]>
+[2026-09-07T06:48:39.445+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: steam_ccu_pipeline_dag.train_model manual__2026-09-07T06:48:27.440072+00:00 [queued]>
+[2026-09-07T06:48:39.445+0000] {taskinstance.py:2866} INFO - Starting attempt 1 of 2
+[2026-09-07T06:48:39.457+0000] {taskinstance.py:2889} INFO - Executing <Task(PythonOperator): train_model> on 2026-09-07 06:48:27.440072+00:00
+[2026-09-07T06:48:39.464+0000] {warnings.py:112} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:70: DeprecationWarning: This process (pid=1320) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2026-09-07T06:48:39.466+0000] {standard_task_runner.py:72} INFO - Started process 1336 to run task
+[2026-09-07T06:48:39.466+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'steam_ccu_pipeline_dag', 'train_model', 'manual__2026-09-07T06:48:27.440072+00:00', '--job-id', '159', '--raw', '--subdir', 'DAGS_FOLDER/ml_03_steam_ccu.py', '--cfg-path', '/tmp/tmp70fcy26l']
+[2026-09-07T06:48:39.469+0000] {standard_task_runner.py:105} INFO - Job 159: Subtask train_model
+[2026-09-07T06:48:39.526+0000] {task_command.py:467} INFO - Running <TaskInstance: steam_ccu_pipeline_dag.train_model manual__2026-09-07T06:48:27.440072+00:00 [running]> on host 6f4d56443a1a
+[2026-09-07T06:48:39.958+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='steam_project' AIRFLOW_CTX_DAG_ID='steam_ccu_pipeline_dag' AIRFLOW_CTX_TASK_ID='train_model' AIRFLOW_CTX_EXECUTION_DATE='2026-09-07T06:48:27.440072+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2026-09-07T06:48:27.440072+00:00'
+[2026-09-07T06:48:39.961+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2026-09-07T06:48:41.181+0000] {logging_mixin.py:190} INFO - 🤖 เทรน Candidate Model เสร็จสิ้น (Train: 13, Holdout: 3)
+[2026-09-07T06:48:41.182+0000] {logging_mixin.py:190} INFO - 💾 บันทึกโมเดลไว้ที่: /opt/***/models/steam_models/candidate_manual__2026-09-07T06-48-27.440072-00-00.pkl
+[2026-09-07T06:48:41.182+0000] {python.py:240} INFO - Done. Returned value was: None
+[2026-09-07T06:48:41.192+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2026-09-07T06:48:41.192+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=steam_ccu_pipeline_dag, task_id=train_model, run_id=manual__2026-09-07T06:48:27.440072+00:00, execution_date=20260907T064827, start_date=20260907T064839, end_date=20260907T064841
+[2026-09-07T06:48:41.247+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2026-09-07T06:48:41.522+0000] {taskinstance.py:3895} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2026-09-07T06:48:41.524+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

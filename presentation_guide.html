@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>คู่มือนำเสนอ: Steam Intelligence & ML Pipeline</title>
+    <!-- Google Fonts & Remix Icon -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --card-border: rgba(255, 255, 255, 0.08);
+            --text-main: #f8fafc;
+            --text-sub: #94a3b8;
+            --primary: #38bdf8;
+            --accent-ml: #a855f7;
+            --accent-ml-glow: rgba(168, 85, 247, 0.2);
+            --accent-green: #10b981;
+            --accent-amber: #f59e0b;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: 'Kanit', 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding-bottom: 80px;
+        }
+
+        /* Top App Bar */
+        .app-header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--card-border);
+            padding: 12px 16px;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 680px;
+            margin: 0 auto;
+        }
+
+        .header-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .header-title i {
+            color: var(--primary);
+            font-size: 20px;
+        }
+
+        .btn-print {
+            background: rgba(56, 189, 248, 0.15);
+            color: var(--primary);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            border-radius: 8px;
+            padding: 6px 12px;
+            font-size: 12px;
+            font-family: 'Kanit', sans-serif;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        /* Quick Navigation Bar (Horizontal Scroll on Mobile) */
+        .quick-nav {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            padding: 10px 16px;
+            background: rgba(30, 41, 59, 0.6);
+            border-bottom: 1px solid var(--card-border);
+            scrollbar-width: none;
+        }
+        .quick-nav::-webkit-scrollbar {
+            display: none;
+        }
+
+        .nav-pill {
+            flex-shrink: 0;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-sub);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 500;
+            text-decoration: none;
+            border: 1px solid var(--card-border);
+            transition: all 0.2s ease;
+        }
+
+        .nav-pill.active, .nav-pill:active {
+            background: var(--primary);
+            color: #0f172a;
+            font-weight: 700;
+            border-color: var(--primary);
+        }
+
+        .nav-pill.ml-pill {
+            border-color: rgba(168, 85, 247, 0.5);
+            color: #d8b4fe;
+            background: rgba(168, 85, 247, 0.15);
+            font-weight: 600;
+        }
+
+        /* Container */
+        .container {
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 16px;
+        }
+
+        /* Timeline Summary Card */
+        .summary-card {
+            background: linear-gradient(135deg, rgba(56, 189, 248, 0.1), rgba(168, 85, 247, 0.12));
+            border: 1px solid rgba(56, 189, 248, 0.25);
+            border-radius: 16px;
+            padding: 16px;
+            margin-bottom: 20px;
+        }
+
+        .summary-title {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .time-badge {
+            display: inline-block;
+            background: #0284c7;
+            color: #ffffff;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 6px;
+            margin-left: auto;
+        }
+
+        .timeline-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+            margin-top: 10px;
+            font-size: 12px;
+        }
+
+        .timeline-item {
+            background: rgba(15, 23, 42, 0.5);
+            padding: 8px 10px;
+            border-radius: 8px;
+            border: 1px solid var(--card-border);
+        }
+
+        /* Presentation Section Card */
+        .section-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 18px;
+            margin-bottom: 18px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-card.ml-highlight {
+            border: 1px solid rgba(168, 85, 247, 0.45);
+            box-shadow: 0 0 20px rgba(168, 85, 247, 0.18);
+        }
+
+        .section-card.ml-highlight::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #a855f7, #38bdf8);
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 10px;
+        }
+
+        .section-title {
+            font-size: 17px;
+            font-weight: 700;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .section-time {
+            font-size: 12px;
+            font-weight: 600;
+            background: rgba(255, 255, 255, 0.08);
+            color: #38bdf8;
+            padding: 3px 8px;
+            border-radius: 6px;
+            white-space: nowrap;
+        }
+
+        .tag-ml {
+            background: linear-gradient(135deg, #a855f7, #7c3aed);
+            color: #ffffff;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 6px;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            box-shadow: 0 2px 6px rgba(168, 85, 247, 0.3);
+            margin-bottom: 8px;
+        }
+
+        /* Speech Box (What to Say) */
+        .speech-box {
+            background: rgba(15, 23, 42, 0.7);
+            border-left: 4px solid var(--primary);
+            border-radius: 0 12px 12px 0;
+            padding: 14px 16px;
+            margin: 12px 0;
+            font-size: 14.5px;
+            color: #e2e8f0;
+            line-height: 1.65;
+        }
+
+        .section-card.ml-highlight .speech-box {
+            border-left-color: #a855f7;
+        }
+
+        .speech-box b {
+            color: #38bdf8;
+        }
+        .section-card.ml-highlight .speech-box b {
+            color: #d8b4fe;
+        }
+
+        /* Points to Show on Screen */
+        .pointer-box {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px dashed rgba(255, 255, 255, 0.15);
+            border-radius: 10px;
+            padding: 10px 14px;
+            margin-top: 10px;
+            font-size: 13px;
+        }
+
+        .pointer-box-title {
+            font-weight: 700;
+            color: var(--accent-amber);
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .pointer-list {
+            padding-left: 20px;
+            color: var(--text-sub);
+        }
+
+        .pointer-list li {
+            margin-bottom: 4px;
+        }
+
+        .pointer-list li b {
+            color: var(--text-main);
+        }
+
+        /* ML Tech Specs Box */
+        .tech-box {
+            background: rgba(168, 85, 247, 0.08);
+            border: 1px solid rgba(168, 85, 247, 0.2);
+            border-radius: 10px;
+            padding: 12px 14px;
+            margin-top: 12px;
+            font-size: 13px;
+        }
+
+        .tech-box-title {
+            font-weight: 700;
+            color: #d8b4fe;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* Q&A Cheat Sheet */
+        .qa-card {
+            background: #111827;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 12px 14px;
+            margin-bottom: 10px;
+        }
+
+        .qa-q {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 13.5px;
+            margin-bottom: 4px;
+        }
+
+        .qa-a {
+            font-size: 13px;
+            color: #cbd5e1;
+        }
+
+        /* Floating Bottom Bar for Quick Tip */
+        .bottom-tip {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid var(--card-border);
+            padding: 10px 16px;
+            text-align: center;
+            font-size: 12px;
+            color: var(--text-sub);
+            z-index: 99;
+        }
+
+        /* Print Optimization */
+        @media print {
+            body {
+                background: #ffffff !important;
+                color: #000000 !important;
+                font-size: 12pt;
+            }
+            .app-header, .quick-nav, .bottom-tip, .btn-print {
+                display: none !important;
+            }
+            .section-card {
+                background: #ffffff !important;
+                border: 1px solid #cccccc !important;
+                color: #000000 !important;
+                page-break-inside: avoid;
+                margin-bottom: 15px;
+            }
+            .speech-box {
+                background: #f8fafc !important;
+                color: #000000 !important;
+                border-left-color: #0284c7 !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="app-header">
+        <div class="header-content">
+            <div class="header-title">
+                <i class="ri-steam-fill"></i>
+                <span>Presentation Guide (5 Tabs)</span>
+            </div>
+            <button class="btn-print" onclick="window.print()">
+                <i class="ri-printer-line"></i> PDF / พิมพ์
+            </button>
+        </div>
+    </header>
+
+    <!-- Quick Navigation (Scrollable Horizontal Pills) -->
+    <div class="quick-nav">
+        <a href="#intro" class="nav-pill active">1. บทนำ (0-2 น.)</a>
+        <a href="#tab1" class="nav-pill">2. Tab 1 อันดับเกม</a>
+        <a href="#tab2" class="nav-pill ml-pill"><i class="ri-sparkling-fill"></i> 3. Tab 2 ดีล AI [ML Focus]</a>
+        <a href="#tab3" class="nav-pill">4. Tab 3 แนวโน้ม</a>
+        <a href="#tab4" class="nav-pill">5. Tab 4 โซนโลก</a>
+        <a href="#tab5" class="nav-pill">6. Tab 5 ความคุ้มค่า</a>
+        <a href="#qa" class="nav-pill">7. ตอบคำถาม Q&A</a>
+    </div>
+
+    <!-- Main Container -->
+    <div class="container">
+
+        <!-- Timeline Summary -->
+        <div class="summary-card">
+            <div class="summary-title">
+                <i class="ri-timer-flash-line"></i>
+                <span>ภาพรวมเวลาที่แนะนำในการนำเสนอ</span>
+                <span class="time-badge">6 – 8 นาที</span>
+            </div>
+            <div style="font-size: 13px; color: var(--text-sub);">
+                โครงสร้าง 5 แท็บกระชับ ชัดเจน และโฟกัส Machine Learning ทั้งหมดที่ <b>Tab 2 (AI Discount Radar)</b>
+            </div>
+            <div class="timeline-grid">
+                <div class="timeline-item">⏱️ <b>0-2 นาที:</b> บทนำ & Architecture</div>
+                <div class="timeline-item">⏱️ <b>2-3 นาที:</b> Header & Tab 1</div>
+                <div class="timeline-item" style="border-color: rgba(168, 85, 247, 0.4); grid-column: span 2;">🌟 <b>3-5 นาที:</b> [Highlight ML] Tab 2 AI Discount Radar</div>
+                <div class="timeline-item">⏱️ <b>5-7 นาที:</b> Tab 3 & Tab 4 โซนโลก</div>
+                <div class="timeline-item">⏱️ <b>7-8 นาที:</b> Tab 5 ความคุ้มค่า & สรุป</div>
+            </div>
+        </div>
+
+        <!-- 1. บทนำ & Architecture -->
+        <div id="intro" class="section-card">
+            <div class="section-header">
+                <div class="section-title">
+                    <i class="ri-slideshow-3-line" style="color: #38bdf8;"></i>
+                    <span>1. บทนำและภาพรวมระบบ</span>
+                </div>
+                <span class="section-time">⏱️ 0–2 นาที</span>
+            </div>
+
+            <div class="speech-box">
+                "สวัสดีครับอาจารย์และเพื่อนๆ ทุกท่าน วันนี้ผมขอแนะนำโปรเจกต์ <b>Steam Intelligence & Machine Learning Pipeline</b> ซึ่งเป็นระบบวิเคราะห์ข้อมูลเกมบน Steam แบบ <b>End-to-End</b> ตั้งแต่การดึงข้อมูลสด, ประมวลผลผ่าน Data Pipeline อัตโนมัติบน Airflow, การพัฒนา <b>Dual-Model Machine Learning พยากรณ์โอกาสและราคาที่จะลดล่วงหน้า 7 วัน</b> ไปจนถึงการแสดงผลบน Interactive Dashboard ครับ"
+            </div>
+
+            <div class="pointer-box">
+                <div class="pointer-box-title"><i class="ri-hand-coin-line"></i> จุดเด่น Tech Stack ที่ควรพูด:</div>
+                <ul class="pointer-list">
+                    <li><b>Data Pipeline:</b> Apache Airflow (ทำงานอัตโนมัติรายวัน)</li>
+                    <li><b>Hybrid Ingestion:</b> Valve Official API (คนเล่นสด) + Steam Store (ราคาบาท) + SteamSpy (รีวิว)</li>
+                    <li><b>Database:</b> PostgreSQL (เก็บ Time-series Data)</li>
+                    <li><b>Machine Learning:</b> Scikit-Learn (Dual-Model RandomForest)</li>
+                    <li><b>UI:</b> Streamlit + Plotly + Minimal Remix Icons</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 2. Header & Tab 1 -->
+        <div id="tab1" class="section-card">
+            <div class="section-header">
+                <div class="section-title">
+                    <i class="ri-trophy-line" style="color: #fbbf24;"></i>
+                    <span>2. Header & Tab 1: อันดับเกมยอดนิยม</span>
+                </div>
+                <span class="section-time">⏱️ 2–3 นาที</span>
+            </div>
+
+            <div class="speech-box">
+                "ด้านบนสุดคือ <b>Status Bar</b> แสดงสถานะของ Pipeline และรอบการซิงค์ข้อมูลล่าสุดจาก PostgreSQL<br><br>
+                ในแท็บแรก <b>อันดับเกมยอดนิยม</b> แสดงรายการเกม Top Tier เช่น CS2, PUBG, Elden Ring, Wukong พร้อมแปลงราคาเป็นเงินบาทไทยแท้จริง และแสดงยอดผู้เล่นสด Real-time ณ ปัจจุบัน สามารถจัดเรียงตาม CCU, คะแนนรีวิว หรือส่วนลดสูงสุดได้ครับ"
+            </div>
+
+            <div class="pointer-box">
+                <div class="pointer-box-title"><i class="ri-cursor-line"></i> จุดที่เอานิ้วชี้บนจอ:</div>
+                <ul class="pointer-list">
+                    <li>ชี้ที่ <b>Status Bar ด้านบน</b> (Data Pipeline Active, ข้อมูลล่าสุด)</li>
+                    <li>ชี้ที่ <b>Badge อันดับ #1 สีทอง, #2 สีเงิน, #3 สีทองแดง</b></li>
+                    <li>ชี้ที่ <b>ปุ่มจัดเรียง (Sort by)</b> และ Badge ราคาบาทไทย/เล่นฟรี</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 3. Tab 2: AI Discount Radar (ML Spotlight) -->
+        <div id="tab2" class="section-card ml-highlight">
+            <div class="tag-ml"><i class="ri-sparkling-fill"></i> Machine Learning Main Spotlight</div>
+            <div class="section-header">
+                <div class="section-title">
+                    <i class="ri-radar-line" style="color: #a855f7;"></i>
+                    <span>3. Tab 2: ดีลและส่วนลด AI</span>
+                </div>
+                <span class="section-time">⏱️ 3–5 นาที</span>
+            </div>
+
+            <div class="speech-box">
+                "ไฮไลท์สำคัญที่สุดของ Machine Learning อยู่ในแท็บที่ 2 ครับ คือ <b>AI Discount Radar</b> ทำงานร่วมกันแบบ <b>Dual-Model Machine Learning</b>:<br><br>
+                1. <b>Model ที่ 1 (Classifier): ทำนาย 'จังหวะเวลา' (Timing)</b> ➔ ดูว่าใน 7 วันนี้ มีโอกาสจะจัดโปรลดราคากี่ % (เช่น โอกาสลด 85%) โดยวิเคราะห์จากรอบความถี่และวันที่ไม่ได้ลดราคามานาน<br>
+                2. <b>Model ที่ 2 (Regressor): ทำนาย 'ราคาที่จะลดเหลือ' (Price Forecast)</b> ➔ คาดการณ์ว่าถ้าจัดโปร ราคาจะลดเหลือเงินกี่บาท (เช่น จากราคา ฿1,799 คาดว่าจะลดเหลือ ฿899) โดยประเมินจากประวัติส่วนลดเดิมของเกมนั้น<br>
+                3. <b>Decision Recommendation Engine:</b> รวมผลทั้งสองตัวเป็นคำแนะนำผู้ซื้อทันที:<br>
+                &nbsp;&nbsp;• ถ้าโอกาสลดสูง (≥ 70%) ➔ แนะนำ <b>'แนะนำให้รอก่อน (WAIT)'</b> อย่าเพิ่งซื้อราคาเต็ม<br>
+                &nbsp;&nbsp;• ถ้าโอกาสลดปานกลาง (40–69%) ➔ แนะนำ <b>'จับตาดูราคา (WATCH)'</b><br>
+                &nbsp;&nbsp;• ถ้าโอกาสลดต่ำ (< 40%) ➔ แนะนำ <b>'ไม่ต้องรอ (โอกาสลดต่ำ)'</b> ครับ"
+            </div>
+
+            <div class="tech-box">
+                <div class="tech-box-title"><i class="ri-cpu-line"></i> สเปกทางเทคนิคของโมเดล (Dual-Model Architecture):</div>
+                <ul class="pointer-list" style="color: #cbd5e1;">
+                    <li><b>Algorithms:</b> RandomForestClassifier + RandomForestRegressor</li>
+                    <li><b>Key Features:</b> ประวัติรอบการลดราคาในอดีต, ระดับราคาเดิม, วันที่ตั้งแต่ลดครั้งล่าสุด, ยอดผู้เล่น CCU</li>
+                    <li><b>Database Table:</b> <code>steam_discount_predictions</code></li>
+                </ul>
+            </div>
+
+            <div class="pointer-box">
+                <div class="pointer-box-title"><i class="ri-cursor-line"></i> จุดที่เอานิ้วชี้บนจอ:</div>
+                <ul class="pointer-list">
+                    <li>ชี้ที่การ์ด 3 กล่องด้านบน: <b>ป้ายสีส้ม 'แนะนำให้รอก่อน'</b> และ <b>ป้ายสีฟ้า 'จับตาดูราคา'</b></li>
+                    <li>ชี้ที่ตัวเลขราคาคาดการณ์: <b>฿1,799 ➔ คาดว่าจะลดเหลือ ฿899 (-50%)</b></li>
+                    <li>ชี้ชาร์ตเปรียบเทียบราคาเต็ม vs ราคาโปรโมชั่นสำหรับเกมที่ลดราคาอยู่จริง ณ วันนี้</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 4. Tab 3 & Tab 4 -->
+        <div id="tab3" class="section-card">
+            <div class="section-header">
+                <div class="section-title">
+                    <i class="ri-line-chart-line" style="color: #38bdf8;"></i>
+                    <span>4. Tab 3: แนวโน้ม & Tab 4: โซนโลก</span>
+                </div>
+                <span class="section-time">⏱️ 5–7 นาที</span>
+            </div>
+
+            <div class="speech-box">
+                "ในแท็บที่ 3 จะแสดง <b>แนวโน้มผู้เล่นรายวัน (Time-series)</b> ย้อนหลัง ทำให้เห็นพฤติกรรมผู้เล่นชัดเจน เช่น ช่วงวันหยุดสุดสัปดาห์ที่ยอดผู้เล่นพุ่งสูงขึ้น<br><br>
+                ส่วนในแท็บที่ 4 คือ <b>การวิเคราะห์ผู้เล่นแยกตามโซน</b> แสดงสัดส่วนคนเล่นในไทยกี่คน คิดเป็นกี่ % ของโลก และแสดง <b>Interactive World Heatmap</b> พร้อมทั้งระบุช่วงเวลา <b>Peak Hours</b> ของแต่ละโซนโดยแปลงเป็นเวลาไทย (UTC+7) เรียบร้อยครับ"
+            </div>
+
+            <div class="pointer-box">
+                <div class="pointer-box-title"><i class="ri-cursor-line"></i> จุดที่เอานิ้วชี้บนจอ:</div>
+                <ul class="pointer-list">
+                    <li><b>Tab 3:</b> กราฟเส้นเปรียบเทียบผู้เล่นหลายเกม (Multi-game comparison)</li>
+                    <li><b>Tab 4:</b> การ์ดผู้เล่นในประเทศไทย (เช่น 45,000 คน / 4.5% ของโลก)</li>
+                    <li><b>Tab 4:</b> แผนที่โลกแบบ Interactive แตะดูรายประเทศได้</li>
+                    <li><b>Tab 4:</b> การ์ดเวลา Peak Time เช่น เอเชีย 19:00-23:00 น., ยุโรป 01:00-05:00 น.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 5. Tab 5 & สรุปจบ -->
+        <div id="tab5" class="section-card">
+            <div class="section-header">
+                <div class="section-title">
+                    <i class="ri-vip-diamond-line" style="color: #38bdf8;"></i>
+                    <span>5. Tab 5: ความคุ้มค่า & สรุปจบ</span>
+                </div>
+                <span class="section-time">⏱️ 7–8 นาที</span>
+            </div>
+
+            <div class="speech-box">
+                "แท็บสุดท้ายคือ <b>Value Score Analysis</b> คำนวณจากสัดส่วน <code>คะแนนรีวิว (%) / ราคา (บาท)</code> เกมที่อยู่ <b>มุมบนซ้ายของกราฟ Scatter Plot</b> คือเกมที่ได้คะแนนรีวิวสูงมากในราคาที่ประหยัดที่สุดครับ<br><br>
+                <b>สรุปปิดท้าย:</b> โปรเจกต์นี้เป็นการผสาน <b>Data Platform ครบวงจร</b> มี Airflow ทำงานอัตโนมัติ, PostgreSQL เก็บข้อมูล, และ Machine Learning (Dual-Model) ช่วยพยากรณ์โปรโมชั่นลดราคาล่วงหน้า ขอบคุณครับ!"
+            </div>
+
+            <div class="pointer-box">
+                <div class="pointer-box-title"><i class="ri-cursor-line"></i> จุดที่เอานิ้วชี้บนจอ:</div>
+                <ul class="pointer-list">
+                    <li>ชี้ที่ <b>มุมบนซ้ายของ Scatter Plot</b> (เกมที่คุ้มค่าที่สุด เช่น Left 4 Dead 2, Terraria)</li>
+                    <li>ชี้ตาราง <b>Top 5 เกมที่คะแนนคุ้มค่าที่สุด</b></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 6. Q&A Cheat Sheet -->
+        <div id="qa" class="section-card" style="border-color: rgba(56, 189, 248, 0.3);">
+            <div class="section-header">
+                <div class="section-title">
+                    <i class="ri-question-answer-line" style="color: #38bdf8;"></i>
+                    <span>6. รวมคำถามที่อาจารย์ชอบถาม (Q&A)</span>
+                </div>
+            </div>
+
+            <div class="qa-card">
+                <div class="qa-q">❓ Q1: ทำไมถึงเลือกใช้ Dual-Model (Classifier + Regressor) แทนที่จะใช้โมเดลเดียว?</div>
+                <div class="qa-a">💡 <b>ตอบ:</b> เพราะการลดราคาเป็น 2 ขั้นตอน (Two-stage Decision): ขั้นแรกคือ 'จะลดหรือไม่ลด' (Classification) และขั้นที่สองคือ 'ถ้าลด จะลดกี่ %' (Regression) การแยก 2 โมเดลช่วยแก้ปัญหา Zero-inflation ทำให้โมเดลที่สองแม่นยำขึ้นมากครับ</div>
+            </div>
+
+            <div class="qa-card">
+                <div class="qa-q">❓ Q2: ทำไมถึงเลือกใช้ RandomForest สำหรับงานนี้?</div>
+                <div class="qa-a">💡 <b>ตอบ:</b> เพราะพฤติกรรมการลดราคาและยอดผู้เล่นมีความสัมพันธ์แบบ Non-linear สูง RandomForest สามารถจับความสัมพันธ์ระหว่าง Features ได้ดีมากโดยไม่ต้อง Normalize ข้อมูลเยอะ และทนต่อ Outliers ครับ</div>
+            </div>
+
+            <div class="qa-card">
+                <div class="qa-q">❓ Q3: ถ้า API ของ Steam ล่ม Pipeline จะหยุดทำงานไหม?</div>
+                <div class="qa-a">💡 <b>ตอบ:</b> ไม่หยุดครับ ใน Airflow ได้ออกแบบให้มีระบบ Retry อัตโนมัติ 2 ครั้ง และมี Fallback ไปดึงข้อมูลจากแหล่งสำรอง ทำให้ Pipeline มีความทนทาน (Fault Tolerance) ครับ</div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Bottom Tip Bar -->
+    <div class="bottom-tip">
+        💡 <b>ทริค:</b> เปิดไฟล์นี้บนมือถือขณะซ้อมพูด หรือเปิดควบคู่ขณะพรีเซนต์ได้เลย!
+    </div>
+
+</body>
+</html>

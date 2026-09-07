@@ -272,6 +272,17 @@ def enrich_steam_store(**kwargs):
         except Exception as err:
             print(f"  [{i+1}/{len(games)}] ⚠️ ดึง Steam Store appid {appid} ผิดพลาด: {err}")
 
+        # ดึงยอดผู้เล่นสด (Live CCU) จาก Valve Official Web API
+        try:
+            ccu_url = f"https://api.steampowered.com/ISteamUserStats/GetNumberOfCurrentPlayers/v1/?appid={appid}"
+            ccu_resp = requests.get(ccu_url, timeout=5)
+            if ccu_resp.status_code == 200:
+                body_ccu = ccu_resp.json().get("response", {})
+                if "player_count" in body_ccu:
+                    g["ccu"] = int(body_ccu["player_count"])
+        except Exception:
+            pass
+
         enriched_list.append(g)
         # หน่วงเวลาสั้นๆ ป้องกัน rate limit
         time.sleep(0.8)

@@ -1,0 +1,556 @@
+[2026-09-07T06:48:40.406+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2026-09-07T06:48:40.421+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: steam_discount_prediction_dag.batch_predict_discounts manual__2026-09-07T06:48:24.836907+00:00 [queued]>
+[2026-09-07T06:48:40.429+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: steam_discount_prediction_dag.batch_predict_discounts manual__2026-09-07T06:48:24.836907+00:00 [queued]>
+[2026-09-07T06:48:40.429+0000] {taskinstance.py:2866} INFO - Starting attempt 1 of 2
+[2026-09-07T06:48:40.440+0000] {taskinstance.py:2889} INFO - Executing <Task(PythonOperator): batch_predict_discounts> on 2026-09-07 06:48:24.836907+00:00
+[2026-09-07T06:48:40.449+0000] {warnings.py:112} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:70: DeprecationWarning: This process (pid=1322) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2026-09-07T06:48:40.451+0000] {standard_task_runner.py:72} INFO - Started process 1350 to run task
+[2026-09-07T06:48:40.451+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'steam_discount_prediction_dag', 'batch_predict_discounts', 'manual__2026-09-07T06:48:24.836907+00:00', '--job-id', '160', '--raw', '--subdir', 'DAGS_FOLDER/ml_04_steam_discount_prediction.py', '--cfg-path', '/tmp/tmplm6jl1sa']
+[2026-09-07T06:48:40.454+0000] {standard_task_runner.py:105} INFO - Job 160: Subtask batch_predict_discounts
+[2026-09-07T06:48:40.520+0000] {task_command.py:467} INFO - Running <TaskInstance: steam_discount_prediction_dag.batch_predict_discounts manual__2026-09-07T06:48:24.836907+00:00 [running]> on host 6f4d56443a1a
+[2026-09-07T06:48:40.613+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='steam_project' AIRFLOW_CTX_DAG_ID='steam_discount_prediction_dag' AIRFLOW_CTX_TASK_ID='batch_predict_discounts' AIRFLOW_CTX_EXECUTION_DATE='2026-09-07T06:48:24.836907+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2026-09-07T06:48:24.836907+00:00'
+[2026-09-07T06:48:40.615+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2026-09-07T06:48:40.745+0000] {base.py:84} INFO - Retrieving connection 'postgres_target'
+[2026-09-07T06:48:40.751+0000] {sql.py:553} INFO - Running statement: 
+    SELECT DISTINCT ON (appid)
+           appid, name, price_thb, original_price, discount_pct, ccu, review_score, is_free, snapshot_date
+    FROM steam_games
+    ORDER BY appid, snapshot_date DESC;
+    , parameters: None
+[2026-09-07T06:48:40.753+0000] {sql.py:562} INFO - Rows affected: 25
+[2026-09-07T06:48:40.754+0000] {logging_mixin.py:190} INFO - 🎯 กำลังรัน Batch Prediction สำหรับ 25 เกม...
+[2026-09-07T06:48:40.759+0000] {sql.py:553} INFO - Running statement: 
+        INSERT INTO steam_discount_predictions (
+            prediction_date, appid, game_name, current_price_thb, original_price,
+            is_currently_on_sale, discount_probability, will_discount_7d,
+            predicted_discount_pct, predicted_price_thb, recommendation, confidence_level, created_at
+        ) VALUES (
+            %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, NOW()
+        ) ON CONFLICT (prediction_date, appid) DO UPDATE SET
+            current_price_thb = EXCLUDED.current_price_thb,
+            original_price = EXCLUDED.original_price,
+            is_currently_on_sale = EXCLUDED.is_currently_on_sale,
+            discount_probability = EXCLUDED.discount_probability,
+            will_discount_7d = EXCLUDED.will_discount_7d,
+            predicted_discount_pct = EXCLUDED.predicted_discount_pct,
+            predicted_price_thb = EXCLUDED.predicted_price_thb,
+            recommendation = EXCLUDED.recommendation,
+            confidence_level = EXCLUDED.confidence_level,
+            created_at = NOW();
+        , parameters: (datetime.date(2026, 9, 7), 440, 'Team Fortress 2', 0.0, 0.0, False, 0.0, False, 0, 0.0, 'FREE_TO_PLAY', 'HIGH')
+[2026-09-07T06:48:40.763+0000] {sql.py:562} INFO - Rows affected: 1
+[2026-09-07T06:48:40.770+0000] {sql.py:553} INFO - Running statement: SELECT snapshot_date FROM steam_games WHERE appid = %s AND discount_pct > 0 ORDER BY snapshot_date DESC LIMIT 1;, parameters: (550,)
+[2026-09-07T06:48:40.772+0000] {sql.py:562} INFO - Rows affected: 0
+[2026-09-07T06:48:40.858+0000] {sql.py:553} INFO - Running statement: 
+        INSERT INTO steam_discount_predictions (
+            prediction_date, appid, game_name, current_price_thb, original_price,
+            is_currently_on_sale, discount_probability, will_discount_7d,
+            predicted_discount_pct, predicted_price_thb, recommendation, confidence_level, created_at
+        ) VALUES (
+            %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, NOW()
+        ) ON CONFLICT (prediction_date, appid) DO UPDATE SET
+            current_price_thb = EXCLUDED.current_price_thb,
+            original_price = EXCLUDED.original_price,
+            is_currently_on_sale = EXCLUDED.is_currently_on_sale,
+            discount_probability = EXCLUDED.discount_probability,
+            will_discount_7d = EXCLUDED.will_discount_7d,
+            predicted_discount_pct = EXCLUDED.predicted_discount_pct,
+            predicted_price_thb = EXCLUDED.predicted_price_thb,
+            recommendation = EXCLUDED.recommendation,
+            confidence_level = EXCLUDED.confidence_level,
+            created_at = NOW();
+        , parameters: (datetime.date(2026, 9, 7), 550, 'Left 4 Dead 2', 220.0, 220.0, False, 0.4124079885542734, False, 36, 140.8, 'WATCH', 'MEDIUM')
+[2026-09-07T06:48:40.860+0000] {sql.py:562} INFO - Rows affected: 1
+[2026-09-07T06:48:40.866+0000] {sql.py:553} INFO - Running statement: 
+        INSERT INTO steam_discount_predictions (
+            prediction_date, appid, game_name, current_price_thb, original_price,
+            is_currently_on_sale, discount_probability, will_discount_7d,
+            predicted_discount_pct, predicted_price_thb, recommendation, confidence_level, created_at
+        ) VALUES (
+            %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, NOW()
+        ) ON CONFLICT (prediction_date, appid) DO UPDATE SET
+            current_price_thb = EXCLUDED.current_price_thb,
+            original_price = EXCLUDED.original_price,
+            is_currently_on_sale = EXCLUDED.is_currently_on_sale,
+            discount_probability = EXCLUDED.discount_probability,
+            will_discount_7d = EXCLUDED.will_discount_7d,
+            predicted_discount_pct = EXCLUDED.predicted_discount_pct,
+            predicted_price_thb = EXCLUDED.predicted_price_thb,
+            recommendation = EXCLUDED.recommendation,
+            confidence_level = EXCLUDED.confidence_level,
+            created_at = NOW();
+        , parameters: (datetime.date(2026, 9, 7), 730, 'Counter-Strike 2', 0.0, 0.0, False, 0.0, False, 0, 0.0, 'FREE_TO_PLAY', 'HIGH')
+[2026-09-07T06:48:40.868+0000] {sql.py:562} INFO - Rows affected: 1
+[2026-09-07T06:48:40.901+0000] {sql.py:553} INFO - Running statement: 
+        INSERT INTO steam_discount_predictions (
+            prediction_date, appid, game_name, current_price_thb, original_price,
+            is_currently_on_sale, discount_probability, will_discount_7d,
+            predicted_discount_pct, predicted_price_thb, recommendation, confidence_level, created_at
+        ) VALUES (
+            %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, NOW()
+        ) ON CONFLICT (prediction_date, appid) DO UPDATE SET
+            current_price_thb = EXCLUDED.current_price_thb,
+            original_price = EXCLUDED.original_price,
+            is_currently_on_sale = EXCLUDED.is_currently_on_sale,
+            discount_probability = EXCLUDED.discount_probability,
+            will_discount_7d = EXCLUDED.will_discount_7d,
+            predicted_discount_pct = EXCLUDED.predicted_discount_pct,
+            predicted_price_thb = EXCLUDED.predicted_price_thb,
+            recommendation = EXCLUDED.recommendation,
+            confidence_level = EXCLUDED.confidence_level,
+            created_at = NOW();
+        , parameters: (datetime.date(2026, 9, 7), 105600, 'Terraria', 110.0, 220.0, True, 0.95, True, 50, 110.0, 'BUY_NOW_ON_SALE', 'HIGH')
+[2026-09-07T06:48:40.912+0000] {sql.py:562} INFO - Rows affected: 1
+[2026-09-07T06:48:40.934+0000] {sql.py:553} INFO - Running statement: 
+        INSERT INTO steam_discount_predictions (
+            prediction_date, appid, game_name, current_price_thb, original_price,
+            is_currently_on_sale, discount_probability, will_discount_7d,
+            predicted_discount_pct, predicted_price_thb, recommendation, confidence_level, created_at
+        ) VALUES (
+            %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, NOW()
+        ) ON CONFLICT (prediction_date, appid) DO UPDATE SET
+            current_price_thb = EXCLUDED.current_price_thb,
+            original_price = EXCLUDED.original_price,
+            is_currently_on_sale = EXCLUDED.is_currently_on_sale,
+            discount_probability = EXCLUDED.discount_probability,
+            will_discount_7d = EXCLUDED.will_discount_7d,
+            predicted_discount_pct = EXCLUDED.predicted_discount_pct,
+            predicted_price_thb = EXCLUDED.predicted_price_thb,
+            recommendation = EXCLUDED.recommendation,
+            confidence_level = EXCLUDED.confidence_level,
+            created_at = NOW();
+        , parameters: (datetime.date(2026, 9, 7), 230410, 'Warframe', 0.0, 0.0, False, 0.0, False, 0, 0.0, 'FREE_TO_PLAY', 'HIGH')
+[2026-09-07T06:48:40.936+0000] {sql.py:562} INFO - Rows affected: 1
+[2026-09-07T06:48:40.943+0000] {sql.py:553} INFO - Running statement: 
+        INSERT INTO steam_discount_predictions (
+            prediction_date, appid, game_name, current_price_thb, original_price,
+            is_currently_on_sale, discount_probability, will_discount_7d,
+            predicted_discount_pct, predicted_price_thb, recommendation, confidence_level, created_at
+        ) VALUES (
+            %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, NOW()
+        ) ON CONFLICT (prediction_date, appid) DO UPDATE SET
+            current_price_thb = EXCLUDED.current_price_thb,
+            original_price = EXCLUDED.original_price,
+            is_currently_on_sale = EXCLUDED.is_currently_on_sale,
+            discount_probability = EXCLUDED.discount_probability,
+            will_discount_7d = EXCLUDED.will_discount_7d,
+            predicted_discount_pct = EXCLUDED.predicted_discount_pct,
+            predicted_price_thb = EXCLUDED.predicted_price_thb,
+            recommendation = EXCLUDED.recommendation,
+            confidence_level = EXCLUDED.confidence_level,
+            created_at = NOW();
+        , parameters: (datetime.date(2026, 9, 7), 236390, 'War Thunder', 0.0, 0.0, False, 0.0, False, 0, 0.0, 'FREE_TO_PLAY', 'HIGH')
+[2026-09-07T06:48:40.945+0000] {sql.py:562} INFO - Rows affected: 1
+[2026-09-07T06:48:40.952+0000] {sql.py:553} INFO - Running statement: SELECT snapshot_date FROM steam_games WHERE appid = %s AND discount_pct > 0 ORDER BY snapshot_date DESC LIMIT 1;, parameters: (252490,)
+[2026-09-07T06:48:40.953+0000] {sql.py:562} INFO - Rows affected: 0
+[2026-09-07T06:48:40.974+0000] {sql.py:553} INFO - Running statement: 
+        INSERT INTO steam_discount_predictions (
+            prediction_date, appid, game_name, current_price_thb, original_price,
+            is_currently_on_sale, discount_probability, will_discount_7d,
+            predicted_discount_pct, predicted_price_thb, recommendation, confidence_level, created_at
+        ) VALUES (
+            %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, NOW()
+        ) ON CONFLICT (prediction_date, appid) DO UPDATE SET
+            current_price_thb = EXCLUDED.current_price_thb,
+            original_price = EXCLUDED.original_price,
+            is_currently_on_sale = EXCLUDED.is_currently_on_sale,
+            discount_probability = EXCLUDED.discount_probability,
+            will_discount_7d = EXCLUDED.will_discount_7d,
+            predicted_discount_pct = EXCLUDED.predicted_discount_pct,
+            predicted_price_thb = EXCLUDED.predicted_price_thb,
+            recommendation = EXCLUDED.recommendation,
+            confidence_level = EXCLUDED.confidence_level,
+            created_at = NOW();
+        , parameters: (datetime.date(2026, 9, 7), 252490, 'Rust', 799.0, 799.0, False, 0.3313988496883234, False, 54, 367.54, 'BUY_NOW', 'MEDIUM')
+[2026-09-07T06:48:40.979+0000] {sql.py:562} INFO - Rows affected: 1
+[2026-09-07T06:48:40.986+0000] {sql.py:553} INFO - Running statement: SELECT snapshot_date FROM steam_games WHERE appid = %s AND discount_pct > 0 ORDER BY snapshot_date DESC LIMIT 1;, parameters: (271590,)
+[2026-09-07T06:48:40.987+0000] {sql.py:562} INFO - Rows affected: 0
+[2026-09-07T06:48:41.007+0000] {sql.py:553} INFO - Running statement: 
+        INSERT INTO steam_discount_predictions (
+            prediction_date, appid, game_name, current_price_thb, original_price,
+            is_currently_on_sale, discount_probability, will_discount_7d,
+            predicted_discount_pct, predicted_price_thb, recommendation, confidence_level, created_at
+        ) VALUES (
+            %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, NOW()
+        ) ON CONFLICT (prediction_date, appid) DO UPDATE SET
+            current_price_thb = EXCLUDED.current_price_thb,
+            original_price = EXCLUDED.original_price,
+            is_currently_on_sale = EXCLUDED.is_currently_on_sale,
+            discount_probability = EXCLUDED.discount_probability,
+            will_discount_7d = EXCLUDED.will_discount_7d,
+            predicted_discount_pct = EXCLUDED.predicted_discount_pct,
+            predicted_price_thb = EXCLUDED.predicted_price_thb,
+            recommendation = EXCLUDED.recommendation,
+            confidence_level = EXCLUDED.confidence_level,
+            created_at = NOW();
+        , parameters: (datetime.date(2026, 9, 7), 271590, 'Grand Theft Auto V Legacy', 704.0, 704.0, False, 0.43085013196076316, False, 55, 316.8, 'WATCH', 'MEDIUM')
+[2026-09-07T06:48:41.009+0000] {sql.py:562} INFO - Rows affected: 1
+[2026-09-07T06:48:41.018+0000] {sql.py:553} INFO - Running statement: 
+        INSERT INTO steam_discount_predictions (
+            prediction_date, appid, game_name, current_price_thb, original_price,
+            is_currently_on_sale, discount_probability, will_discount_7d,
+            predicted_discount_pct, predicted_price_thb, recommendation, confidence_level, created_at
+        ) VALUES (
+            %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, NOW()
+        ) ON CONFLICT (prediction_date, appid) DO UPDATE SET
+            current_price_thb = EXCLUDED.current_price_thb,
+            original_price = EXCLUDED.original_price,
+            is_currently_on_sale = EXCLUDED.is_currently_on_sale,
+            discount_probability = EXCLUDED.discount_probability,
+            will_discount_7d = EXCLUDED.will_discount_7d,
+            predicted_discount_pct = EXCLUDED.predicted_discount_pct,
+            predicted_price_thb = EXCLUDED.predicted_price_thb,
+            recommendation = EXCLUDED.recommendation,
+            confidence_level = EXCLUDED.confidence_level,
+            created_at = NOW();
+        , parameters: (datetime.date(2026, 9, 7), 289070, 'Sid Meier’s Civilization® VI', 160.0, 1600.0, True, 0.95, True, 90, 160.0, 'BUY_NOW_ON_SALE', 'HIGH')
+[2026-09-07T06:48:41.023+0000] {sql.py:562} INFO - Rows affected: 1
+[2026-09-07T06:48:41.029+0000] {sql.py:553} INFO - Running statement: 
+        INSERT INTO steam_discount_predictions (
+            prediction_date, appid, game_name, current_price_thb, original_price,
+            is_currently_on_sale, discount_probability, will_discount_7d,
+            predicted_discount_pct, predicted_price_thb, recommendation, confidence_level, created_at
+        ) VALUES (
+            %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, NOW()
+        ) ON CONFLICT (prediction_date, appid) DO UPDATE SET
+            current_price_thb = EXCLUDED.current_price_thb,
+            original_price = EXCLUDED.original_price,
+            is_currently_on_sale = EXCLUDED.is_currently_on_sale,
+            discount_probability = EXCLUDED.discount_probability,
+            will_discount_7d = EXCLUDED.will_discount_7d,
+            predicted_discount_pct = EXCLUDED.predicted_discount_pct,
+            predicted_price_thb = EXCLUDED.predicted_price_thb,
+            recommendation = EXCLUDED.recommendation,
+            confidence_level = EXCLUDED.confidence_level,
+            created_at = NOW();
+        , parameters: (datetime.date(2026, 9, 7), 291550, 'Brawlhalla', 0.0, 0.0, False, 0.0, False, 0, 0.0, 'FREE_TO_PLAY', 'HIGH')
+[2026-09-07T06:48:41.031+0000] {sql.py:562} INFO - Rows affected: 1
+[2026-09-07T06:48:41.037+0000] {sql.py:553} INFO - Running statement: 
+        INSERT INTO steam_discount_predictions (
+            prediction_date, appid, game_name, current_price_thb, original_price,
+            is_currently_on_sale, discount_probability, will_discount_7d,
+            predicted_discount_pct, predicted_price_thb, recommendation, confidence_level, created_at
+        ) VALUES (
+            %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, NOW()
+        ) ON CONFLICT (prediction_date, appid) DO UPDATE SET
+            current_price_thb = EXCLUDED.current_price_thb,
+            original_price = EXCLUDED.original_price,
+            is_currently_on_sale = EXCLUDED.is_currently_on_sale,
+            discount_probability = EXCLUDED.discount_probability,
+            will_discount_7d = EXCLUDED.will_discount_7d,
+            predicted_discount_pct = EXCLUDED.predicted_discount_pct,
+            predicted_price_thb = EXCLUDED.predicted_price_thb,
+            recommendation = EXCLUDED.recommendation,
+            confidence_level = EXCLUDED.confidence_level,
+            created_at = NOW();
+        , parameters: (datetime.date(2026, 9, 7), 359550, "Tom Clancy's Rainbow Six Siege", 0.0, 0.0, False, 0.0, False, 0, 0.0, 'FREE_TO_PLAY', 'HIGH')
+[2026-09-07T06:48:41.039+0000] {sql.py:562} INFO - Rows affected: 1
+[2026-09-07T06:48:41.046+0000] {sql.py:553} INFO - Running statement: SELECT snapshot_date FROM steam_games WHERE appid = %s AND discount_pct > 0 ORDER BY snapshot_date DESC LIMIT 1;, parameters: (431960,)
+[2026-09-07T06:48:41.047+0000] {sql.py:562} INFO - Rows affected: 0
+[2026-09-07T06:48:41.065+0000] {sql.py:553} INFO - Running statement: 
+        INSERT INTO steam_discount_predictions (
+            prediction_date, appid, game_name, current_price_thb, original_price,
+            is_currently_on_sale, discount_probability, will_discount_7d,
+            predicted_discount_pct, predicted_price_thb, recommendation, confidence_level, created_at
+        ) VALUES (
+            %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, NOW()
+        ) ON CONFLICT (prediction_date, appid) DO UPDATE SET
+            current_price_thb = EXCLUDED.current_price_thb,
+            original_price = EXCLUDED.original_price,
+            is_currently_on_sale = EXCLUDED.is_currently_on_sale,
+            discount_probability = EXCLUDED.discount_probability,
+            will_discount_7d = EXCLUDED.will_discount_7d,
+            predicted_discount_pct = EXCLUDED.predicted_discount_pct,
+            predicted_price_thb = EXCLUDED.predicted_price_thb,
+            recommendation = EXCLUDED.recommendation,
+            confidence_level = EXCLUDED.confidence_level,
+            created_at = NOW();
+        , parameters: (datetime.date(2026, 9, 7), 431960, 'Wallpaper Engine', 115.0, 115.0, False, 0.32849122807017545, False, 46, 62.1, 'BUY_NOW', 'MEDIUM')
+[2026-09-07T06:48:41.067+0000] {sql.py:562} INFO - Rows affected: 1
+[2026-09-07T06:48:41.073+0000] {sql.py:553} INFO - Running statement: SELECT snapshot_date FROM steam_games WHERE appid = %s AND discount_pct > 0 ORDER BY snapshot_date DESC LIMIT 1;, parameters: (553850,)
+[2026-09-07T06:48:41.075+0000] {sql.py:562} INFO - Rows affected: 0
+[2026-09-07T06:48:41.094+0000] {sql.py:553} INFO - Running statement: 
+        INSERT INTO steam_discount_predictions (
+            prediction_date, appid, game_name, current_price_thb, original_price,
+            is_currently_on_sale, discount_probability, will_discount_7d,
+            predicted_discount_pct, predicted_price_thb, recommendation, confidence_level, created_at
+        ) VALUES (
+            %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, NOW()
+        ) ON CONFLICT (prediction_date, appid) DO UPDATE SET
+            current_price_thb = EXCLUDED.current_price_thb,
+            original_price = EXCLUDED.original_price,
+            is_currently_on_sale = EXCLUDED.is_currently_on_sale,
+            discount_probability = EXCLUDED.discount_probability,
+            will_discount_7d = EXCLUDED.will_discount_7d,
+            predicted_discount_pct = EXCLUDED.predicted_discount_pct,
+            predicted_price_thb = EXCLUDED.predicted_price_thb,
+            recommendation = EXCLUDED.recommendation,
+            confidence_level = EXCLUDED.confidence_level,
+            created_at = NOW();
+        , parameters: (datetime.date(2026, 9, 7), 553850, 'HELLDIVERS™ 2', 1290.0, 1290.0, False, 0.375436450151156, False, 63, 477.3, 'BUY_NOW', 'MEDIUM')
+[2026-09-07T06:48:41.097+0000] {sql.py:562} INFO - Rows affected: 1
+[2026-09-07T06:48:41.109+0000] {sql.py:553} INFO - Running statement: 
+        INSERT INTO steam_discount_predictions (
+            prediction_date, appid, game_name, current_price_thb, original_price,
+            is_currently_on_sale, discount_probability, will_discount_7d,
+            predicted_discount_pct, predicted_price_thb, recommendation, confidence_level, created_at
+        ) VALUES (
+            %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, NOW()
+        ) ON CONFLICT (prediction_date, appid) DO UPDATE SET
+            current_price_thb = EXCLUDED.current_price_thb,
+            original_price = EXCLUDED.original_price,
+            is_currently_on_sale = EXCLUDED.is_currently_on_sale,
+            discount_probability = EXCLUDED.discount_probability,
+            will_discount_7d = EXCLUDED.will_discount_7d,
+            predicted_discount_pct = EXCLUDED.predicted_discount_pct,
+            predicted_price_thb = EXCLUDED.predicted_price_thb,
+            recommendation = EXCLUDED.recommendation,
+            confidence_level = EXCLUDED.confidence_level,
+            created_at = NOW();
+        , parameters: (datetime.date(2026, 9, 7), 578080, 'PUBG: BATTLEGROUNDS', 0.0, 0.0, False, 0.0, False, 0, 0.0, 'FREE_TO_PLAY', 'HIGH')
+[2026-09-07T06:48:41.111+0000] {sql.py:562} INFO - Rows affected: 1
+[2026-09-07T06:48:41.118+0000] {sql.py:553} INFO - Running statement: SELECT snapshot_date FROM steam_games WHERE appid = %s AND discount_pct > 0 ORDER BY snapshot_date DESC LIMIT 1;, parameters: (814380,)
+[2026-09-07T06:48:41.120+0000] {sql.py:562} INFO - Rows affected: 0
+[2026-09-07T06:48:41.140+0000] {sql.py:553} INFO - Running statement: 
+        INSERT INTO steam_discount_predictions (
+            prediction_date, appid, game_name, current_price_thb, original_price,
+            is_currently_on_sale, discount_probability, will_discount_7d,
+            predicted_discount_pct, predicted_price_thb, recommendation, confidence_level, created_at
+        ) VALUES (
+            %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, NOW()
+        ) ON CONFLICT (prediction_date, appid) DO UPDATE SET
+            current_price_thb = EXCLUDED.current_price_thb,
+            original_price = EXCLUDED.original_price,
+            is_currently_on_sale = EXCLUDED.is_currently_on_sale,
+            discount_probability = EXCLUDED.discount_probability,
+            will_discount_7d = EXCLUDED.will_discount_7d,
+            predicted_discount_pct = EXCLUDED.predicted_discount_pct,
+            predicted_price_thb = EXCLUDED.predicted_price_thb,
+            recommendation = EXCLUDED.recommendation,
+            confidence_level = EXCLUDED.confidence_level,
+            created_at = NOW();
+        , parameters: (datetime.date(2026, 9, 7), 814380, 'Sekiro™: Shadows Die Twice - GOTY Edition', 2099.0, 2099.0, False, 0.34151574514524285, False, 36, 1343.36, 'BUY_NOW', 'MEDIUM')
+[2026-09-07T06:48:41.142+0000] {sql.py:562} INFO - Rows affected: 1
+[2026-09-07T06:48:41.149+0000] {sql.py:553} INFO - Running statement: SELECT snapshot_date FROM steam_games WHERE appid = %s AND discount_pct > 0 ORDER BY snapshot_date DESC LIMIT 1;, parameters: (1086940,)
+[2026-09-07T06:48:41.152+0000] {sql.py:562} INFO - Rows affected: 0
+[2026-09-07T06:48:41.170+0000] {sql.py:553} INFO - Running statement: 
+        INSERT INTO steam_discount_predictions (
+            prediction_date, appid, game_name, current_price_thb, original_price,
+            is_currently_on_sale, discount_probability, will_discount_7d,
+            predicted_discount_pct, predicted_price_thb, recommendation, confidence_level, created_at
+        ) VALUES (
+            %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, NOW()
+        ) ON CONFLICT (prediction_date, appid) DO UPDATE SET
+            current_price_thb = EXCLUDED.current_price_thb,
+            original_price = EXCLUDED.original_price,
+            is_currently_on_sale = EXCLUDED.is_currently_on_sale,
+            discount_probability = EXCLUDED.discount_probability,
+            will_discount_7d = EXCLUDED.will_discount_7d,
+            predicted_discount_pct = EXCLUDED.predicted_discount_pct,
+            predicted_price_thb = EXCLUDED.predicted_price_thb,
+            recommendation = EXCLUDED.recommendation,
+            confidence_level = EXCLUDED.confidence_level,
+            created_at = NOW();
+        , parameters: (datetime.date(2026, 9, 7), 1086940, "Baldur's Gate 3", 1799.0, 1799.0, False, 0.36165590463280844, False, 51, 881.51, 'BUY_NOW', 'MEDIUM')
+[2026-09-07T06:48:41.172+0000] {sql.py:562} INFO - Rows affected: 1
+[2026-09-07T06:48:41.177+0000] {sql.py:553} INFO - Running statement: SELECT snapshot_date FROM steam_games WHERE appid = %s AND discount_pct > 0 ORDER BY snapshot_date DESC LIMIT 1;, parameters: (1091500,)
+[2026-09-07T06:48:41.179+0000] {sql.py:562} INFO - Rows affected: 0
+[2026-09-07T06:48:41.202+0000] {sql.py:553} INFO - Running statement: 
+        INSERT INTO steam_discount_predictions (
+            prediction_date, appid, game_name, current_price_thb, original_price,
+            is_currently_on_sale, discount_probability, will_discount_7d,
+            predicted_discount_pct, predicted_price_thb, recommendation, confidence_level, created_at
+        ) VALUES (
+            %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, NOW()
+        ) ON CONFLICT (prediction_date, appid) DO UPDATE SET
+            current_price_thb = EXCLUDED.current_price_thb,
+            original_price = EXCLUDED.original_price,
+            is_currently_on_sale = EXCLUDED.is_currently_on_sale,
+            discount_probability = EXCLUDED.discount_probability,
+            will_discount_7d = EXCLUDED.will_discount_7d,
+            predicted_discount_pct = EXCLUDED.predicted_discount_pct,
+            predicted_price_thb = EXCLUDED.predicted_price_thb,
+            recommendation = EXCLUDED.recommendation,
+            confidence_level = EXCLUDED.confidence_level,
+            created_at = NOW();
+        , parameters: (datetime.date(2026, 9, 7), 1091500, 'Cyberpunk 2077', 1799.0, 1799.0, False, 0.3769295461356313, False, 65, 629.65, 'BUY_NOW', 'MEDIUM')
+[2026-09-07T06:48:41.206+0000] {sql.py:562} INFO - Rows affected: 1
+[2026-09-07T06:48:41.213+0000] {sql.py:553} INFO - Running statement: SELECT snapshot_date FROM steam_games WHERE appid = %s AND discount_pct > 0 ORDER BY snapshot_date DESC LIMIT 1;, parameters: (1145360,)
+[2026-09-07T06:48:41.215+0000] {sql.py:562} INFO - Rows affected: 0
+[2026-09-07T06:48:41.234+0000] {sql.py:553} INFO - Running statement: 
+        INSERT INTO steam_discount_predictions (
+            prediction_date, appid, game_name, current_price_thb, original_price,
+            is_currently_on_sale, discount_probability, will_discount_7d,
+            predicted_discount_pct, predicted_price_thb, recommendation, confidence_level, created_at
+        ) VALUES (
+            %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, NOW()
+        ) ON CONFLICT (prediction_date, appid) DO UPDATE SET
+            current_price_thb = EXCLUDED.current_price_thb,
+            original_price = EXCLUDED.original_price,
+            is_currently_on_sale = EXCLUDED.is_currently_on_sale,
+            discount_probability = EXCLUDED.discount_probability,
+            will_discount_7d = EXCLUDED.will_discount_7d,
+            predicted_discount_pct = EXCLUDED.predicted_discount_pct,
+            predicted_price_thb = EXCLUDED.predicted_price_thb,
+            recommendation = EXCLUDED.recommendation,
+            confidence_level = EXCLUDED.confidence_level,
+            created_at = NOW();
+        , parameters: (datetime.date(2026, 9, 7), 1145360, 'Hades', 495.0, 495.0, False, 0.3700216249179098, False, 34, 326.7, 'BUY_NOW', 'MEDIUM')
+[2026-09-07T06:48:41.236+0000] {sql.py:562} INFO - Rows affected: 1
+[2026-09-07T06:48:41.243+0000] {sql.py:553} INFO - Running statement: 
+        INSERT INTO steam_discount_predictions (
+            prediction_date, appid, game_name, current_price_thb, original_price,
+            is_currently_on_sale, discount_probability, will_discount_7d,
+            predicted_discount_pct, predicted_price_thb, recommendation, confidence_level, created_at
+        ) VALUES (
+            %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, NOW()
+        ) ON CONFLICT (prediction_date, appid) DO UPDATE SET
+            current_price_thb = EXCLUDED.current_price_thb,
+            original_price = EXCLUDED.original_price,
+            is_currently_on_sale = EXCLUDED.is_currently_on_sale,
+            discount_probability = EXCLUDED.discount_probability,
+            will_discount_7d = EXCLUDED.will_discount_7d,
+            predicted_discount_pct = EXCLUDED.predicted_discount_pct,
+            predicted_price_thb = EXCLUDED.predicted_price_thb,
+            recommendation = EXCLUDED.recommendation,
+            confidence_level = EXCLUDED.confidence_level,
+            created_at = NOW();
+        , parameters: (datetime.date(2026, 9, 7), 1172470, 'Apex Legends™', 0.0, 0.0, False, 0.0, False, 0, 0.0, 'FREE_TO_PLAY', 'HIGH')
+[2026-09-07T06:48:41.246+0000] {sql.py:562} INFO - Rows affected: 1
+[2026-09-07T06:48:41.254+0000] {sql.py:553} INFO - Running statement: 
+        INSERT INTO steam_discount_predictions (
+            prediction_date, appid, game_name, current_price_thb, original_price,
+            is_currently_on_sale, discount_probability, will_discount_7d,
+            predicted_discount_pct, predicted_price_thb, recommendation, confidence_level, created_at
+        ) VALUES (
+            %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, NOW()
+        ) ON CONFLICT (prediction_date, appid) DO UPDATE SET
+            current_price_thb = EXCLUDED.current_price_thb,
+            original_price = EXCLUDED.original_price,
+            is_currently_on_sale = EXCLUDED.is_currently_on_sale,
+            discount_probability = EXCLUDED.discount_probability,
+            will_discount_7d = EXCLUDED.will_discount_7d,
+            predicted_discount_pct = EXCLUDED.predicted_discount_pct,
+            predicted_price_thb = EXCLUDED.predicted_price_thb,
+            recommendation = EXCLUDED.recommendation,
+            confidence_level = EXCLUDED.confidence_level,
+            created_at = NOW();
+        , parameters: (datetime.date(2026, 9, 7), 1174180, 'Red Dead Redemption 2', 474.75, 1899.0, True, 0.95, True, 75, 474.75, 'BUY_NOW_ON_SALE', 'HIGH')
+[2026-09-07T06:48:41.257+0000] {sql.py:562} INFO - Rows affected: 1
+[2026-09-07T06:48:41.265+0000] {sql.py:553} INFO - Running statement: SELECT snapshot_date FROM steam_games WHERE appid = %s AND discount_pct > 0 ORDER BY snapshot_date DESC LIMIT 1;, parameters: (1245620,)
+[2026-09-07T06:48:41.267+0000] {sql.py:562} INFO - Rows affected: 0
+[2026-09-07T06:48:41.294+0000] {sql.py:553} INFO - Running statement: 
+        INSERT INTO steam_discount_predictions (
+            prediction_date, appid, game_name, current_price_thb, original_price,
+            is_currently_on_sale, discount_probability, will_discount_7d,
+            predicted_discount_pct, predicted_price_thb, recommendation, confidence_level, created_at
+        ) VALUES (
+            %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, NOW()
+        ) ON CONFLICT (prediction_date, appid) DO UPDATE SET
+            current_price_thb = EXCLUDED.current_price_thb,
+            original_price = EXCLUDED.original_price,
+            is_currently_on_sale = EXCLUDED.is_currently_on_sale,
+            discount_probability = EXCLUDED.discount_probability,
+            will_discount_7d = EXCLUDED.will_discount_7d,
+            predicted_discount_pct = EXCLUDED.predicted_discount_pct,
+            predicted_price_thb = EXCLUDED.predicted_price_thb,
+            recommendation = EXCLUDED.recommendation,
+            confidence_level = EXCLUDED.confidence_level,
+            created_at = NOW();
+        , parameters: (datetime.date(2026, 9, 7), 1245620, 'ELDEN RING', 1790.0, 1790.0, False, 0.3518657414433365, False, 57, 769.7, 'BUY_NOW', 'MEDIUM')
+[2026-09-07T06:48:41.297+0000] {sql.py:562} INFO - Rows affected: 1
+[2026-09-07T06:48:41.305+0000] {sql.py:553} INFO - Running statement: 
+        INSERT INTO steam_discount_predictions (
+            prediction_date, appid, game_name, current_price_thb, original_price,
+            is_currently_on_sale, discount_probability, will_discount_7d,
+            predicted_discount_pct, predicted_price_thb, recommendation, confidence_level, created_at
+        ) VALUES (
+            %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, NOW()
+        ) ON CONFLICT (prediction_date, appid) DO UPDATE SET
+            current_price_thb = EXCLUDED.current_price_thb,
+            original_price = EXCLUDED.original_price,
+            is_currently_on_sale = EXCLUDED.is_currently_on_sale,
+            discount_probability = EXCLUDED.discount_probability,
+            will_discount_7d = EXCLUDED.will_discount_7d,
+            predicted_discount_pct = EXCLUDED.predicted_discount_pct,
+            predicted_price_thb = EXCLUDED.predicted_price_thb,
+            recommendation = EXCLUDED.recommendation,
+            confidence_level = EXCLUDED.confidence_level,
+            created_at = NOW();
+        , parameters: (datetime.date(2026, 9, 7), 1623730, 'Palworld', 413.0, 590.0, True, 0.95, True, 30, 413.0, 'BUY_NOW_ON_SALE', 'HIGH')
+[2026-09-07T06:48:41.307+0000] {sql.py:562} INFO - Rows affected: 1
+[2026-09-07T06:48:41.330+0000] {sql.py:553} INFO - Running statement: SELECT snapshot_date FROM steam_games WHERE appid = %s AND discount_pct > 0 ORDER BY snapshot_date DESC LIMIT 1;, parameters: (2246340,)
+[2026-09-07T06:48:41.332+0000] {sql.py:562} INFO - Rows affected: 0
+[2026-09-07T06:48:41.351+0000] {sql.py:553} INFO - Running statement: 
+        INSERT INTO steam_discount_predictions (
+            prediction_date, appid, game_name, current_price_thb, original_price,
+            is_currently_on_sale, discount_probability, will_discount_7d,
+            predicted_discount_pct, predicted_price_thb, recommendation, confidence_level, created_at
+        ) VALUES (
+            %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, NOW()
+        ) ON CONFLICT (prediction_date, appid) DO UPDATE SET
+            current_price_thb = EXCLUDED.current_price_thb,
+            original_price = EXCLUDED.original_price,
+            is_currently_on_sale = EXCLUDED.is_currently_on_sale,
+            discount_probability = EXCLUDED.discount_probability,
+            will_discount_7d = EXCLUDED.will_discount_7d,
+            predicted_discount_pct = EXCLUDED.predicted_discount_pct,
+            predicted_price_thb = EXCLUDED.predicted_price_thb,
+            recommendation = EXCLUDED.recommendation,
+            confidence_level = EXCLUDED.confidence_level,
+            created_at = NOW();
+        , parameters: (datetime.date(2026, 9, 7), 2246340, 'Monster Hunter Wilds', 1090.0, 1090.0, False, 0.4195676378040828, False, 38, 675.8, 'WATCH', 'MEDIUM')
+[2026-09-07T06:48:41.359+0000] {sql.py:562} INFO - Rows affected: 1
+[2026-09-07T06:48:41.384+0000] {sql.py:553} INFO - Running statement: SELECT snapshot_date FROM steam_games WHERE appid = %s AND discount_pct > 0 ORDER BY snapshot_date DESC LIMIT 1;, parameters: (2358720,)
+[2026-09-07T06:48:41.389+0000] {sql.py:562} INFO - Rows affected: 0
+[2026-09-07T06:48:41.408+0000] {sql.py:553} INFO - Running statement: 
+        INSERT INTO steam_discount_predictions (
+            prediction_date, appid, game_name, current_price_thb, original_price,
+            is_currently_on_sale, discount_probability, will_discount_7d,
+            predicted_discount_pct, predicted_price_thb, recommendation, confidence_level, created_at
+        ) VALUES (
+            %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, NOW()
+        ) ON CONFLICT (prediction_date, appid) DO UPDATE SET
+            current_price_thb = EXCLUDED.current_price_thb,
+            original_price = EXCLUDED.original_price,
+            is_currently_on_sale = EXCLUDED.is_currently_on_sale,
+            discount_probability = EXCLUDED.discount_probability,
+            will_discount_7d = EXCLUDED.will_discount_7d,
+            predicted_discount_pct = EXCLUDED.predicted_discount_pct,
+            predicted_price_thb = EXCLUDED.predicted_price_thb,
+            recommendation = EXCLUDED.recommendation,
+            confidence_level = EXCLUDED.confidence_level,
+            created_at = NOW();
+        , parameters: (datetime.date(2026, 9, 7), 2358720, 'Black Myth: Wukong', 1799.0, 1799.0, False, 0.3954002126534995, False, 35, 1169.35, 'BUY_NOW', 'MEDIUM')
+[2026-09-07T06:48:41.410+0000] {sql.py:562} INFO - Rows affected: 1
+[2026-09-07T06:48:41.421+0000] {sql.py:553} INFO - Running statement: SELECT snapshot_date FROM steam_games WHERE appid = %s AND discount_pct > 0 ORDER BY snapshot_date DESC LIMIT 1;, parameters: (2694490,)
+[2026-09-07T06:48:41.423+0000] {sql.py:562} INFO - Rows affected: 0
+[2026-09-07T06:48:41.443+0000] {sql.py:553} INFO - Running statement: 
+        INSERT INTO steam_discount_predictions (
+            prediction_date, appid, game_name, current_price_thb, original_price,
+            is_currently_on_sale, discount_probability, will_discount_7d,
+            predicted_discount_pct, predicted_price_thb, recommendation, confidence_level, created_at
+        ) VALUES (
+            %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, NOW()
+        ) ON CONFLICT (prediction_date, appid) DO UPDATE SET
+            current_price_thb = EXCLUDED.current_price_thb,
+            original_price = EXCLUDED.original_price,
+            is_currently_on_sale = EXCLUDED.is_currently_on_sale,
+            discount_probability = EXCLUDED.discount_probability,
+            will_discount_7d = EXCLUDED.will_discount_7d,
+            predicted_discount_pct = EXCLUDED.predicted_discount_pct,
+            predicted_price_thb = EXCLUDED.predicted_price_thb,
+            recommendation = EXCLUDED.recommendation,
+            confidence_level = EXCLUDED.confidence_level,
+            created_at = NOW();
+        , parameters: (datetime.date(2026, 9, 7), 2694490, 'Path of Exile 2', 798.0, 798.0, False, 0.32466030636030635, False, 56, 351.12, 'BUY_NOW', 'MEDIUM')
+[2026-09-07T06:48:41.445+0000] {sql.py:562} INFO - Rows affected: 1
+[2026-09-07T06:48:41.447+0000] {logging_mixin.py:190} INFO - 💾 บันทึกผลพยากรณ์สำเร็จทั้งหมด 25 เกม สำหรับวันที่ 2026-09-07
+[2026-09-07T06:48:41.448+0000] {python.py:240} INFO - Done. Returned value was: None
+[2026-09-07T06:48:41.460+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2026-09-07T06:48:41.460+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=steam_discount_prediction_dag, task_id=batch_predict_discounts, run_id=manual__2026-09-07T06:48:24.836907+00:00, execution_date=20260907T064824, start_date=20260907T064840, end_date=20260907T064841
+[2026-09-07T06:48:41.509+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2026-09-07T06:48:41.526+0000] {taskinstance.py:3895} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2026-09-07T06:48:41.528+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

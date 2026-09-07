@@ -243,3 +243,10 @@
 [2026-09-07T05:54:03.138+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:54:03.137+0000] {dag.py:3239} INFO - Sync 1 DAGs
 [2026-09-07T05:54:03.153+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:54:03.152+0000] {dag.py:4180} INFO - Setting next_dagrun for iris_pipeline_dag to None, run_after=None
 [2026-09-07T05:54:03.173+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/ml_01_iris_pipeline-3.py took 0.090 seconds
+[2026-09-07T05:54:33.498+0000] {processor.py:186} INFO - Started process (PID=1171) to work on /opt/airflow/dags/ml_01_iris_pipeline-3.py
+[2026-09-07T05:54:33.499+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/ml_01_iris_pipeline-3.py for tasks to queue
+[2026-09-07T05:54:33.503+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:54:33.501+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/ml_01_iris_pipeline-3.py
+[2026-09-07T05:54:33.554+0000] {processor.py:925} INFO - DAG(s) 'iris_pipeline_dag' retrieved from /opt/airflow/dags/ml_01_iris_pipeline-3.py
+[2026-09-07T05:54:33.648+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:54:33.648+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-09-07T05:54:33.683+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:54:33.683+0000] {dag.py:4180} INFO - Setting next_dagrun for iris_pipeline_dag to None, run_after=None
+[2026-09-07T05:54:33.729+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/ml_01_iris_pipeline-3.py took 0.245 seconds

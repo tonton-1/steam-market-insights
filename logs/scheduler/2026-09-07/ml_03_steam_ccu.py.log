@@ -243,3 +243,10 @@
 [2026-09-07T05:54:05.644+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:54:05.644+0000] {dag.py:3239} INFO - Sync 1 DAGs
 [2026-09-07T05:54:05.657+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:54:05.657+0000] {dag.py:4180} INFO - Setting next_dagrun for steam_ccu_pipeline_dag to None, run_after=None
 [2026-09-07T05:54:05.676+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/ml_03_steam_ccu.py took 0.488 seconds
+[2026-09-07T05:54:35.950+0000] {processor.py:186} INFO - Started process (PID=1176) to work on /opt/airflow/dags/ml_03_steam_ccu.py
+[2026-09-07T05:54:35.951+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/ml_03_steam_ccu.py for tasks to queue
+[2026-09-07T05:54:35.954+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:54:35.953+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/ml_03_steam_ccu.py
+[2026-09-07T05:54:36.614+0000] {processor.py:925} INFO - DAG(s) 'steam_ccu_pipeline_dag' retrieved from /opt/airflow/dags/ml_03_steam_ccu.py
+[2026-09-07T05:54:36.652+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:54:36.651+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-09-07T05:54:36.666+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:54:36.666+0000] {dag.py:4180} INFO - Setting next_dagrun for steam_ccu_pipeline_dag to None, run_after=None
+[2026-09-07T05:54:36.687+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/ml_03_steam_ccu.py took 0.747 seconds

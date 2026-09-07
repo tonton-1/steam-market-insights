@@ -236,3 +236,10 @@
 [2026-09-07T05:54:10.062+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:54:10.062+0000] {dag.py:3239} INFO - Sync 1 DAGs
 [2026-09-07T05:54:10.079+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:54:10.079+0000] {dag.py:4180} INFO - Setting next_dagrun for steam_discount_prediction_dag to 2026-09-07 00:00:00+00:00, run_after=2026-09-08 00:00:00+00:00
 [2026-09-07T05:54:10.094+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/ml_04_steam_discount_prediction.py took 1.227 seconds
+[2026-09-07T05:54:40.795+0000] {processor.py:186} INFO - Started process (PID=1181) to work on /opt/airflow/dags/ml_04_steam_discount_prediction.py
+[2026-09-07T05:54:40.795+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/ml_04_steam_discount_prediction.py for tasks to queue
+[2026-09-07T05:54:40.797+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:54:40.797+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/ml_04_steam_discount_prediction.py
+[2026-09-07T05:54:42.185+0000] {processor.py:925} INFO - DAG(s) 'steam_discount_prediction_dag' retrieved from /opt/airflow/dags/ml_04_steam_discount_prediction.py
+[2026-09-07T05:54:42.211+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:54:42.209+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-09-07T05:54:42.231+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:54:42.230+0000] {dag.py:4180} INFO - Setting next_dagrun for steam_discount_prediction_dag to 2026-09-07 00:00:00+00:00, run_after=2026-09-08 00:00:00+00:00
+[2026-09-07T05:54:42.249+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/ml_04_steam_discount_prediction.py took 1.460 seconds

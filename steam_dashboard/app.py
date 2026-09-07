@@ -384,17 +384,17 @@ st.markdown(f"""
 </div>
 """, unsafe_allow_html=True)
 
-with st.expander("ℹ️ แหล่งที่มาของ API และข้อมูลทางเทคนิค (API Data Sources & Documentation)"):
+with st.expander("แหล่งที่มาของ API และข้อมูลทางเทคนิค (API Data Sources & Documentation)"):
     st.markdown("""
     ระบบนี้ดึงและรวบรวมข้อมูลสดจาก **3 API หลัก** โดยทำงานแบบอัตโนมัติผ่าน Apache Airflow:
     
     | แหล่งที่มา (API Source) | Endpoint ตัวอย่าง (คลิกเปิดได้) | ข้อมูลที่ดึงมาใช้งาน | Documentation |
     | :--- | :--- | :--- | :--- |
-    | 🛒 **Steam Store API** | [`store.steampowered.com/api/appdetails`](https://store.steampowered.com/api/appdetails?appids=730&cc=th) | ราคาเงินบาท (THB), ส่วนลด (%), ภาพปก, หมวดหมู่, ผู้พัฒนา | [Steam Storefront API Doc](https://wiki.teamfortress.com/wiki/User:RJackson/StorefrontAPI) |
-    | 👥 **Steam Web API** | [`api.steampowered.com/ISteamUserStats`](https://api.steampowered.com/ISteamUserStats/GetNumberOfCurrentPlayers/v1/?appid=730) | ยอดผู้เล่นออนไลน์พร้อมกันแบบ Real-time (CCU) | [Steamworks Web API Doc](https://partner.steamgames.com/doc/webapi/ISteamUserStats) |
-    | 📊 **SteamSpy API** | [`steamspy.com/api.php?request=appdetails`](https://steamspy.com/api.php?request=appdetails&appid=730) | รีวิวบวก/ลบ, คะแนนรีวิว (%), สถิติประมาณการผู้ซื้อ (Owners) | [SteamSpy API Documentation](https://steamspy.com/api.php) |
+    | **Steam Store API** | [`store.steampowered.com/api/appdetails`](https://store.steampowered.com/api/appdetails?appids=730&cc=th) | ราคาเงินบาท (THB), ส่วนลด (%), ภาพปก, หมวดหมู่, ผู้พัฒนา | [Steam Storefront API Doc](https://wiki.teamfortress.com/wiki/User:RJackson/StorefrontAPI) |
+    | **Steam Web API** | [`api.steampowered.com/ISteamUserStats`](https://api.steampowered.com/ISteamUserStats/GetNumberOfCurrentPlayers/v1/?appid=730) | ยอดผู้เล่นออนไลน์พร้อมกันแบบ Real-time (CCU) | [Steamworks Web API Doc](https://partner.steamgames.com/doc/webapi/ISteamUserStats) |
+    | **SteamSpy API** | [`steamspy.com/api.php?request=appdetails`](https://steamspy.com/api.php?request=appdetails&appid=730) | รีวิวบวก/ลบ, คะแนนรีวิว (%), สถิติประมาณการผู้ซื้อ (Owners) | [SteamSpy API Documentation](https://steamspy.com/api.php) |
     
-    *🔄 ทุก Endpoint ถูกดึงผ่านระบบ Data Pipeline พร้อมกลไก Rate-Limiting และจัดเก็บลง PostgreSQL (`etl_db:5433`)*
+    *ทุก Endpoint ถูกดึงผ่านระบบ Data Pipeline พร้อมกลไก Rate-Limiting และจัดเก็บลง PostgreSQL (`etl_db:5433`)*
     """)
 
 # โหลดข้อมูล
@@ -402,7 +402,7 @@ df_games = load_all_games()
 
 if df_games is None or df_games.empty:
     st.info("""
-    ℹ️ **ยังไม่พบข้อมูลในตาราง steam_games**
+    **ยังไม่พบข้อมูลในตาราง steam_games**
     
     1. เปิด Airflow ที่ [http://localhost:8080](http://localhost:8080)
     2. รัน DAG `steam_etl_dag` เพื่อดึงข้อมูลเข้าฐานข้อมูล
@@ -460,7 +460,7 @@ with st.sidebar:
     </div>
     """, unsafe_allow_html=True)
 
-    if st.button("🔄 รีเฟรชข้อมูล (Sync Cache)", use_container_width=True):
+    if st.button("รีเฟรชข้อมูล (Sync Cache)", use_container_width=True, icon=":material/refresh:"):
         st.cache_data.clear()
         st.rerun()
 
@@ -471,17 +471,17 @@ with st.sidebar:
         <div style='margin-bottom: 10px;'>
             <div style='font-weight: 700; color: #38bdf8;'><i class='ri-store-2-line'></i> Steam Store API (Valve)</div>
             <div style='opacity: 0.75; font-size: 11px;'>ราคาเงินบาท (THB), ส่วนลด, หมวดหมู่, ภาพปก</div>
-            <div style='margin-top: 2px;'><a href='https://store.steampowered.com/api/appdetails?appids=730&cc=th' target='_blank' style='color: #60a5fa; font-size: 11px; text-decoration: underline;'>🔗 ตัวอย่าง Endpoint</a></div>
+            <div style='margin-top: 2px;'><a href='https://store.steampowered.com/api/appdetails?appids=730&cc=th' target='_blank' style='color: #60a5fa; font-size: 11px; text-decoration: underline;'><i class='ri-external-link-line'></i> ตัวอย่าง Endpoint</a></div>
         </div>
         <div style='margin-bottom: 10px;'>
             <div style='font-weight: 700; color: #10b981;'><i class='ri-group-line'></i> Steam Web API (Valve)</div>
             <div style='opacity: 0.75; font-size: 11px;'>ผู้เล่นออนไลน์พร้อมกันสด (GetNumberOfCurrentPlayers)</div>
-            <div style='margin-top: 2px;'><a href='https://api.steampowered.com/ISteamUserStats/GetNumberOfCurrentPlayers/v1/?appid=730' target='_blank' style='color: #34d399; font-size: 11px; text-decoration: underline;'>🔗 ตัวอย่าง Endpoint</a></div>
+            <div style='margin-top: 2px;'><a href='https://api.steampowered.com/ISteamUserStats/GetNumberOfCurrentPlayers/v1/?appid=730' target='_blank' style='color: #34d399; font-size: 11px; text-decoration: underline;'><i class='ri-external-link-line'></i> ตัวอย่าง Endpoint</a></div>
         </div>
         <div>
             <div style='font-weight: 700; color: #fbbf24;'><i class='ri-bar-chart-2-line'></i> SteamSpy API</div>
             <div style='opacity: 0.75; font-size: 11px;'>คะแนนรีวิว, ยอดรีวิวบวก/ลบ, ประมาณการผู้ซื้อ</div>
-            <div style='margin-top: 2px;'><a href='https://steamspy.com/api.php?request=appdetails&appid=730' target='_blank' style='color: #fde047; font-size: 11px; text-decoration: underline;'>🔗 ตัวอย่าง Endpoint</a></div>
+            <div style='margin-top: 2px;'><a href='https://steamspy.com/api.php?request=appdetails&appid=730' target='_blank' style='color: #fde047; font-size: 11px; text-decoration: underline;'><i class='ri-external-link-line'></i> ตัวอย่าง Endpoint</a></div>
         </div>
     </div>
     """, unsafe_allow_html=True)
@@ -646,7 +646,7 @@ with tab2:
                     </div>
                     """, unsafe_allow_html=True)
 
-        with st.expander("📊 ดูตารางผลการพยากรณ์โอกาสลดราคาของทุกเกม"):
+        with st.expander("ดูตารางผลการพยากรณ์โอกาสลดราคาของทุกเกม"):
             st.dataframe(
                 df_preds.rename(columns={
                     "game_name": "ชื่อเกม",
@@ -661,7 +661,7 @@ with tab2:
                 hide_index=True,
             )
     else:
-        st.info("ℹ️ ยังไม่พบผลการทำนายในตาราง (รัน `steam_discount_prediction_dag` ใน Airflow เพื่อสร้างผลพยากรณ์)")
+        st.info("ยังไม่พบผลการทำนายในตาราง (รัน `steam_discount_prediction_dag` ใน Airflow เพื่อสร้างผลพยากรณ์)")
 
     st.markdown("<div style='height: 14px;'></div>", unsafe_allow_html=True)
     st.markdown("---")
@@ -672,7 +672,7 @@ with tab2:
     st.markdown("##### <i class='ri-fire-line' style='color: #ef4444;'></i> เกมที่กำลังจัดโปรโมชั่นลดราคา ณ ปัจจุบัน", unsafe_allow_html=True)
 
     if on_sale_games.empty:
-        st.info("ℹ️ วันนี้ยังไม่มีเกมในรายการที่กำลังจัดโปรโมชั่นลดราคา")
+        st.info("วันนี้ยังไม่มีเกมในรายการที่กำลังจัดโปรโมชั่นลดราคา")
     else:
         st.caption(f"พบเกมลดราคาทั้งหมด **{len(on_sale_games)}** เกมในรอบนี้")
         
@@ -763,7 +763,7 @@ with tab3:
         apply_minimal_chart_layout(fig_multi, title=f"เปรียบเทียบแนวโน้มผู้เล่น ({len(compare_selection)} เกม)")
         st.plotly_chart(fig_multi, use_container_width=True)
     else:
-        st.info("ℹ️ กรุณาเลือกอย่างน้อย 1 เกมเพื่อแสดงกราฟเปรียบเทียบ")
+        st.info("กรุณาเลือกอย่างน้อย 1 เกมเพื่อแสดงกราฟเปรียบเทียบ")
 
 
 # -----------------------------------------------------------------
@@ -932,7 +932,7 @@ with tab4:
                 """, unsafe_allow_html=True)
 
         # 5. Full Data Table
-        with st.expander("📋 ดูตารางข้อมูลสถิติผู้เล่นรายประเทศทั้งหมด"):
+        with st.expander("ดูตารางข้อมูลสถิติผู้เล่นรายประเทศทั้งหมด"):
             st.dataframe(
                 df_region_game.rename(columns={
                     "region_name": "ภูมิภาค",
@@ -946,7 +946,7 @@ with tab4:
                 hide_index=True,
             )
     else:
-        st.info("ℹ️ ยังไม่พบข้อมูลผู้เล่นแยกตามโซน (รัน `steam_etl_dag` ใน Airflow เพื่อคำนวณสถิติ Regional Distribution)")
+        st.info("ยังไม่พบข้อมูลผู้เล่นแยกตามโซน (รัน `steam_etl_dag` ใน Airflow เพื่อคำนวณสถิติ Regional Distribution)")
 
 
 # -----------------------------------------------------------------
@@ -978,17 +978,17 @@ with tab5:
             value=f"{pred_val:,.0f} คน",
             delta=f"{'+' if delta_val > 0 else ''}{delta_val:,.0f} ({'Weekend Boost' if is_tom_weekend else 'Weekday Trend'})",
         )
-        st.caption(f"📊 ผู้เล่นจริงวันนี้: **{current_cs2_ccu:,} คน**")
+        st.caption(f"ผู้เล่นจริงวันนี้: **{current_cs2_ccu:,} คน**")
 
     with col_p2:
         if not df_metrics.empty:
             champion_row = df_metrics[df_metrics["deployed"] == True].head(1)
             champ_rmse = champion_row["rmse"].values[0] if not champion_row.empty else 25420.0
             st.metric("Champion Model RMSE", f"{champ_rmse:,.2f} คน")
-            st.caption("🟢 สถานะ: **Active Production** (Champion-Challenger Workflow)")
+            st.caption("สถานะ: **Active Production** (Champion-Challenger Workflow)")
         else:
             st.metric("โมเดล AI Baseline", "Active")
-            st.caption("ℹ️ รัน `steam_ccu_pipeline_dag` ใน Airflow เพื่อบันทึกประวัติ Metric ต่อเนื่อง")
+            st.caption("รัน `steam_ccu_pipeline_dag` ใน Airflow เพื่อบันทึกประวัติ Metric ต่อเนื่อง")
 
     if not df_metrics.empty:
         st.markdown("<div style='height: 12px;'></div>", unsafe_allow_html=True)
@@ -1012,7 +1012,7 @@ with tab5:
 with tab6:
     st.markdown("""
     <div style='color: #94a3b8; font-size: 13px; margin-bottom: 12px;'>
-        💡 <b>Value Score</b> คำนวณจากสัดส่วน <i>คะแนนรีวิว (%) / ราคา (บาท)</i> — เกมที่อยู่ <b>ด้านบนซ้ายของกราฟ</b> คือเกมที่คะแนนรีวิวสูงในราคาที่คุ้มค่าที่สุด
+        <b>Value Score</b> คำนวณจากสัดส่วน <i>คะแนนรีวิว (%) / ราคา (บาท)</i> — เกมที่อยู่ <b>ด้านบนซ้ายของกราฟ</b> คือเกมที่คะแนนรีวิวสูงในราคาที่คุ้มค่าที่สุด
     </div>
     """, unsafe_allow_html=True)
 
@@ -1056,7 +1056,7 @@ with tab7:
     df_events = load_price_events()
 
     if df_events.empty:
-        st.info("ℹ️ ยังไม่พบประวัติการเปลี่ยนราคา (ระบบจะตรวจจับอัตโนมัติเมื่อราคาวันนี้ต่างจากวันก่อนหน้า)")
+        st.info("ยังไม่พบประวัติการเปลี่ยนราคา (ระบบจะตรวจจับอัตโนมัติเมื่อราคาวันนี้ต่างจากวันก่อนหน้า)")
     else:
         st.dataframe(
             df_events.rename(columns={

@@ -1,0 +1,245 @@
+[2026-09-07T05:34:56.579+0000] {processor.py:186} INFO - Started process (PID=130) to work on /opt/airflow/dags/04_parallel_weather.py
+[2026-09-07T05:34:56.581+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/04_parallel_weather.py for tasks to queue
+[2026-09-07T05:34:56.583+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:34:56.583+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/04_parallel_weather.py
+[2026-09-07T05:34:56.618+0000] {processor.py:925} INFO - DAG(s) 'parallel_weather_dag' retrieved from /opt/airflow/dags/04_parallel_weather.py
+[2026-09-07T05:34:56.692+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:34:56.691+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-09-07T05:34:56.757+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:34:56.757+0000] {dag.py:4180} INFO - Setting next_dagrun for parallel_weather_dag to None, run_after=None
+[2026-09-07T05:34:56.822+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/04_parallel_weather.py took 0.254 seconds
+[2026-09-07T05:37:05.935+0000] {processor.py:186} INFO - Started process (PID=121) to work on /opt/airflow/dags/04_parallel_weather.py
+[2026-09-07T05:37:05.936+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/04_parallel_weather.py for tasks to queue
+[2026-09-07T05:37:05.938+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:37:05.938+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/04_parallel_weather.py
+[2026-09-07T05:37:05.955+0000] {processor.py:925} INFO - DAG(s) 'parallel_weather_dag' retrieved from /opt/airflow/dags/04_parallel_weather.py
+[2026-09-07T05:37:05.983+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:37:05.982+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-09-07T05:37:05.996+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:37:05.996+0000] {dag.py:4180} INFO - Setting next_dagrun for parallel_weather_dag to None, run_after=None
+[2026-09-07T05:37:06.016+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/04_parallel_weather.py took 0.086 seconds
+[2026-09-07T05:37:36.715+0000] {processor.py:186} INFO - Started process (PID=140) to work on /opt/airflow/dags/04_parallel_weather.py
+[2026-09-07T05:37:36.716+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/04_parallel_weather.py for tasks to queue
+[2026-09-07T05:37:36.718+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:37:36.718+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/04_parallel_weather.py
+[2026-09-07T05:37:36.739+0000] {processor.py:925} INFO - DAG(s) 'parallel_weather_dag' retrieved from /opt/airflow/dags/04_parallel_weather.py
+[2026-09-07T05:37:36.780+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:37:36.779+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-09-07T05:37:36.799+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:37:36.799+0000] {dag.py:4180} INFO - Setting next_dagrun for parallel_weather_dag to None, run_after=None
+[2026-09-07T05:37:36.828+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/04_parallel_weather.py took 0.119 seconds
+[2026-09-07T05:38:07.719+0000] {processor.py:186} INFO - Started process (PID=169) to work on /opt/airflow/dags/04_parallel_weather.py
+[2026-09-07T05:38:07.719+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/04_parallel_weather.py for tasks to queue
+[2026-09-07T05:38:07.721+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:38:07.720+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/04_parallel_weather.py
+[2026-09-07T05:38:07.742+0000] {processor.py:925} INFO - DAG(s) 'parallel_weather_dag' retrieved from /opt/airflow/dags/04_parallel_weather.py
+[2026-09-07T05:38:07.775+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:38:07.775+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-09-07T05:38:07.969+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:38:07.968+0000] {dag.py:4180} INFO - Setting next_dagrun for parallel_weather_dag to None, run_after=None
+[2026-09-07T05:38:07.995+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/04_parallel_weather.py took 0.284 seconds
+[2026-09-07T05:38:38.906+0000] {processor.py:186} INFO - Started process (PID=200) to work on /opt/airflow/dags/04_parallel_weather.py
+[2026-09-07T05:38:38.907+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/04_parallel_weather.py for tasks to queue
+[2026-09-07T05:38:38.908+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:38:38.908+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/04_parallel_weather.py
+[2026-09-07T05:38:38.925+0000] {processor.py:925} INFO - DAG(s) 'parallel_weather_dag' retrieved from /opt/airflow/dags/04_parallel_weather.py
+[2026-09-07T05:38:38.952+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:38:38.952+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-09-07T05:38:38.967+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:38:38.966+0000] {dag.py:4180} INFO - Setting next_dagrun for parallel_weather_dag to None, run_after=None
+[2026-09-07T05:38:38.987+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/04_parallel_weather.py took 0.087 seconds
+[2026-09-07T05:39:09.359+0000] {processor.py:186} INFO - Started process (PID=231) to work on /opt/airflow/dags/04_parallel_weather.py
+[2026-09-07T05:39:09.360+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/04_parallel_weather.py for tasks to queue
+[2026-09-07T05:39:09.361+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:39:09.361+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/04_parallel_weather.py
+[2026-09-07T05:39:09.379+0000] {processor.py:925} INFO - DAG(s) 'parallel_weather_dag' retrieved from /opt/airflow/dags/04_parallel_weather.py
+[2026-09-07T05:39:09.407+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:39:09.407+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-09-07T05:39:09.422+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:39:09.422+0000] {dag.py:4180} INFO - Setting next_dagrun for parallel_weather_dag to None, run_after=None
+[2026-09-07T05:39:09.441+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/04_parallel_weather.py took 0.087 seconds
+[2026-09-07T05:39:40.977+0000] {processor.py:186} INFO - Started process (PID=262) to work on /opt/airflow/dags/04_parallel_weather.py
+[2026-09-07T05:39:40.978+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/04_parallel_weather.py for tasks to queue
+[2026-09-07T05:39:40.980+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:39:40.979+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/04_parallel_weather.py
+[2026-09-07T05:39:41.011+0000] {processor.py:925} INFO - DAG(s) 'parallel_weather_dag' retrieved from /opt/airflow/dags/04_parallel_weather.py
+[2026-09-07T05:39:41.056+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:39:41.055+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-09-07T05:39:41.076+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:39:41.075+0000] {dag.py:4180} INFO - Setting next_dagrun for parallel_weather_dag to None, run_after=None
+[2026-09-07T05:39:41.097+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/04_parallel_weather.py took 0.133 seconds
+[2026-09-07T05:40:11.886+0000] {processor.py:186} INFO - Started process (PID=297) to work on /opt/airflow/dags/04_parallel_weather.py
+[2026-09-07T05:40:11.887+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/04_parallel_weather.py for tasks to queue
+[2026-09-07T05:40:11.889+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:40:11.889+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/04_parallel_weather.py
+[2026-09-07T05:40:11.915+0000] {processor.py:925} INFO - DAG(s) 'parallel_weather_dag' retrieved from /opt/airflow/dags/04_parallel_weather.py
+[2026-09-07T05:40:11.959+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:40:11.959+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-09-07T05:40:11.979+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:40:11.978+0000] {dag.py:4180} INFO - Setting next_dagrun for parallel_weather_dag to None, run_after=None
+[2026-09-07T05:40:12.010+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/04_parallel_weather.py took 0.137 seconds
+[2026-09-07T05:40:42.649+0000] {processor.py:186} INFO - Started process (PID=337) to work on /opt/airflow/dags/04_parallel_weather.py
+[2026-09-07T05:40:42.650+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/04_parallel_weather.py for tasks to queue
+[2026-09-07T05:40:42.651+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:40:42.651+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/04_parallel_weather.py
+[2026-09-07T05:40:42.670+0000] {processor.py:925} INFO - DAG(s) 'parallel_weather_dag' retrieved from /opt/airflow/dags/04_parallel_weather.py
+[2026-09-07T05:40:42.701+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:40:42.700+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-09-07T05:40:42.719+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:40:42.719+0000] {dag.py:4180} INFO - Setting next_dagrun for parallel_weather_dag to None, run_after=None
+[2026-09-07T05:40:42.744+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/04_parallel_weather.py took 0.102 seconds
+[2026-09-07T05:41:12.939+0000] {processor.py:186} INFO - Started process (PID=368) to work on /opt/airflow/dags/04_parallel_weather.py
+[2026-09-07T05:41:12.941+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/04_parallel_weather.py for tasks to queue
+[2026-09-07T05:41:12.942+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:41:12.942+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/04_parallel_weather.py
+[2026-09-07T05:41:12.960+0000] {processor.py:925} INFO - DAG(s) 'parallel_weather_dag' retrieved from /opt/airflow/dags/04_parallel_weather.py
+[2026-09-07T05:41:12.990+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:41:12.989+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-09-07T05:41:13.004+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:41:13.004+0000] {dag.py:4180} INFO - Setting next_dagrun for parallel_weather_dag to None, run_after=None
+[2026-09-07T05:41:13.025+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/04_parallel_weather.py took 0.092 seconds
+[2026-09-07T05:41:43.898+0000] {processor.py:186} INFO - Started process (PID=400) to work on /opt/airflow/dags/04_parallel_weather.py
+[2026-09-07T05:41:43.899+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/04_parallel_weather.py for tasks to queue
+[2026-09-07T05:41:43.902+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:41:43.902+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/04_parallel_weather.py
+[2026-09-07T05:41:43.929+0000] {processor.py:925} INFO - DAG(s) 'parallel_weather_dag' retrieved from /opt/airflow/dags/04_parallel_weather.py
+[2026-09-07T05:41:43.972+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:41:43.972+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-09-07T05:41:43.999+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:41:43.999+0000] {dag.py:4180} INFO - Setting next_dagrun for parallel_weather_dag to None, run_after=None
+[2026-09-07T05:41:44.048+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/04_parallel_weather.py took 0.158 seconds
+[2026-09-07T05:42:14.582+0000] {processor.py:186} INFO - Started process (PID=432) to work on /opt/airflow/dags/04_parallel_weather.py
+[2026-09-07T05:42:14.583+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/04_parallel_weather.py for tasks to queue
+[2026-09-07T05:42:14.586+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:42:14.585+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/04_parallel_weather.py
+[2026-09-07T05:42:14.614+0000] {processor.py:925} INFO - DAG(s) 'parallel_weather_dag' retrieved from /opt/airflow/dags/04_parallel_weather.py
+[2026-09-07T05:42:14.647+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:42:14.647+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-09-07T05:42:14.662+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:42:14.662+0000] {dag.py:4180} INFO - Setting next_dagrun for parallel_weather_dag to None, run_after=None
+[2026-09-07T05:42:14.683+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/04_parallel_weather.py took 0.109 seconds
+[2026-09-07T05:42:45.227+0000] {processor.py:186} INFO - Started process (PID=463) to work on /opt/airflow/dags/04_parallel_weather.py
+[2026-09-07T05:42:45.228+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/04_parallel_weather.py for tasks to queue
+[2026-09-07T05:42:45.230+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:42:45.230+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/04_parallel_weather.py
+[2026-09-07T05:42:45.256+0000] {processor.py:925} INFO - DAG(s) 'parallel_weather_dag' retrieved from /opt/airflow/dags/04_parallel_weather.py
+[2026-09-07T05:42:45.296+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:42:45.295+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-09-07T05:42:45.314+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:42:45.314+0000] {dag.py:4180} INFO - Setting next_dagrun for parallel_weather_dag to None, run_after=None
+[2026-09-07T05:42:45.339+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/04_parallel_weather.py took 0.118 seconds
+[2026-09-07T05:43:16.174+0000] {processor.py:186} INFO - Started process (PID=502) to work on /opt/airflow/dags/04_parallel_weather.py
+[2026-09-07T05:43:16.175+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/04_parallel_weather.py for tasks to queue
+[2026-09-07T05:43:16.177+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:43:16.176+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/04_parallel_weather.py
+[2026-09-07T05:43:16.198+0000] {processor.py:925} INFO - DAG(s) 'parallel_weather_dag' retrieved from /opt/airflow/dags/04_parallel_weather.py
+[2026-09-07T05:43:16.235+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:43:16.235+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-09-07T05:43:16.252+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:43:16.252+0000] {dag.py:4180} INFO - Setting next_dagrun for parallel_weather_dag to None, run_after=None
+[2026-09-07T05:43:16.279+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/04_parallel_weather.py took 0.113 seconds
+[2026-09-07T05:43:46.640+0000] {processor.py:186} INFO - Started process (PID=533) to work on /opt/airflow/dags/04_parallel_weather.py
+[2026-09-07T05:43:46.641+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/04_parallel_weather.py for tasks to queue
+[2026-09-07T05:43:46.642+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:43:46.642+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/04_parallel_weather.py
+[2026-09-07T05:43:46.659+0000] {processor.py:925} INFO - DAG(s) 'parallel_weather_dag' retrieved from /opt/airflow/dags/04_parallel_weather.py
+[2026-09-07T05:43:46.685+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:43:46.685+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-09-07T05:43:46.698+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:43:46.698+0000] {dag.py:4180} INFO - Setting next_dagrun for parallel_weather_dag to None, run_after=None
+[2026-09-07T05:43:46.717+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/04_parallel_weather.py took 0.082 seconds
+[2026-09-07T05:44:17.932+0000] {processor.py:186} INFO - Started process (PID=564) to work on /opt/airflow/dags/04_parallel_weather.py
+[2026-09-07T05:44:17.932+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/04_parallel_weather.py for tasks to queue
+[2026-09-07T05:44:17.934+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:44:17.933+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/04_parallel_weather.py
+[2026-09-07T05:44:17.951+0000] {processor.py:925} INFO - DAG(s) 'parallel_weather_dag' retrieved from /opt/airflow/dags/04_parallel_weather.py
+[2026-09-07T05:44:17.978+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:44:17.978+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-09-07T05:44:17.993+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:44:17.993+0000] {dag.py:4180} INFO - Setting next_dagrun for parallel_weather_dag to None, run_after=None
+[2026-09-07T05:44:18.014+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/04_parallel_weather.py took 0.089 seconds
+[2026-09-07T05:44:49.266+0000] {processor.py:186} INFO - Started process (PID=595) to work on /opt/airflow/dags/04_parallel_weather.py
+[2026-09-07T05:44:49.267+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/04_parallel_weather.py for tasks to queue
+[2026-09-07T05:44:49.269+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:44:49.268+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/04_parallel_weather.py
+[2026-09-07T05:44:49.291+0000] {processor.py:925} INFO - DAG(s) 'parallel_weather_dag' retrieved from /opt/airflow/dags/04_parallel_weather.py
+[2026-09-07T05:44:49.322+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:44:49.321+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-09-07T05:44:49.336+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:44:49.336+0000] {dag.py:4180} INFO - Setting next_dagrun for parallel_weather_dag to None, run_after=None
+[2026-09-07T05:44:49.361+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/04_parallel_weather.py took 0.102 seconds
+[2026-09-07T05:45:20.550+0000] {processor.py:186} INFO - Started process (PID=626) to work on /opt/airflow/dags/04_parallel_weather.py
+[2026-09-07T05:45:20.551+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/04_parallel_weather.py for tasks to queue
+[2026-09-07T05:45:20.553+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:45:20.552+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/04_parallel_weather.py
+[2026-09-07T05:45:20.578+0000] {processor.py:925} INFO - DAG(s) 'parallel_weather_dag' retrieved from /opt/airflow/dags/04_parallel_weather.py
+[2026-09-07T05:45:20.609+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:45:20.609+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-09-07T05:45:20.625+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:45:20.624+0000] {dag.py:4180} INFO - Setting next_dagrun for parallel_weather_dag to None, run_after=None
+[2026-09-07T05:45:20.647+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/04_parallel_weather.py took 0.105 seconds
+[2026-09-07T05:45:51.759+0000] {processor.py:186} INFO - Started process (PID=657) to work on /opt/airflow/dags/04_parallel_weather.py
+[2026-09-07T05:45:51.760+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/04_parallel_weather.py for tasks to queue
+[2026-09-07T05:45:51.762+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:45:51.761+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/04_parallel_weather.py
+[2026-09-07T05:45:51.783+0000] {processor.py:925} INFO - DAG(s) 'parallel_weather_dag' retrieved from /opt/airflow/dags/04_parallel_weather.py
+[2026-09-07T05:45:51.815+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:45:51.814+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-09-07T05:45:51.834+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:45:51.834+0000] {dag.py:4180} INFO - Setting next_dagrun for parallel_weather_dag to None, run_after=None
+[2026-09-07T05:45:51.862+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/04_parallel_weather.py took 0.109 seconds
+[2026-09-07T05:46:22.599+0000] {processor.py:186} INFO - Started process (PID=688) to work on /opt/airflow/dags/04_parallel_weather.py
+[2026-09-07T05:46:22.600+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/04_parallel_weather.py for tasks to queue
+[2026-09-07T05:46:22.602+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:46:22.602+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/04_parallel_weather.py
+[2026-09-07T05:46:22.631+0000] {processor.py:925} INFO - DAG(s) 'parallel_weather_dag' retrieved from /opt/airflow/dags/04_parallel_weather.py
+[2026-09-07T05:46:22.665+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:46:22.664+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-09-07T05:46:22.680+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:46:22.680+0000] {dag.py:4180} INFO - Setting next_dagrun for parallel_weather_dag to None, run_after=None
+[2026-09-07T05:46:22.702+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/04_parallel_weather.py took 0.110 seconds
+[2026-09-07T05:46:53.528+0000] {processor.py:186} INFO - Started process (PID=719) to work on /opt/airflow/dags/04_parallel_weather.py
+[2026-09-07T05:46:53.529+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/04_parallel_weather.py for tasks to queue
+[2026-09-07T05:46:53.530+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:46:53.530+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/04_parallel_weather.py
+[2026-09-07T05:46:53.551+0000] {processor.py:925} INFO - DAG(s) 'parallel_weather_dag' retrieved from /opt/airflow/dags/04_parallel_weather.py
+[2026-09-07T05:46:53.580+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:46:53.579+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-09-07T05:46:53.600+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:46:53.600+0000] {dag.py:4180} INFO - Setting next_dagrun for parallel_weather_dag to None, run_after=None
+[2026-09-07T05:46:53.623+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/04_parallel_weather.py took 0.101 seconds
+[2026-09-07T05:47:24.002+0000] {processor.py:186} INFO - Started process (PID=751) to work on /opt/airflow/dags/04_parallel_weather.py
+[2026-09-07T05:47:24.002+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/04_parallel_weather.py for tasks to queue
+[2026-09-07T05:47:24.004+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:47:24.003+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/04_parallel_weather.py
+[2026-09-07T05:47:24.021+0000] {processor.py:925} INFO - DAG(s) 'parallel_weather_dag' retrieved from /opt/airflow/dags/04_parallel_weather.py
+[2026-09-07T05:47:24.052+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:47:24.052+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-09-07T05:47:24.067+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:47:24.067+0000] {dag.py:4180} INFO - Setting next_dagrun for parallel_weather_dag to None, run_after=None
+[2026-09-07T05:47:24.088+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/04_parallel_weather.py took 0.092 seconds
+[2026-09-07T05:47:54.559+0000] {processor.py:186} INFO - Started process (PID=782) to work on /opt/airflow/dags/04_parallel_weather.py
+[2026-09-07T05:47:54.559+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/04_parallel_weather.py for tasks to queue
+[2026-09-07T05:47:54.561+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:47:54.560+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/04_parallel_weather.py
+[2026-09-07T05:47:54.577+0000] {processor.py:925} INFO - DAG(s) 'parallel_weather_dag' retrieved from /opt/airflow/dags/04_parallel_weather.py
+[2026-09-07T05:47:54.601+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:47:54.601+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-09-07T05:47:54.614+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:47:54.614+0000] {dag.py:4180} INFO - Setting next_dagrun for parallel_weather_dag to None, run_after=None
+[2026-09-07T05:47:54.633+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/04_parallel_weather.py took 0.079 seconds
+[2026-09-07T05:48:25.087+0000] {processor.py:186} INFO - Started process (PID=813) to work on /opt/airflow/dags/04_parallel_weather.py
+[2026-09-07T05:48:25.087+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/04_parallel_weather.py for tasks to queue
+[2026-09-07T05:48:25.089+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:48:25.089+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/04_parallel_weather.py
+[2026-09-07T05:48:25.107+0000] {processor.py:925} INFO - DAG(s) 'parallel_weather_dag' retrieved from /opt/airflow/dags/04_parallel_weather.py
+[2026-09-07T05:48:25.133+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:48:25.133+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-09-07T05:48:25.150+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:48:25.150+0000] {dag.py:4180} INFO - Setting next_dagrun for parallel_weather_dag to None, run_after=None
+[2026-09-07T05:48:25.169+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/04_parallel_weather.py took 0.088 seconds
+[2026-09-07T05:48:56.221+0000] {processor.py:186} INFO - Started process (PID=844) to work on /opt/airflow/dags/04_parallel_weather.py
+[2026-09-07T05:48:56.222+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/04_parallel_weather.py for tasks to queue
+[2026-09-07T05:48:56.224+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:48:56.223+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/04_parallel_weather.py
+[2026-09-07T05:48:56.245+0000] {processor.py:925} INFO - DAG(s) 'parallel_weather_dag' retrieved from /opt/airflow/dags/04_parallel_weather.py
+[2026-09-07T05:48:56.279+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:48:56.278+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-09-07T05:48:56.294+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:48:56.294+0000] {dag.py:4180} INFO - Setting next_dagrun for parallel_weather_dag to None, run_after=None
+[2026-09-07T05:48:56.316+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/04_parallel_weather.py took 0.102 seconds
+[2026-09-07T05:49:27.230+0000] {processor.py:186} INFO - Started process (PID=875) to work on /opt/airflow/dags/04_parallel_weather.py
+[2026-09-07T05:49:27.231+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/04_parallel_weather.py for tasks to queue
+[2026-09-07T05:49:27.232+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:49:27.232+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/04_parallel_weather.py
+[2026-09-07T05:49:27.248+0000] {processor.py:925} INFO - DAG(s) 'parallel_weather_dag' retrieved from /opt/airflow/dags/04_parallel_weather.py
+[2026-09-07T05:49:27.276+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:49:27.276+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-09-07T05:49:27.289+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:49:27.288+0000] {dag.py:4180} INFO - Setting next_dagrun for parallel_weather_dag to None, run_after=None
+[2026-09-07T05:49:27.306+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/04_parallel_weather.py took 0.081 seconds
+[2026-09-07T05:49:58.412+0000] {processor.py:186} INFO - Started process (PID=912) to work on /opt/airflow/dags/04_parallel_weather.py
+[2026-09-07T05:49:58.413+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/04_parallel_weather.py for tasks to queue
+[2026-09-07T05:49:58.414+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:49:58.414+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/04_parallel_weather.py
+[2026-09-07T05:49:58.430+0000] {processor.py:925} INFO - DAG(s) 'parallel_weather_dag' retrieved from /opt/airflow/dags/04_parallel_weather.py
+[2026-09-07T05:49:58.457+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:49:58.457+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-09-07T05:49:58.470+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:49:58.470+0000] {dag.py:4180} INFO - Setting next_dagrun for parallel_weather_dag to None, run_after=None
+[2026-09-07T05:49:58.487+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/04_parallel_weather.py took 0.081 seconds
+[2026-09-07T05:50:29.497+0000] {processor.py:186} INFO - Started process (PID=943) to work on /opt/airflow/dags/04_parallel_weather.py
+[2026-09-07T05:50:29.498+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/04_parallel_weather.py for tasks to queue
+[2026-09-07T05:50:29.499+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:50:29.499+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/04_parallel_weather.py
+[2026-09-07T05:50:29.522+0000] {processor.py:925} INFO - DAG(s) 'parallel_weather_dag' retrieved from /opt/airflow/dags/04_parallel_weather.py
+[2026-09-07T05:50:29.557+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:50:29.557+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-09-07T05:50:29.571+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:50:29.571+0000] {dag.py:4180} INFO - Setting next_dagrun for parallel_weather_dag to None, run_after=None
+[2026-09-07T05:50:29.597+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/04_parallel_weather.py took 0.107 seconds
+[2026-09-07T05:51:00.050+0000] {processor.py:186} INFO - Started process (PID=974) to work on /opt/airflow/dags/04_parallel_weather.py
+[2026-09-07T05:51:00.050+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/04_parallel_weather.py for tasks to queue
+[2026-09-07T05:51:00.052+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:51:00.051+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/04_parallel_weather.py
+[2026-09-07T05:51:00.069+0000] {processor.py:925} INFO - DAG(s) 'parallel_weather_dag' retrieved from /opt/airflow/dags/04_parallel_weather.py
+[2026-09-07T05:51:00.098+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:51:00.098+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-09-07T05:51:00.113+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:51:00.112+0000] {dag.py:4180} INFO - Setting next_dagrun for parallel_weather_dag to None, run_after=None
+[2026-09-07T05:51:00.133+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/04_parallel_weather.py took 0.090 seconds
+[2026-09-07T05:51:30.745+0000] {processor.py:186} INFO - Started process (PID=1005) to work on /opt/airflow/dags/04_parallel_weather.py
+[2026-09-07T05:51:30.746+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/04_parallel_weather.py for tasks to queue
+[2026-09-07T05:51:30.748+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:51:30.747+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/04_parallel_weather.py
+[2026-09-07T05:51:30.774+0000] {processor.py:925} INFO - DAG(s) 'parallel_weather_dag' retrieved from /opt/airflow/dags/04_parallel_weather.py
+[2026-09-07T05:51:30.820+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:51:30.819+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-09-07T05:51:30.850+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:51:30.850+0000] {dag.py:4180} INFO - Setting next_dagrun for parallel_weather_dag to None, run_after=None
+[2026-09-07T05:51:30.884+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/04_parallel_weather.py took 0.145 seconds
+[2026-09-07T05:52:02.453+0000] {processor.py:186} INFO - Started process (PID=1036) to work on /opt/airflow/dags/04_parallel_weather.py
+[2026-09-07T05:52:02.454+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/04_parallel_weather.py for tasks to queue
+[2026-09-07T05:52:02.457+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:52:02.456+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/04_parallel_weather.py
+[2026-09-07T05:52:02.485+0000] {processor.py:925} INFO - DAG(s) 'parallel_weather_dag' retrieved from /opt/airflow/dags/04_parallel_weather.py
+[2026-09-07T05:52:02.524+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:52:02.524+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-09-07T05:52:02.541+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:52:02.541+0000] {dag.py:4180} INFO - Setting next_dagrun for parallel_weather_dag to None, run_after=None
+[2026-09-07T05:52:02.570+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/04_parallel_weather.py took 0.126 seconds
+[2026-09-07T05:52:33.928+0000] {processor.py:186} INFO - Started process (PID=1056) to work on /opt/airflow/dags/04_parallel_weather.py
+[2026-09-07T05:52:33.942+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/04_parallel_weather.py for tasks to queue
+[2026-09-07T05:52:33.961+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:52:33.961+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/04_parallel_weather.py
+[2026-09-07T05:52:34.021+0000] {processor.py:925} INFO - DAG(s) 'parallel_weather_dag' retrieved from /opt/airflow/dags/04_parallel_weather.py
+[2026-09-07T05:52:34.058+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:52:34.057+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-09-07T05:52:34.076+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:52:34.075+0000] {dag.py:4180} INFO - Setting next_dagrun for parallel_weather_dag to None, run_after=None
+[2026-09-07T05:52:34.102+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/04_parallel_weather.py took 0.184 seconds
+[2026-09-07T05:53:04.564+0000] {processor.py:186} INFO - Started process (PID=1084) to work on /opt/airflow/dags/04_parallel_weather.py
+[2026-09-07T05:53:04.564+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/04_parallel_weather.py for tasks to queue
+[2026-09-07T05:53:04.566+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:53:04.565+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/04_parallel_weather.py
+[2026-09-07T05:53:04.584+0000] {processor.py:925} INFO - DAG(s) 'parallel_weather_dag' retrieved from /opt/airflow/dags/04_parallel_weather.py
+[2026-09-07T05:53:04.611+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:53:04.611+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-09-07T05:53:04.629+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:53:04.629+0000] {dag.py:4180} INFO - Setting next_dagrun for parallel_weather_dag to None, run_after=None
+[2026-09-07T05:53:04.651+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/04_parallel_weather.py took 0.096 seconds
+[2026-09-07T05:53:34.929+0000] {processor.py:186} INFO - Started process (PID=1114) to work on /opt/airflow/dags/04_parallel_weather.py
+[2026-09-07T05:53:34.929+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/04_parallel_weather.py for tasks to queue
+[2026-09-07T05:53:34.931+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:53:34.930+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/04_parallel_weather.py
+[2026-09-07T05:53:34.948+0000] {processor.py:925} INFO - DAG(s) 'parallel_weather_dag' retrieved from /opt/airflow/dags/04_parallel_weather.py
+[2026-09-07T05:53:34.977+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:53:34.977+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-09-07T05:53:34.992+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:53:34.991+0000] {dag.py:4180} INFO - Setting next_dagrun for parallel_weather_dag to None, run_after=None
+[2026-09-07T05:53:35.015+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/04_parallel_weather.py took 0.093 seconds
+[2026-09-07T05:54:05.201+0000] {processor.py:186} INFO - Started process (PID=1143) to work on /opt/airflow/dags/04_parallel_weather.py
+[2026-09-07T05:54:05.201+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/04_parallel_weather.py for tasks to queue
+[2026-09-07T05:54:05.203+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:54:05.202+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/04_parallel_weather.py
+[2026-09-07T05:54:05.218+0000] {processor.py:925} INFO - DAG(s) 'parallel_weather_dag' retrieved from /opt/airflow/dags/04_parallel_weather.py
+[2026-09-07T05:54:05.249+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:54:05.249+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-09-07T05:54:05.264+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:54:05.264+0000] {dag.py:4180} INFO - Setting next_dagrun for parallel_weather_dag to None, run_after=None
+[2026-09-07T05:54:05.284+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/04_parallel_weather.py took 0.088 seconds

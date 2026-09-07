@@ -1,0 +1,57 @@
+[2026-09-07T05:40:11.450+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2026-09-07T05:40:11.474+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: steam_discount_prediction_dag.create_prediction_table manual__2026-09-07T05:40:06.615263+00:00 [queued]>
+[2026-09-07T05:40:11.483+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: steam_discount_prediction_dag.create_prediction_table manual__2026-09-07T05:40:06.615263+00:00 [queued]>
+[2026-09-07T05:40:11.484+0000] {taskinstance.py:2866} INFO - Starting attempt 1 of 2
+[2026-09-07T05:40:11.504+0000] {taskinstance.py:2889} INFO - Executing <Task(PostgresOperator): create_prediction_table> on 2026-09-07 05:40:06.615263+00:00
+[2026-09-07T05:40:11.520+0000] {warnings.py:112} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:70: DeprecationWarning: This process (pid=153) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2026-09-07T05:40:11.524+0000] {standard_task_runner.py:72} INFO - Started process 170 to run task
+[2026-09-07T05:40:11.522+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'steam_discount_prediction_dag', 'create_prediction_table', 'manual__2026-09-07T05:40:06.615263+00:00', '--job-id', '113', '--raw', '--subdir', 'DAGS_FOLDER/ml_04_steam_discount_prediction.py', '--cfg-path', '/tmp/tmpvwip0q3b']
+[2026-09-07T05:40:11.528+0000] {standard_task_runner.py:105} INFO - Job 113: Subtask create_prediction_table
+[2026-09-07T05:40:11.666+0000] {task_command.py:467} INFO - Running <TaskInstance: steam_discount_prediction_dag.create_prediction_table manual__2026-09-07T05:40:06.615263+00:00 [running]> on host 6f4d56443a1a
+[2026-09-07T05:40:11.775+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='steam_project' AIRFLOW_CTX_DAG_ID='steam_discount_prediction_dag' AIRFLOW_CTX_TASK_ID='create_prediction_table' AIRFLOW_CTX_EXECUTION_DATE='2026-09-07T05:40:06.615263+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2026-09-07T05:40:06.615263+00:00'
+[2026-09-07T05:40:11.777+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2026-09-07T05:40:11.792+0000] {sql.py:278} INFO - Executing: 
+CREATE TABLE IF NOT EXISTS steam_discount_predictions (
+    id                     SERIAL PRIMARY KEY,
+    prediction_date        DATE NOT NULL,
+    appid                  INT NOT NULL,
+    game_name              VARCHAR(255) NOT NULL,
+    current_price_thb      NUMERIC(10, 2),
+    original_price         NUMERIC(10, 2),
+    is_currently_on_sale   BOOLEAN DEFAULT FALSE,
+    discount_probability   FLOAT NOT NULL,
+    will_discount_7d       BOOLEAN NOT NULL,
+    predicted_discount_pct INT DEFAULT 0,
+    predicted_price_thb    NUMERIC(10, 2),
+    recommendation         VARCHAR(50),
+    confidence_level       VARCHAR(20),
+    created_at             TIMESTAMP DEFAULT NOW(),
+    UNIQUE (prediction_date, appid)
+);
+[2026-09-07T05:40:11.807+0000] {base.py:84} INFO - Retrieving connection 'postgres_target'
+[2026-09-07T05:40:11.819+0000] {base.py:84} INFO - Retrieving connection 'postgres_target'
+[2026-09-07T05:40:11.825+0000] {sql.py:553} INFO - Running statement: 
+CREATE TABLE IF NOT EXISTS steam_discount_predictions (
+    id                     SERIAL PRIMARY KEY,
+    prediction_date        DATE NOT NULL,
+    appid                  INT NOT NULL,
+    game_name              VARCHAR(255) NOT NULL,
+    current_price_thb      NUMERIC(10, 2),
+    original_price         NUMERIC(10, 2),
+    is_currently_on_sale   BOOLEAN DEFAULT FALSE,
+    discount_probability   FLOAT NOT NULL,
+    will_discount_7d       BOOLEAN NOT NULL,
+    predicted_discount_pct INT DEFAULT 0,
+    predicted_price_thb    NUMERIC(10, 2),
+    recommendation         VARCHAR(50),
+    confidence_level       VARCHAR(20),
+    created_at             TIMESTAMP DEFAULT NOW(),
+    UNIQUE (prediction_date, appid)
+);, parameters: None
+[2026-09-07T05:40:11.843+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2026-09-07T05:40:11.844+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=steam_discount_prediction_dag, task_id=create_prediction_table, run_id=manual__2026-09-07T05:40:06.615263+00:00, execution_date=20260907T054006, start_date=20260907T054011, end_date=20260907T054011
+[2026-09-07T05:40:11.901+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2026-09-07T05:40:11.938+0000] {taskinstance.py:3895} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2026-09-07T05:40:11.944+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

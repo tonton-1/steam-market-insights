@@ -253,6 +253,7 @@ services:
       DB_PASS: etlpass
       DB_NAME: etl_db
     volumes:
+      - ${AIRFLOW_PROJ_DIR:-.}/steam_dashboard:/app
       - ${AIRFLOW_PROJ_DIR:-.}/models:/models:ro
     depends_on:
       postgres_target:

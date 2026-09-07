@@ -1,0 +1,268 @@
+[2026-09-07T05:34:51.163+0000] {processor.py:186} INFO - Started process (PID=99) to work on /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:34:51.164+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/07_etl_steam.py for tasks to queue
+[2026-09-07T05:34:51.167+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:34:51.166+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:34:51.198+0000] {processor.py:925} INFO - DAG(s) 'steam_etl_dag' retrieved from /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:34:51.281+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:34:51.280+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-09-07T05:34:51.401+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:34:51.401+0000] {dag.py:4180} INFO - Setting next_dagrun for steam_etl_dag to 2026-09-06 00:00:00+00:00, run_after=2026-09-07 00:00:00+00:00
+[2026-09-07T05:34:51.476+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/07_etl_steam.py took 0.322 seconds
+[2026-09-07T05:37:03.115+0000] {processor.py:186} INFO - Started process (PID=100) to work on /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:37:03.116+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/07_etl_steam.py for tasks to queue
+[2026-09-07T05:37:03.118+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:37:03.118+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:37:03.145+0000] {processor.py:925} INFO - DAG(s) 'steam_etl_dag' retrieved from /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:37:03.212+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:37:03.212+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-09-07T05:37:03.243+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:37:03.243+0000] {dag.py:4180} INFO - Setting next_dagrun for steam_etl_dag to 2026-09-07 00:00:00+00:00, run_after=2026-09-08 00:00:00+00:00
+[2026-09-07T05:37:03.274+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/07_etl_steam.py took 0.168 seconds
+[2026-09-07T05:37:33.692+0000] {processor.py:186} INFO - Started process (PID=131) to work on /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:37:33.694+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/07_etl_steam.py for tasks to queue
+[2026-09-07T05:37:33.695+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:37:33.695+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:37:33.725+0000] {processor.py:925} INFO - DAG(s) 'steam_etl_dag' retrieved from /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:37:33.762+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:37:33.762+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-09-07T05:37:33.792+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:37:33.792+0000] {dag.py:4180} INFO - Setting next_dagrun for steam_etl_dag to 2026-09-07 00:00:00+00:00, run_after=2026-09-08 00:00:00+00:00
+[2026-09-07T05:37:33.819+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/07_etl_steam.py took 0.135 seconds
+[2026-09-07T05:38:04.554+0000] {processor.py:186} INFO - Started process (PID=162) to work on /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:38:04.555+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/07_etl_steam.py for tasks to queue
+[2026-09-07T05:38:04.556+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:38:04.556+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:38:04.576+0000] {processor.py:925} INFO - DAG(s) 'steam_etl_dag' retrieved from /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:38:04.607+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:38:04.607+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-09-07T05:38:04.633+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:38:04.633+0000] {dag.py:4180} INFO - Setting next_dagrun for steam_etl_dag to 2026-09-07 00:00:00+00:00, run_after=2026-09-08 00:00:00+00:00
+[2026-09-07T05:38:04.654+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/07_etl_steam.py took 0.106 seconds
+[2026-09-07T05:38:34.944+0000] {processor.py:186} INFO - Started process (PID=193) to work on /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:38:34.945+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/07_etl_steam.py for tasks to queue
+[2026-09-07T05:38:34.946+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:38:34.946+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:38:34.965+0000] {processor.py:925} INFO - DAG(s) 'steam_etl_dag' retrieved from /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:38:35.156+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:38:35.155+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-09-07T05:38:35.186+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:38:35.185+0000] {dag.py:4180} INFO - Setting next_dagrun for steam_etl_dag to 2026-09-07 00:00:00+00:00, run_after=2026-09-08 00:00:00+00:00
+[2026-09-07T05:38:35.212+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/07_etl_steam.py took 0.273 seconds
+[2026-09-07T05:39:05.578+0000] {processor.py:186} INFO - Started process (PID=224) to work on /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:39:05.579+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/07_etl_steam.py for tasks to queue
+[2026-09-07T05:39:05.580+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:39:05.580+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:39:05.610+0000] {processor.py:925} INFO - DAG(s) 'steam_etl_dag' retrieved from /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:39:05.651+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:39:05.651+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-09-07T05:39:05.679+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:39:05.679+0000] {dag.py:4180} INFO - Setting next_dagrun for steam_etl_dag to 2026-09-07 00:00:00+00:00, run_after=2026-09-08 00:00:00+00:00
+[2026-09-07T05:39:05.718+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/07_etl_steam.py took 0.147 seconds
+[2026-09-07T05:39:35.992+0000] {processor.py:186} INFO - Started process (PID=255) to work on /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:39:35.993+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/07_etl_steam.py for tasks to queue
+[2026-09-07T05:39:35.994+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:39:35.994+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:39:36.013+0000] {processor.py:925} INFO - DAG(s) 'steam_etl_dag' retrieved from /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:39:36.042+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:39:36.042+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-09-07T05:39:36.067+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:39:36.067+0000] {dag.py:4180} INFO - Setting next_dagrun for steam_etl_dag to 2026-09-07 00:00:00+00:00, run_after=2026-09-08 00:00:00+00:00
+[2026-09-07T05:39:36.088+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/07_etl_steam.py took 0.101 seconds
+[2026-09-07T05:40:06.570+0000] {processor.py:186} INFO - Started process (PID=290) to work on /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:40:06.571+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/07_etl_steam.py for tasks to queue
+[2026-09-07T05:40:06.572+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:40:06.572+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:40:06.605+0000] {processor.py:925} INFO - DAG(s) 'steam_etl_dag' retrieved from /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:40:06.642+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:40:06.642+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-09-07T05:40:06.672+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:40:06.672+0000] {dag.py:4180} INFO - Setting next_dagrun for steam_etl_dag to 2026-09-07 00:00:00+00:00, run_after=2026-09-08 00:00:00+00:00
+[2026-09-07T05:40:06.695+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/07_etl_steam.py took 0.132 seconds
+[2026-09-07T05:40:25.789+0000] {processor.py:186} INFO - Started process (PID=319) to work on /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:40:25.790+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/07_etl_steam.py for tasks to queue
+[2026-09-07T05:40:25.792+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:40:25.791+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:40:25.815+0000] {processor.py:925} INFO - DAG(s) 'steam_etl_dag' retrieved from /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:40:25.838+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:40:25.837+0000] {taskinstance.py:3313} ERROR - {'DAG Id': 'steam_etl_dag', 'Task Id': 'enrich_steam_store', 'Run Id': 'scheduled__2026-09-04T00:00:00+00:00', 'Hostname': 'b703ee70f2cc', 'External Executor Id': '4951ed9e-a2cd-4683-99b4-e6d1598be312'}
+[2026-09-07T05:40:25.872+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:40:25.872+0000] {taskinstance.py:1225} INFO - Marking task as UP_FOR_RETRY. dag_id=steam_etl_dag, task_id=enrich_steam_store, run_id=scheduled__2026-09-04T00:00:00+00:00, execution_date=20260904T000000, start_date=20260907T053501, end_date=20260907T054025
+[2026-09-07T05:40:25.891+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:40:25.891+0000] {processor.py:876} INFO - Executed callback for <TaskInstance: steam_etl_dag.enrich_steam_store scheduled__2026-09-04T00:00:00+00:00 [up_for_retry]> in state up_for_retry
+[2026-09-07T05:40:25.911+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:40:25.910+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-09-07T05:40:25.929+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:40:25.929+0000] {dag.py:4180} INFO - Setting next_dagrun for steam_etl_dag to 2026-09-07 00:00:00+00:00, run_after=2026-09-08 00:00:00+00:00
+[2026-09-07T05:40:25.945+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/07_etl_steam.py took 0.162 seconds
+[2026-09-07T05:40:35.874+0000] {processor.py:186} INFO - Started process (PID=326) to work on /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:40:35.875+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/07_etl_steam.py for tasks to queue
+[2026-09-07T05:40:35.877+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:40:35.876+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:40:35.898+0000] {processor.py:925} INFO - DAG(s) 'steam_etl_dag' retrieved from /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:40:35.922+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:40:35.921+0000] {taskinstance.py:3313} ERROR - {'DAG Id': 'steam_etl_dag', 'Task Id': 'enrich_steam_store', 'Run Id': 'scheduled__2026-09-06T00:00:00+00:00', 'Hostname': 'b703ee70f2cc', 'External Executor Id': '081c4e14-9f30-4e94-bebf-c3c7c84144fd'}
+[2026-09-07T05:40:35.954+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:40:35.954+0000] {taskinstance.py:1225} INFO - Marking task as UP_FOR_RETRY. dag_id=steam_etl_dag, task_id=enrich_steam_store, run_id=scheduled__2026-09-06T00:00:00+00:00, execution_date=20260906T000000, start_date=20260907T053501, end_date=20260907T054035
+[2026-09-07T05:40:35.968+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:40:35.968+0000] {processor.py:876} INFO - Executed callback for <TaskInstance: steam_etl_dag.enrich_steam_store scheduled__2026-09-06T00:00:00+00:00 [up_for_retry]> in state up_for_retry
+[2026-09-07T05:40:35.971+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:40:35.971+0000] {taskinstance.py:3313} ERROR - {'DAG Id': 'steam_etl_dag', 'Task Id': 'enrich_steam_store', 'Run Id': 'scheduled__2026-09-06T00:00:00+00:00', 'Hostname': 'b703ee70f2cc', 'External Executor Id': '081c4e14-9f30-4e94-bebf-c3c7c84144fd'}
+[2026-09-07T05:40:35.981+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:40:35.981+0000] {taskinstance.py:1225} INFO - Marking task as UP_FOR_RETRY. dag_id=steam_etl_dag, task_id=enrich_steam_store, run_id=scheduled__2026-09-06T00:00:00+00:00, execution_date=20260906T000000, start_date=20260907T053501, end_date=20260907T054035
+[2026-09-07T05:40:35.986+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:40:35.986+0000] {processor.py:876} INFO - Executed callback for <TaskInstance: steam_etl_dag.enrich_steam_store scheduled__2026-09-06T00:00:00+00:00 [up_for_retry]> in state up_for_retry
+[2026-09-07T05:40:36.005+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:40:36.005+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-09-07T05:40:36.026+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:40:36.025+0000] {dag.py:4180} INFO - Setting next_dagrun for steam_etl_dag to 2026-09-07 00:00:00+00:00, run_after=2026-09-08 00:00:00+00:00
+[2026-09-07T05:40:36.043+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/07_etl_steam.py took 0.176 seconds
+[2026-09-07T05:41:06.361+0000] {processor.py:186} INFO - Started process (PID=361) to work on /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:41:06.362+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/07_etl_steam.py for tasks to queue
+[2026-09-07T05:41:06.364+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:41:06.363+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:41:06.387+0000] {processor.py:925} INFO - DAG(s) 'steam_etl_dag' retrieved from /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:41:06.419+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:41:06.419+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-09-07T05:41:06.444+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:41:06.443+0000] {dag.py:4180} INFO - Setting next_dagrun for steam_etl_dag to 2026-09-07 00:00:00+00:00, run_after=2026-09-08 00:00:00+00:00
+[2026-09-07T05:41:06.471+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/07_etl_steam.py took 0.117 seconds
+[2026-09-07T05:41:36.687+0000] {processor.py:186} INFO - Started process (PID=393) to work on /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:41:36.690+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/07_etl_steam.py for tasks to queue
+[2026-09-07T05:41:36.698+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:41:36.693+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:41:36.783+0000] {processor.py:925} INFO - DAG(s) 'steam_etl_dag' retrieved from /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:41:36.855+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:41:36.855+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-09-07T05:41:36.917+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:41:36.916+0000] {dag.py:4180} INFO - Setting next_dagrun for steam_etl_dag to 2026-09-07 00:00:00+00:00, run_after=2026-09-08 00:00:00+00:00
+[2026-09-07T05:41:36.980+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/07_etl_steam.py took 0.302 seconds
+[2026-09-07T05:42:07.725+0000] {processor.py:186} INFO - Started process (PID=425) to work on /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:42:07.726+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/07_etl_steam.py for tasks to queue
+[2026-09-07T05:42:07.728+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:42:07.728+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:42:07.761+0000] {processor.py:925} INFO - DAG(s) 'steam_etl_dag' retrieved from /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:42:07.803+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:42:07.802+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-09-07T05:42:07.838+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:42:07.838+0000] {dag.py:4180} INFO - Setting next_dagrun for steam_etl_dag to 2026-09-07 00:00:00+00:00, run_after=2026-09-08 00:00:00+00:00
+[2026-09-07T05:42:07.859+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/07_etl_steam.py took 0.144 seconds
+[2026-09-07T05:42:38.068+0000] {processor.py:186} INFO - Started process (PID=456) to work on /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:42:38.069+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/07_etl_steam.py for tasks to queue
+[2026-09-07T05:42:38.072+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:42:38.071+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:42:38.108+0000] {processor.py:925} INFO - DAG(s) 'steam_etl_dag' retrieved from /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:42:38.150+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:42:38.149+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-09-07T05:42:38.180+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:42:38.179+0000] {dag.py:4180} INFO - Setting next_dagrun for steam_etl_dag to 2026-09-07 00:00:00+00:00, run_after=2026-09-08 00:00:00+00:00
+[2026-09-07T05:42:38.206+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/07_etl_steam.py took 0.149 seconds
+[2026-09-07T05:43:08.329+0000] {processor.py:186} INFO - Started process (PID=495) to work on /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:43:08.329+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/07_etl_steam.py for tasks to queue
+[2026-09-07T05:43:08.331+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:43:08.331+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:43:08.354+0000] {processor.py:925} INFO - DAG(s) 'steam_etl_dag' retrieved from /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:43:08.391+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:43:08.390+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-09-07T05:43:08.419+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:43:08.419+0000] {dag.py:4180} INFO - Setting next_dagrun for steam_etl_dag to 2026-09-07 00:00:00+00:00, run_after=2026-09-08 00:00:00+00:00
+[2026-09-07T05:43:08.440+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/07_etl_steam.py took 0.117 seconds
+[2026-09-07T05:43:38.888+0000] {processor.py:186} INFO - Started process (PID=526) to work on /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:43:38.889+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/07_etl_steam.py for tasks to queue
+[2026-09-07T05:43:38.891+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:43:38.891+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:43:38.921+0000] {processor.py:925} INFO - DAG(s) 'steam_etl_dag' retrieved from /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:43:38.954+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:43:38.953+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-09-07T05:43:38.980+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:43:38.979+0000] {dag.py:4180} INFO - Setting next_dagrun for steam_etl_dag to 2026-09-07 00:00:00+00:00, run_after=2026-09-08 00:00:00+00:00
+[2026-09-07T05:43:39.002+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/07_etl_steam.py took 0.124 seconds
+[2026-09-07T05:44:09.233+0000] {processor.py:186} INFO - Started process (PID=557) to work on /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:44:09.233+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/07_etl_steam.py for tasks to queue
+[2026-09-07T05:44:09.234+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:44:09.234+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:44:09.254+0000] {processor.py:925} INFO - DAG(s) 'steam_etl_dag' retrieved from /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:44:09.283+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:44:09.282+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-09-07T05:44:09.305+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:44:09.305+0000] {dag.py:4180} INFO - Setting next_dagrun for steam_etl_dag to 2026-09-07 00:00:00+00:00, run_after=2026-09-08 00:00:00+00:00
+[2026-09-07T05:44:09.327+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/07_etl_steam.py took 0.100 seconds
+[2026-09-07T05:44:39.520+0000] {processor.py:186} INFO - Started process (PID=588) to work on /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:44:39.520+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/07_etl_steam.py for tasks to queue
+[2026-09-07T05:44:39.522+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:44:39.521+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:44:39.541+0000] {processor.py:925} INFO - DAG(s) 'steam_etl_dag' retrieved from /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:44:39.573+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:44:39.573+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-09-07T05:44:39.595+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:44:39.594+0000] {dag.py:4180} INFO - Setting next_dagrun for steam_etl_dag to 2026-09-07 00:00:00+00:00, run_after=2026-09-08 00:00:00+00:00
+[2026-09-07T05:44:39.618+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/07_etl_steam.py took 0.104 seconds
+[2026-09-07T05:45:09.850+0000] {processor.py:186} INFO - Started process (PID=619) to work on /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:45:09.851+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/07_etl_steam.py for tasks to queue
+[2026-09-07T05:45:09.852+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:45:09.852+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:45:09.872+0000] {processor.py:925} INFO - DAG(s) 'steam_etl_dag' retrieved from /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:45:09.910+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:45:09.910+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-09-07T05:45:09.941+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:45:09.941+0000] {dag.py:4180} INFO - Setting next_dagrun for steam_etl_dag to 2026-09-07 00:00:00+00:00, run_after=2026-09-08 00:00:00+00:00
+[2026-09-07T05:45:09.963+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/07_etl_steam.py took 0.119 seconds
+[2026-09-07T05:45:40.122+0000] {processor.py:186} INFO - Started process (PID=650) to work on /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:45:40.123+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/07_etl_steam.py for tasks to queue
+[2026-09-07T05:45:40.124+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:45:40.124+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:45:40.142+0000] {processor.py:925} INFO - DAG(s) 'steam_etl_dag' retrieved from /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:45:40.170+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:45:40.170+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-09-07T05:45:40.197+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:45:40.197+0000] {dag.py:4180} INFO - Setting next_dagrun for steam_etl_dag to 2026-09-07 00:00:00+00:00, run_after=2026-09-08 00:00:00+00:00
+[2026-09-07T05:45:40.217+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/07_etl_steam.py took 0.101 seconds
+[2026-09-07T05:46:10.287+0000] {processor.py:186} INFO - Started process (PID=668) to work on /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:46:10.287+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/07_etl_steam.py for tasks to queue
+[2026-09-07T05:46:10.289+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:46:10.288+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:46:10.314+0000] {processor.py:925} INFO - DAG(s) 'steam_etl_dag' retrieved from /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:46:10.358+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:46:10.357+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-09-07T05:46:10.390+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:46:10.390+0000] {dag.py:4180} INFO - Setting next_dagrun for steam_etl_dag to 2026-09-07 00:00:00+00:00, run_after=2026-09-08 00:00:00+00:00
+[2026-09-07T05:46:10.416+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/07_etl_steam.py took 0.136 seconds
+[2026-09-07T05:46:41.080+0000] {processor.py:186} INFO - Started process (PID=698) to work on /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:46:41.081+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/07_etl_steam.py for tasks to queue
+[2026-09-07T05:46:41.082+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:46:41.082+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:46:41.105+0000] {processor.py:925} INFO - DAG(s) 'steam_etl_dag' retrieved from /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:46:41.135+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:46:41.135+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-09-07T05:46:41.159+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:46:41.159+0000] {dag.py:4180} INFO - Setting next_dagrun for steam_etl_dag to 2026-09-07 00:00:00+00:00, run_after=2026-09-08 00:00:00+00:00
+[2026-09-07T05:46:41.177+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/07_etl_steam.py took 0.104 seconds
+[2026-09-07T05:47:12.097+0000] {processor.py:186} INFO - Started process (PID=730) to work on /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:47:12.098+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/07_etl_steam.py for tasks to queue
+[2026-09-07T05:47:12.099+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:47:12.099+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:47:12.122+0000] {processor.py:925} INFO - DAG(s) 'steam_etl_dag' retrieved from /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:47:12.156+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:47:12.156+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-09-07T05:47:12.182+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:47:12.182+0000] {dag.py:4180} INFO - Setting next_dagrun for steam_etl_dag to 2026-09-07 00:00:00+00:00, run_after=2026-09-08 00:00:00+00:00
+[2026-09-07T05:47:12.205+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/07_etl_steam.py took 0.113 seconds
+[2026-09-07T05:47:42.477+0000] {processor.py:186} INFO - Started process (PID=761) to work on /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:47:42.478+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/07_etl_steam.py for tasks to queue
+[2026-09-07T05:47:42.480+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:47:42.480+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:47:42.511+0000] {processor.py:925} INFO - DAG(s) 'steam_etl_dag' retrieved from /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:47:42.554+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:47:42.554+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-09-07T05:47:42.590+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:47:42.590+0000] {dag.py:4180} INFO - Setting next_dagrun for steam_etl_dag to 2026-09-07 00:00:00+00:00, run_after=2026-09-08 00:00:00+00:00
+[2026-09-07T05:47:42.623+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/07_etl_steam.py took 0.155 seconds
+[2026-09-07T05:48:13.001+0000] {processor.py:186} INFO - Started process (PID=792) to work on /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:48:13.001+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/07_etl_steam.py for tasks to queue
+[2026-09-07T05:48:13.003+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:48:13.002+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:48:13.024+0000] {processor.py:925} INFO - DAG(s) 'steam_etl_dag' retrieved from /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:48:13.065+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:48:13.065+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-09-07T05:48:13.097+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:48:13.097+0000] {dag.py:4180} INFO - Setting next_dagrun for steam_etl_dag to 2026-09-07 00:00:00+00:00, run_after=2026-09-08 00:00:00+00:00
+[2026-09-07T05:48:13.128+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/07_etl_steam.py took 0.133 seconds
+[2026-09-07T05:48:43.525+0000] {processor.py:186} INFO - Started process (PID=823) to work on /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:48:43.526+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/07_etl_steam.py for tasks to queue
+[2026-09-07T05:48:43.527+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:48:43.527+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:48:43.549+0000] {processor.py:925} INFO - DAG(s) 'steam_etl_dag' retrieved from /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:48:43.584+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:48:43.584+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-09-07T05:48:43.613+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:48:43.612+0000] {dag.py:4180} INFO - Setting next_dagrun for steam_etl_dag to 2026-09-07 00:00:00+00:00, run_after=2026-09-08 00:00:00+00:00
+[2026-09-07T05:48:43.644+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/07_etl_steam.py took 0.126 seconds
+[2026-09-07T05:49:13.729+0000] {processor.py:186} INFO - Started process (PID=854) to work on /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:49:13.730+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/07_etl_steam.py for tasks to queue
+[2026-09-07T05:49:13.731+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:49:13.731+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:49:13.753+0000] {processor.py:925} INFO - DAG(s) 'steam_etl_dag' retrieved from /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:49:13.783+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:49:13.783+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-09-07T05:49:13.805+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:49:13.805+0000] {dag.py:4180} INFO - Setting next_dagrun for steam_etl_dag to 2026-09-07 00:00:00+00:00, run_after=2026-09-08 00:00:00+00:00
+[2026-09-07T05:49:13.828+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/07_etl_steam.py took 0.105 seconds
+[2026-09-07T05:49:44.632+0000] {processor.py:186} INFO - Started process (PID=885) to work on /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:49:44.633+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/07_etl_steam.py for tasks to queue
+[2026-09-07T05:49:44.634+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:49:44.634+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:49:44.652+0000] {processor.py:925} INFO - DAG(s) 'steam_etl_dag' retrieved from /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:49:44.678+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:49:44.678+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-09-07T05:49:44.702+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:49:44.701+0000] {dag.py:4180} INFO - Setting next_dagrun for steam_etl_dag to 2026-09-07 00:00:00+00:00, run_after=2026-09-08 00:00:00+00:00
+[2026-09-07T05:49:44.718+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/07_etl_steam.py took 0.091 seconds
+[2026-09-07T05:50:14.827+0000] {processor.py:186} INFO - Started process (PID=916) to work on /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:50:14.828+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/07_etl_steam.py for tasks to queue
+[2026-09-07T05:50:14.829+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:50:14.829+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:50:14.854+0000] {processor.py:925} INFO - DAG(s) 'steam_etl_dag' retrieved from /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:50:14.885+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:50:14.885+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-09-07T05:50:14.913+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:50:14.913+0000] {dag.py:4180} INFO - Setting next_dagrun for steam_etl_dag to 2026-09-07 00:00:00+00:00, run_after=2026-09-08 00:00:00+00:00
+[2026-09-07T05:50:14.938+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/07_etl_steam.py took 0.118 seconds
+[2026-09-07T05:50:45.000+0000] {processor.py:186} INFO - Started process (PID=947) to work on /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:50:45.001+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/07_etl_steam.py for tasks to queue
+[2026-09-07T05:50:45.003+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:50:45.002+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:50:45.033+0000] {processor.py:925} INFO - DAG(s) 'steam_etl_dag' retrieved from /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:50:45.066+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:50:45.065+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-09-07T05:50:45.096+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:50:45.095+0000] {dag.py:4180} INFO - Setting next_dagrun for steam_etl_dag to 2026-09-07 00:00:00+00:00, run_after=2026-09-08 00:00:00+00:00
+[2026-09-07T05:50:45.119+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/07_etl_steam.py took 0.126 seconds
+[2026-09-07T05:51:15.487+0000] {processor.py:186} INFO - Started process (PID=978) to work on /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:51:15.489+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/07_etl_steam.py for tasks to queue
+[2026-09-07T05:51:15.490+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:51:15.490+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:51:15.516+0000] {processor.py:925} INFO - DAG(s) 'steam_etl_dag' retrieved from /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:51:15.553+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:51:15.553+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-09-07T05:51:15.582+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:51:15.582+0000] {dag.py:4180} INFO - Setting next_dagrun for steam_etl_dag to 2026-09-07 00:00:00+00:00, run_after=2026-09-08 00:00:00+00:00
+[2026-09-07T05:51:15.608+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/07_etl_steam.py took 0.128 seconds
+[2026-09-07T05:51:46.367+0000] {processor.py:186} INFO - Started process (PID=1009) to work on /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:51:46.368+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/07_etl_steam.py for tasks to queue
+[2026-09-07T05:51:46.370+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:51:46.370+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:51:46.398+0000] {processor.py:925} INFO - DAG(s) 'steam_etl_dag' retrieved from /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:51:46.440+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:51:46.440+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-09-07T05:51:46.474+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:51:46.474+0000] {dag.py:4180} INFO - Setting next_dagrun for steam_etl_dag to 2026-09-07 00:00:00+00:00, run_after=2026-09-08 00:00:00+00:00
+[2026-09-07T05:51:46.504+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/07_etl_steam.py took 0.147 seconds
+[2026-09-07T05:52:17.085+0000] {processor.py:186} INFO - Started process (PID=1040) to work on /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:52:17.086+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/07_etl_steam.py for tasks to queue
+[2026-09-07T05:52:17.088+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:52:17.087+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:52:17.118+0000] {processor.py:925} INFO - DAG(s) 'steam_etl_dag' retrieved from /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:52:17.155+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:52:17.155+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-09-07T05:52:17.185+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:52:17.185+0000] {dag.py:4180} INFO - Setting next_dagrun for steam_etl_dag to 2026-09-07 00:00:00+00:00, run_after=2026-09-08 00:00:00+00:00
+[2026-09-07T05:52:17.210+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/07_etl_steam.py took 0.135 seconds
+[2026-09-07T05:52:47.279+0000] {processor.py:186} INFO - Started process (PID=1071) to work on /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:52:47.280+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/07_etl_steam.py for tasks to queue
+[2026-09-07T05:52:47.282+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:52:47.281+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:52:47.305+0000] {processor.py:925} INFO - DAG(s) 'steam_etl_dag' retrieved from /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:52:47.351+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:52:47.351+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-09-07T05:52:47.387+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:52:47.386+0000] {dag.py:4180} INFO - Setting next_dagrun for steam_etl_dag to 2026-09-07 00:00:00+00:00, run_after=2026-09-08 00:00:00+00:00
+[2026-09-07T05:52:47.415+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/07_etl_steam.py took 0.146 seconds
+[2026-09-07T05:53:17.563+0000] {processor.py:186} INFO - Started process (PID=1102) to work on /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:53:17.563+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/07_etl_steam.py for tasks to queue
+[2026-09-07T05:53:17.565+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:53:17.565+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:53:17.589+0000] {processor.py:925} INFO - DAG(s) 'steam_etl_dag' retrieved from /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:53:17.625+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:53:17.625+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-09-07T05:53:17.654+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:53:17.654+0000] {dag.py:4180} INFO - Setting next_dagrun for steam_etl_dag to 2026-09-07 00:00:00+00:00, run_after=2026-09-08 00:00:00+00:00
+[2026-09-07T05:53:17.682+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/07_etl_steam.py took 0.127 seconds
+[2026-09-07T05:53:47.904+0000] {processor.py:186} INFO - Started process (PID=1133) to work on /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:53:47.905+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/07_etl_steam.py for tasks to queue
+[2026-09-07T05:53:47.906+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:53:47.906+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:53:47.923+0000] {processor.py:925} INFO - DAG(s) 'steam_etl_dag' retrieved from /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:53:47.951+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:53:47.950+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-09-07T05:53:47.971+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:53:47.971+0000] {dag.py:4180} INFO - Setting next_dagrun for steam_etl_dag to 2026-09-07 00:00:00+00:00, run_after=2026-09-08 00:00:00+00:00
+[2026-09-07T05:53:47.988+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/07_etl_steam.py took 0.089 seconds
+[2026-09-07T05:54:18.240+0000] {processor.py:186} INFO - Started process (PID=1164) to work on /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:54:18.241+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/07_etl_steam.py for tasks to queue
+[2026-09-07T05:54:18.243+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:54:18.243+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:54:18.270+0000] {processor.py:925} INFO - DAG(s) 'steam_etl_dag' retrieved from /opt/airflow/dags/07_etl_steam.py
+[2026-09-07T05:54:18.300+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:54:18.299+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-09-07T05:54:18.322+0000] {logging_mixin.py:190} INFO - [2026-09-07T05:54:18.322+0000] {dag.py:4180} INFO - Setting next_dagrun for steam_etl_dag to 2026-09-07 00:00:00+00:00, run_after=2026-09-08 00:00:00+00:00
+[2026-09-07T05:54:18.343+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/07_etl_steam.py took 0.109 seconds

@@ -1,0 +1,772 @@
+[2026-09-07T05:43:06.970+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2026-09-07T05:43:06.988+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: steam_etl_dag.load_to_postgres scheduled__2026-09-06T00:00:00+00:00 [queued]>
+[2026-09-07T05:43:06.997+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: steam_etl_dag.load_to_postgres scheduled__2026-09-06T00:00:00+00:00 [queued]>
+[2026-09-07T05:43:06.998+0000] {taskinstance.py:2866} INFO - Starting attempt 1 of 3
+[2026-09-07T05:43:07.012+0000] {taskinstance.py:2889} INFO - Executing <Task(PythonOperator): load_to_postgres> on 2026-09-06 00:00:00+00:00
+[2026-09-07T05:43:07.020+0000] {warnings.py:112} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:70: DeprecationWarning: This process (pid=371) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2026-09-07T05:43:07.022+0000] {standard_task_runner.py:72} INFO - Started process 372 to run task
+[2026-09-07T05:43:07.022+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'steam_etl_dag', 'load_to_postgres', 'scheduled__2026-09-06T00:00:00+00:00', '--job-id', '138', '--raw', '--subdir', 'DAGS_FOLDER/07_etl_steam.py', '--cfg-path', '/tmp/tmpo8gyalhk']
+[2026-09-07T05:43:07.024+0000] {standard_task_runner.py:105} INFO - Job 138: Subtask load_to_postgres
+[2026-09-07T05:43:07.087+0000] {task_command.py:467} INFO - Running <TaskInstance: steam_etl_dag.load_to_postgres scheduled__2026-09-06T00:00:00+00:00 [running]> on host 6f4d56443a1a
+[2026-09-07T05:43:07.190+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='steam_project' AIRFLOW_CTX_DAG_ID='steam_etl_dag' AIRFLOW_CTX_TASK_ID='load_to_postgres' AIRFLOW_CTX_EXECUTION_DATE='2026-09-06T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2026-09-06T00:00:00+00:00'
+[2026-09-07T05:43:07.192+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2026-09-07T05:43:07.237+0000] {base.py:84} INFO - Retrieving connection 'postgres_target'
+[2026-09-07T05:43:07.244+0000] {sql.py:553} INFO - Running statement: 
+    INSERT INTO steam_games (
+        snapshot_date, appid, name, developer, publisher,
+        price_thb, original_price, discount_pct, ccu,
+        positive_reviews, negative_reviews, review_score,
+        owners_estimate, genres, header_image, is_free
+    ) VALUES (
+        %s, %s, %s, %s, %s,
+        %s, %s, %s, %s,
+        %s, %s, %s,
+        %s, %s, %s, %s
+    )
+    ON CONFLICT (snapshot_date, appid) DO UPDATE SET
+        name = EXCLUDED.name,
+        developer = EXCLUDED.developer,
+        publisher = EXCLUDED.publisher,
+        price_thb = EXCLUDED.price_thb,
+        original_price = EXCLUDED.original_price,
+        discount_pct = EXCLUDED.discount_pct,
+        ccu = EXCLUDED.ccu,
+        positive_reviews = EXCLUDED.positive_reviews,
+        negative_reviews = EXCLUDED.negative_reviews,
+        review_score = EXCLUDED.review_score,
+        owners_estimate = EXCLUDED.owners_estimate,
+        genres = EXCLUDED.genres,
+        header_image = EXCLUDED.header_image,
+        is_free = EXCLUDED.is_free,
+        ingested_at = NOW();
+    , parameters: ('2026-09-07', 730, 'Counter-Strike 2', 'Valve', 'Valve', 0.0, 0.0, 0, 1013936, 7642084, 1173003, 86.69, '100,000,000 .. 200,000,000', 'แอ็คชัน, เล่นฟรี', 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/730/162664aa5da85f418105350c5d67ca565f6c3713/header.jpg?t=1784564069', True)
+[2026-09-07T05:43:07.247+0000] {sql.py:562} INFO - Rows affected: 1
+[2026-09-07T05:43:07.255+0000] {sql.py:553} INFO - Running statement: 
+    INSERT INTO steam_games (
+        snapshot_date, appid, name, developer, publisher,
+        price_thb, original_price, discount_pct, ccu,
+        positive_reviews, negative_reviews, review_score,
+        owners_estimate, genres, header_image, is_free
+    ) VALUES (
+        %s, %s, %s, %s, %s,
+        %s, %s, %s, %s,
+        %s, %s, %s,
+        %s, %s, %s, %s
+    )
+    ON CONFLICT (snapshot_date, appid) DO UPDATE SET
+        name = EXCLUDED.name,
+        developer = EXCLUDED.developer,
+        publisher = EXCLUDED.publisher,
+        price_thb = EXCLUDED.price_thb,
+        original_price = EXCLUDED.original_price,
+        discount_pct = EXCLUDED.discount_pct,
+        ccu = EXCLUDED.ccu,
+        positive_reviews = EXCLUDED.positive_reviews,
+        negative_reviews = EXCLUDED.negative_reviews,
+        review_score = EXCLUDED.review_score,
+        owners_estimate = EXCLUDED.owners_estimate,
+        genres = EXCLUDED.genres,
+        header_image = EXCLUDED.header_image,
+        is_free = EXCLUDED.is_free,
+        ingested_at = NOW();
+    , parameters: ('2026-09-07', 578080, 'PUBG: BATTLEGROUNDS', 'PUBG Corporation', 'KRAFTON, Inc.', 0.0, 0.0, 0, 314682, 1520457, 1037487, 59.44, '100,000,000 .. 200,000,000', 'แอ็คชัน, ผจญภัย, ผู้เล่นหลายคนจำนวนมาก, เล่นฟรี', 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/578080/841ea38bc58cabb70aef65365cf50bc2d79329d9/header.jpg?t=1786493086', True)
+[2026-09-07T05:43:07.257+0000] {sql.py:562} INFO - Rows affected: 1
+[2026-09-07T05:43:07.265+0000] {sql.py:553} INFO - Running statement: 
+    INSERT INTO steam_games (
+        snapshot_date, appid, name, developer, publisher,
+        price_thb, original_price, discount_pct, ccu,
+        positive_reviews, negative_reviews, review_score,
+        owners_estimate, genres, header_image, is_free
+    ) VALUES (
+        %s, %s, %s, %s, %s,
+        %s, %s, %s, %s,
+        %s, %s, %s,
+        %s, %s, %s, %s
+    )
+    ON CONFLICT (snapshot_date, appid) DO UPDATE SET
+        name = EXCLUDED.name,
+        developer = EXCLUDED.developer,
+        publisher = EXCLUDED.publisher,
+        price_thb = EXCLUDED.price_thb,
+        original_price = EXCLUDED.original_price,
+        discount_pct = EXCLUDED.discount_pct,
+        ccu = EXCLUDED.ccu,
+        positive_reviews = EXCLUDED.positive_reviews,
+        negative_reviews = EXCLUDED.negative_reviews,
+        review_score = EXCLUDED.review_score,
+        owners_estimate = EXCLUDED.owners_estimate,
+        genres = EXCLUDED.genres,
+        header_image = EXCLUDED.header_image,
+        is_free = EXCLUDED.is_free,
+        ingested_at = NOW();
+    , parameters: ('2026-09-07', 1172470, 'Apex Legends™', 'Respawn', 'Electronic Arts', 0.0, 0.0, 0, 124262, 668053, 326926, 67.14, '100,000,000 .. 200,000,000', 'แอ็คชัน, ผจญภัย, เล่นฟรี', 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1172470/6cf04767652d703b6050da84b82cfb1194258d7d/header.jpg?t=1786031871', True)
+[2026-09-07T05:43:07.267+0000] {sql.py:562} INFO - Rows affected: 1
+[2026-09-07T05:43:07.277+0000] {sql.py:553} INFO - Running statement: 
+    INSERT INTO steam_games (
+        snapshot_date, appid, name, developer, publisher,
+        price_thb, original_price, discount_pct, ccu,
+        positive_reviews, negative_reviews, review_score,
+        owners_estimate, genres, header_image, is_free
+    ) VALUES (
+        %s, %s, %s, %s, %s,
+        %s, %s, %s, %s,
+        %s, %s, %s,
+        %s, %s, %s, %s
+    )
+    ON CONFLICT (snapshot_date, appid) DO UPDATE SET
+        name = EXCLUDED.name,
+        developer = EXCLUDED.developer,
+        publisher = EXCLUDED.publisher,
+        price_thb = EXCLUDED.price_thb,
+        original_price = EXCLUDED.original_price,
+        discount_pct = EXCLUDED.discount_pct,
+        ccu = EXCLUDED.ccu,
+        positive_reviews = EXCLUDED.positive_reviews,
+        negative_reviews = EXCLUDED.negative_reviews,
+        review_score = EXCLUDED.review_score,
+        owners_estimate = EXCLUDED.owners_estimate,
+        genres = EXCLUDED.genres,
+        header_image = EXCLUDED.header_image,
+        is_free = EXCLUDED.is_free,
+        ingested_at = NOW();
+    , parameters: ('2026-09-07', 1245620, 'ELDEN RING', 'FromSoftware, Inc.', 'FromSoftware, Inc., Bandai Namco Entertainment', 1790.0, 1790.0, 0, 29529, 981540, 75137, 92.89, '20,000,000 .. 50,000,000', 'แอ็คชัน, เกมสวมบทบาท', 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1245620/header.jpg?t=1787868578', False)
+[2026-09-07T05:43:07.280+0000] {sql.py:562} INFO - Rows affected: 1
+[2026-09-07T05:43:07.288+0000] {sql.py:553} INFO - Running statement: 
+    INSERT INTO steam_games (
+        snapshot_date, appid, name, developer, publisher,
+        price_thb, original_price, discount_pct, ccu,
+        positive_reviews, negative_reviews, review_score,
+        owners_estimate, genres, header_image, is_free
+    ) VALUES (
+        %s, %s, %s, %s, %s,
+        %s, %s, %s, %s,
+        %s, %s, %s,
+        %s, %s, %s, %s
+    )
+    ON CONFLICT (snapshot_date, appid) DO UPDATE SET
+        name = EXCLUDED.name,
+        developer = EXCLUDED.developer,
+        publisher = EXCLUDED.publisher,
+        price_thb = EXCLUDED.price_thb,
+        original_price = EXCLUDED.original_price,
+        discount_pct = EXCLUDED.discount_pct,
+        ccu = EXCLUDED.ccu,
+        positive_reviews = EXCLUDED.positive_reviews,
+        negative_reviews = EXCLUDED.negative_reviews,
+        review_score = EXCLUDED.review_score,
+        owners_estimate = EXCLUDED.owners_estimate,
+        genres = EXCLUDED.genres,
+        header_image = EXCLUDED.header_image,
+        is_free = EXCLUDED.is_free,
+        ingested_at = NOW();
+    , parameters: ('2026-09-07', 1086940, "Baldur's Gate 3", 'Larian Studios', 'Larian Studios', 1799.0, 1799.0, 0, 54771, 736688, 23974, 96.85, '20,000,000 .. 50,000,000', 'ผจญภัย, เกมสวมบทบาท, กลยุทธ์', 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1086940/48a2fcbda8565bb45025e98fd8ebde8a7203f6a0/header.jpg?t=1777363040', False)
+[2026-09-07T05:43:07.291+0000] {sql.py:562} INFO - Rows affected: 1
+[2026-09-07T05:43:07.299+0000] {sql.py:553} INFO - Running statement: 
+    INSERT INTO steam_games (
+        snapshot_date, appid, name, developer, publisher,
+        price_thb, original_price, discount_pct, ccu,
+        positive_reviews, negative_reviews, review_score,
+        owners_estimate, genres, header_image, is_free
+    ) VALUES (
+        %s, %s, %s, %s, %s,
+        %s, %s, %s, %s,
+        %s, %s, %s,
+        %s, %s, %s, %s
+    )
+    ON CONFLICT (snapshot_date, appid) DO UPDATE SET
+        name = EXCLUDED.name,
+        developer = EXCLUDED.developer,
+        publisher = EXCLUDED.publisher,
+        price_thb = EXCLUDED.price_thb,
+        original_price = EXCLUDED.original_price,
+        discount_pct = EXCLUDED.discount_pct,
+        ccu = EXCLUDED.ccu,
+        positive_reviews = EXCLUDED.positive_reviews,
+        negative_reviews = EXCLUDED.negative_reviews,
+        review_score = EXCLUDED.review_score,
+        owners_estimate = EXCLUDED.owners_estimate,
+        genres = EXCLUDED.genres,
+        header_image = EXCLUDED.header_image,
+        is_free = EXCLUDED.is_free,
+        ingested_at = NOW();
+    , parameters: ('2026-09-07', 2358720, 'Black Myth: Wukong', 'Game Science', 'Game Science', 1799.0, 1799.0, 0, 15004, 1111720, 38378, 96.66, '50,000,000 .. 100,000,000', 'แอ็คชัน, ผจญภัย, เกมสวมบทบาท', 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2358720/header.jpg?t=1760601605', False)
+[2026-09-07T05:43:07.301+0000] {sql.py:562} INFO - Rows affected: 1
+[2026-09-07T05:43:07.308+0000] {sql.py:553} INFO - Running statement: 
+    INSERT INTO steam_games (
+        snapshot_date, appid, name, developer, publisher,
+        price_thb, original_price, discount_pct, ccu,
+        positive_reviews, negative_reviews, review_score,
+        owners_estimate, genres, header_image, is_free
+    ) VALUES (
+        %s, %s, %s, %s, %s,
+        %s, %s, %s, %s,
+        %s, %s, %s,
+        %s, %s, %s, %s
+    )
+    ON CONFLICT (snapshot_date, appid) DO UPDATE SET
+        name = EXCLUDED.name,
+        developer = EXCLUDED.developer,
+        publisher = EXCLUDED.publisher,
+        price_thb = EXCLUDED.price_thb,
+        original_price = EXCLUDED.original_price,
+        discount_pct = EXCLUDED.discount_pct,
+        ccu = EXCLUDED.ccu,
+        positive_reviews = EXCLUDED.positive_reviews,
+        negative_reviews = EXCLUDED.negative_reviews,
+        review_score = EXCLUDED.review_score,
+        owners_estimate = EXCLUDED.owners_estimate,
+        genres = EXCLUDED.genres,
+        header_image = EXCLUDED.header_image,
+        is_free = EXCLUDED.is_free,
+        ingested_at = NOW();
+    , parameters: ('2026-09-07', 2246340, 'Monster Hunter Wilds', 'CAPCOM Co., Ltd.', 'CAPCOM Co., Ltd.', 1090.0, 1090.0, 0, 12494, 127273, 91142, 58.27, '20,000,000 .. 50,000,000', 'แอ็คชัน, ผจญภัย, เกมสวมบทบาท', 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2246340/header.jpg?t=1787549555', False)
+[2026-09-07T05:43:07.310+0000] {sql.py:562} INFO - Rows affected: 1
+[2026-09-07T05:43:07.317+0000] {sql.py:553} INFO - Running statement: 
+    INSERT INTO steam_games (
+        snapshot_date, appid, name, developer, publisher,
+        price_thb, original_price, discount_pct, ccu,
+        positive_reviews, negative_reviews, review_score,
+        owners_estimate, genres, header_image, is_free
+    ) VALUES (
+        %s, %s, %s, %s, %s,
+        %s, %s, %s, %s,
+        %s, %s, %s,
+        %s, %s, %s, %s
+    )
+    ON CONFLICT (snapshot_date, appid) DO UPDATE SET
+        name = EXCLUDED.name,
+        developer = EXCLUDED.developer,
+        publisher = EXCLUDED.publisher,
+        price_thb = EXCLUDED.price_thb,
+        original_price = EXCLUDED.original_price,
+        discount_pct = EXCLUDED.discount_pct,
+        ccu = EXCLUDED.ccu,
+        positive_reviews = EXCLUDED.positive_reviews,
+        negative_reviews = EXCLUDED.negative_reviews,
+        review_score = EXCLUDED.review_score,
+        owners_estimate = EXCLUDED.owners_estimate,
+        genres = EXCLUDED.genres,
+        header_image = EXCLUDED.header_image,
+        is_free = EXCLUDED.is_free,
+        ingested_at = NOW();
+    , parameters: ('2026-09-07', 553850, 'HELLDIVERS™ 2', 'Arrowhead Game Studios', 'PlayStation Publishing LLC', 1290.0, 1290.0, 0, 53399, 775883, 241752, 76.24, '20,000,000 .. 50,000,000', 'แอ็คชัน', 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/553850/850e2f9e5bb15c5706bb9a1edc832f4f782e8be5/header.jpg?t=1788431424', False)
+[2026-09-07T05:43:07.319+0000] {sql.py:562} INFO - Rows affected: 1
+[2026-09-07T05:43:07.326+0000] {sql.py:553} INFO - Running statement: 
+    INSERT INTO steam_games (
+        snapshot_date, appid, name, developer, publisher,
+        price_thb, original_price, discount_pct, ccu,
+        positive_reviews, negative_reviews, review_score,
+        owners_estimate, genres, header_image, is_free
+    ) VALUES (
+        %s, %s, %s, %s, %s,
+        %s, %s, %s, %s,
+        %s, %s, %s,
+        %s, %s, %s, %s
+    )
+    ON CONFLICT (snapshot_date, appid) DO UPDATE SET
+        name = EXCLUDED.name,
+        developer = EXCLUDED.developer,
+        publisher = EXCLUDED.publisher,
+        price_thb = EXCLUDED.price_thb,
+        original_price = EXCLUDED.original_price,
+        discount_pct = EXCLUDED.discount_pct,
+        ccu = EXCLUDED.ccu,
+        positive_reviews = EXCLUDED.positive_reviews,
+        negative_reviews = EXCLUDED.negative_reviews,
+        review_score = EXCLUDED.review_score,
+        owners_estimate = EXCLUDED.owners_estimate,
+        genres = EXCLUDED.genres,
+        header_image = EXCLUDED.header_image,
+        is_free = EXCLUDED.is_free,
+        ingested_at = NOW();
+    , parameters: ('2026-09-07', 1623730, 'Palworld', 'Pocketpair', 'Pocketpair', 413.0, 590.0, 30, 18028, 358266, 22443, 94.1, '50,000,000 .. 100,000,000', 'แอ็คชัน, ผจญภัย, อินดี้, เกมสวมบทบาท', 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1623730/6912f19c43a95ff5fe514eedd35e68bf12335459/header.jpg?t=1784714419', False)
+[2026-09-07T05:43:07.328+0000] {sql.py:562} INFO - Rows affected: 1
+[2026-09-07T05:43:07.335+0000] {sql.py:553} INFO - Running statement: 
+    INSERT INTO steam_games (
+        snapshot_date, appid, name, developer, publisher,
+        price_thb, original_price, discount_pct, ccu,
+        positive_reviews, negative_reviews, review_score,
+        owners_estimate, genres, header_image, is_free
+    ) VALUES (
+        %s, %s, %s, %s, %s,
+        %s, %s, %s, %s,
+        %s, %s, %s,
+        %s, %s, %s, %s
+    )
+    ON CONFLICT (snapshot_date, appid) DO UPDATE SET
+        name = EXCLUDED.name,
+        developer = EXCLUDED.developer,
+        publisher = EXCLUDED.publisher,
+        price_thb = EXCLUDED.price_thb,
+        original_price = EXCLUDED.original_price,
+        discount_pct = EXCLUDED.discount_pct,
+        ccu = EXCLUDED.ccu,
+        positive_reviews = EXCLUDED.positive_reviews,
+        negative_reviews = EXCLUDED.negative_reviews,
+        review_score = EXCLUDED.review_score,
+        owners_estimate = EXCLUDED.owners_estimate,
+        genres = EXCLUDED.genres,
+        header_image = EXCLUDED.header_image,
+        is_free = EXCLUDED.is_free,
+        ingested_at = NOW();
+    , parameters: ('2026-09-07', 105600, 'Terraria', 'Re-Logic', 'Re-Logic', 110.0, 220.0, 50, 24580, 1373979, 35494, 97.48, '20,000,000 .. 50,000,000', 'แอ็คชัน, ผจญภัย, อินดี้, เกมสวมบทบาท', 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/105600/header.jpg?t=1769844435', False)
+[2026-09-07T05:43:07.337+0000] {sql.py:562} INFO - Rows affected: 1
+[2026-09-07T05:43:07.344+0000] {sql.py:553} INFO - Running statement: 
+    INSERT INTO steam_games (
+        snapshot_date, appid, name, developer, publisher,
+        price_thb, original_price, discount_pct, ccu,
+        positive_reviews, negative_reviews, review_score,
+        owners_estimate, genres, header_image, is_free
+    ) VALUES (
+        %s, %s, %s, %s, %s,
+        %s, %s, %s, %s,
+        %s, %s, %s,
+        %s, %s, %s, %s
+    )
+    ON CONFLICT (snapshot_date, appid) DO UPDATE SET
+        name = EXCLUDED.name,
+        developer = EXCLUDED.developer,
+        publisher = EXCLUDED.publisher,
+        price_thb = EXCLUDED.price_thb,
+        original_price = EXCLUDED.original_price,
+        discount_pct = EXCLUDED.discount_pct,
+        ccu = EXCLUDED.ccu,
+        positive_reviews = EXCLUDED.positive_reviews,
+        negative_reviews = EXCLUDED.negative_reviews,
+        review_score = EXCLUDED.review_score,
+        owners_estimate = EXCLUDED.owners_estimate,
+        genres = EXCLUDED.genres,
+        header_image = EXCLUDED.header_image,
+        is_free = EXCLUDED.is_free,
+        ingested_at = NOW();
+    , parameters: ('2026-09-07', 440, 'Team Fortress 2', 'Valve', 'Valve', 0.0, 0.0, 0, 43819, 1044264, 117208, 89.91, '50,000,000 .. 100,000,000', 'แอ็คชัน, เล่นฟรี', 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/440/header.jpg?t=1757348372', True)
+[2026-09-07T05:43:07.346+0000] {sql.py:562} INFO - Rows affected: 1
+[2026-09-07T05:43:07.353+0000] {sql.py:553} INFO - Running statement: 
+    INSERT INTO steam_games (
+        snapshot_date, appid, name, developer, publisher,
+        price_thb, original_price, discount_pct, ccu,
+        positive_reviews, negative_reviews, review_score,
+        owners_estimate, genres, header_image, is_free
+    ) VALUES (
+        %s, %s, %s, %s, %s,
+        %s, %s, %s, %s,
+        %s, %s, %s,
+        %s, %s, %s, %s
+    )
+    ON CONFLICT (snapshot_date, appid) DO UPDATE SET
+        name = EXCLUDED.name,
+        developer = EXCLUDED.developer,
+        publisher = EXCLUDED.publisher,
+        price_thb = EXCLUDED.price_thb,
+        original_price = EXCLUDED.original_price,
+        discount_pct = EXCLUDED.discount_pct,
+        ccu = EXCLUDED.ccu,
+        positive_reviews = EXCLUDED.positive_reviews,
+        negative_reviews = EXCLUDED.negative_reviews,
+        review_score = EXCLUDED.review_score,
+        owners_estimate = EXCLUDED.owners_estimate,
+        genres = EXCLUDED.genres,
+        header_image = EXCLUDED.header_image,
+        is_free = EXCLUDED.is_free,
+        ingested_at = NOW();
+    , parameters: ('2026-09-07', 271590, 'Grand Theft Auto V Legacy', 'Rockstar North', 'Rockstar Games', 704.0, 704.0, 0, 67851, 1739980, 250576, 87.41, '50,000,000 .. 100,000,000', 'แอ็คชัน, ผจญภัย', 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/271590/header.jpg?t=1765387725', False)
+[2026-09-07T05:43:07.355+0000] {sql.py:562} INFO - Rows affected: 1
+[2026-09-07T05:43:07.362+0000] {sql.py:553} INFO - Running statement: 
+    INSERT INTO steam_games (
+        snapshot_date, appid, name, developer, publisher,
+        price_thb, original_price, discount_pct, ccu,
+        positive_reviews, negative_reviews, review_score,
+        owners_estimate, genres, header_image, is_free
+    ) VALUES (
+        %s, %s, %s, %s, %s,
+        %s, %s, %s, %s,
+        %s, %s, %s,
+        %s, %s, %s, %s
+    )
+    ON CONFLICT (snapshot_date, appid) DO UPDATE SET
+        name = EXCLUDED.name,
+        developer = EXCLUDED.developer,
+        publisher = EXCLUDED.publisher,
+        price_thb = EXCLUDED.price_thb,
+        original_price = EXCLUDED.original_price,
+        discount_pct = EXCLUDED.discount_pct,
+        ccu = EXCLUDED.ccu,
+        positive_reviews = EXCLUDED.positive_reviews,
+        negative_reviews = EXCLUDED.negative_reviews,
+        review_score = EXCLUDED.review_score,
+        owners_estimate = EXCLUDED.owners_estimate,
+        genres = EXCLUDED.genres,
+        header_image = EXCLUDED.header_image,
+        is_free = EXCLUDED.is_free,
+        ingested_at = NOW();
+    , parameters: ('2026-09-07', 550, 'Left 4 Dead 2', 'Valve', 'Valve', 220.0, 220.0, 0, 25122, 940221, 23762, 97.54, '50,000,000 .. 100,000,000', 'แอ็คชัน', 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/550/header.jpg?t=1772742214', False)
+[2026-09-07T05:43:07.364+0000] {sql.py:562} INFO - Rows affected: 1
+[2026-09-07T05:43:07.370+0000] {sql.py:553} INFO - Running statement: 
+    INSERT INTO steam_games (
+        snapshot_date, appid, name, developer, publisher,
+        price_thb, original_price, discount_pct, ccu,
+        positive_reviews, negative_reviews, review_score,
+        owners_estimate, genres, header_image, is_free
+    ) VALUES (
+        %s, %s, %s, %s, %s,
+        %s, %s, %s, %s,
+        %s, %s, %s,
+        %s, %s, %s, %s
+    )
+    ON CONFLICT (snapshot_date, appid) DO UPDATE SET
+        name = EXCLUDED.name,
+        developer = EXCLUDED.developer,
+        publisher = EXCLUDED.publisher,
+        price_thb = EXCLUDED.price_thb,
+        original_price = EXCLUDED.original_price,
+        discount_pct = EXCLUDED.discount_pct,
+        ccu = EXCLUDED.ccu,
+        positive_reviews = EXCLUDED.positive_reviews,
+        negative_reviews = EXCLUDED.negative_reviews,
+        review_score = EXCLUDED.review_score,
+        owners_estimate = EXCLUDED.owners_estimate,
+        genres = EXCLUDED.genres,
+        header_image = EXCLUDED.header_image,
+        is_free = EXCLUDED.is_free,
+        ingested_at = NOW();
+    , parameters: ('2026-09-07', 236390, 'War Thunder', 'Gaijin Entertainment', 'Gaijin Network Ltd', 0.0, 0.0, 0, 50478, 484469, 272617, 63.99, '20,000,000 .. 50,000,000', 'แอ็คชัน, ผู้เล่นหลายคนจำนวนมาก, จำลองสถานการณ์, เล่นฟรี', 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/236390/65885881b96806d55fea45e130233fdafd78b129/header.jpg?t=1784211516', True)
+[2026-09-07T05:43:07.372+0000] {sql.py:562} INFO - Rows affected: 1
+[2026-09-07T05:43:07.378+0000] {sql.py:553} INFO - Running statement: 
+    INSERT INTO steam_games (
+        snapshot_date, appid, name, developer, publisher,
+        price_thb, original_price, discount_pct, ccu,
+        positive_reviews, negative_reviews, review_score,
+        owners_estimate, genres, header_image, is_free
+    ) VALUES (
+        %s, %s, %s, %s, %s,
+        %s, %s, %s, %s,
+        %s, %s, %s,
+        %s, %s, %s, %s
+    )
+    ON CONFLICT (snapshot_date, appid) DO UPDATE SET
+        name = EXCLUDED.name,
+        developer = EXCLUDED.developer,
+        publisher = EXCLUDED.publisher,
+        price_thb = EXCLUDED.price_thb,
+        original_price = EXCLUDED.original_price,
+        discount_pct = EXCLUDED.discount_pct,
+        ccu = EXCLUDED.ccu,
+        positive_reviews = EXCLUDED.positive_reviews,
+        negative_reviews = EXCLUDED.negative_reviews,
+        review_score = EXCLUDED.review_score,
+        owners_estimate = EXCLUDED.owners_estimate,
+        genres = EXCLUDED.genres,
+        header_image = EXCLUDED.header_image,
+        is_free = EXCLUDED.is_free,
+        ingested_at = NOW();
+    , parameters: ('2026-09-07', 230410, 'Warframe', 'Digital Extremes', 'Digital Extremes', 0.0, 0.0, 0, 36195, 545393, 81110, 87.05, '20,000,000 .. 50,000,000', 'แอ็คชัน, เกมสวมบทบาท, เล่นฟรี', 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/230410/a000b4bf98dde5d51cd44206f1ac21d04841017e/header.jpg?t=1786540562', True)
+[2026-09-07T05:43:07.380+0000] {sql.py:562} INFO - Rows affected: 1
+[2026-09-07T05:43:07.387+0000] {sql.py:553} INFO - Running statement: 
+    INSERT INTO steam_games (
+        snapshot_date, appid, name, developer, publisher,
+        price_thb, original_price, discount_pct, ccu,
+        positive_reviews, negative_reviews, review_score,
+        owners_estimate, genres, header_image, is_free
+    ) VALUES (
+        %s, %s, %s, %s, %s,
+        %s, %s, %s, %s,
+        %s, %s, %s,
+        %s, %s, %s, %s
+    )
+    ON CONFLICT (snapshot_date, appid) DO UPDATE SET
+        name = EXCLUDED.name,
+        developer = EXCLUDED.developer,
+        publisher = EXCLUDED.publisher,
+        price_thb = EXCLUDED.price_thb,
+        original_price = EXCLUDED.original_price,
+        discount_pct = EXCLUDED.discount_pct,
+        ccu = EXCLUDED.ccu,
+        positive_reviews = EXCLUDED.positive_reviews,
+        negative_reviews = EXCLUDED.negative_reviews,
+        review_score = EXCLUDED.review_score,
+        owners_estimate = EXCLUDED.owners_estimate,
+        genres = EXCLUDED.genres,
+        header_image = EXCLUDED.header_image,
+        is_free = EXCLUDED.is_free,
+        ingested_at = NOW();
+    , parameters: ('2026-09-07', 2694490, 'Path of Exile 2', 'Grinding Gear Games', 'Grinding Gear Games', 798.0, 798.0, 0, 16727, 118511, 50510, 70.12, '20,000,000 .. 50,000,000', 'แอ็คชัน, ผจญภัย, ผู้เล่นหลายคนจำนวนมาก, เกมสวมบทบาท, เล่นระหว่างการพัฒนา', 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2694490/24eeddcbda17903f03d819588757e40845f8115f/header.jpg?t=1787697213', False)
+[2026-09-07T05:43:07.389+0000] {sql.py:562} INFO - Rows affected: 1
+[2026-09-07T05:43:07.397+0000] {sql.py:553} INFO - Running statement: 
+    INSERT INTO steam_games (
+        snapshot_date, appid, name, developer, publisher,
+        price_thb, original_price, discount_pct, ccu,
+        positive_reviews, negative_reviews, review_score,
+        owners_estimate, genres, header_image, is_free
+    ) VALUES (
+        %s, %s, %s, %s, %s,
+        %s, %s, %s, %s,
+        %s, %s, %s,
+        %s, %s, %s, %s
+    )
+    ON CONFLICT (snapshot_date, appid) DO UPDATE SET
+        name = EXCLUDED.name,
+        developer = EXCLUDED.developer,
+        publisher = EXCLUDED.publisher,
+        price_thb = EXCLUDED.price_thb,
+        original_price = EXCLUDED.original_price,
+        discount_pct = EXCLUDED.discount_pct,
+        ccu = EXCLUDED.ccu,
+        positive_reviews = EXCLUDED.positive_reviews,
+        negative_reviews = EXCLUDED.negative_reviews,
+        review_score = EXCLUDED.review_score,
+        owners_estimate = EXCLUDED.owners_estimate,
+        genres = EXCLUDED.genres,
+        header_image = EXCLUDED.header_image,
+        is_free = EXCLUDED.is_free,
+        ingested_at = NOW();
+    , parameters: ('2026-09-07', 431960, 'Wallpaper Engine', 'Wallpaper Engine Team', 'Wallpaper Engine Team', 115.0, 115.0, 0, 91184, 876898, 17560, 98.04, '20,000,000 .. 50,000,000', 'แคชชวล, อินดี้, แอนิเมชันและการสร้างโมเดล, การออกแบบและภาพประกอบ, การแก้ไขรูปภาพ, ยูทิลิตี้', 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/431960/header.jpg?t=1779452230', False)
+[2026-09-07T05:43:07.399+0000] {sql.py:562} INFO - Rows affected: 1
+[2026-09-07T05:43:07.405+0000] {sql.py:553} INFO - Running statement: 
+    INSERT INTO steam_games (
+        snapshot_date, appid, name, developer, publisher,
+        price_thb, original_price, discount_pct, ccu,
+        positive_reviews, negative_reviews, review_score,
+        owners_estimate, genres, header_image, is_free
+    ) VALUES (
+        %s, %s, %s, %s, %s,
+        %s, %s, %s, %s,
+        %s, %s, %s,
+        %s, %s, %s, %s
+    )
+    ON CONFLICT (snapshot_date, appid) DO UPDATE SET
+        name = EXCLUDED.name,
+        developer = EXCLUDED.developer,
+        publisher = EXCLUDED.publisher,
+        price_thb = EXCLUDED.price_thb,
+        original_price = EXCLUDED.original_price,
+        discount_pct = EXCLUDED.discount_pct,
+        ccu = EXCLUDED.ccu,
+        positive_reviews = EXCLUDED.positive_reviews,
+        negative_reviews = EXCLUDED.negative_reviews,
+        review_score = EXCLUDED.review_score,
+        owners_estimate = EXCLUDED.owners_estimate,
+        genres = EXCLUDED.genres,
+        header_image = EXCLUDED.header_image,
+        is_free = EXCLUDED.is_free,
+        ingested_at = NOW();
+    , parameters: ('2026-09-07', 291550, 'Brawlhalla', 'Blue Mammoth Games', 'Ubisoft', 0.0, 0.0, 0, 14169, 314809, 71647, 81.46, '20,000,000 .. 50,000,000', 'แอ็คชัน, อินดี้, เล่นฟรี', 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/291550/5a626cc4b6ecf79d47927d771dfad799b7f1b145/header_alt_assets_11.jpg?t=1787157167', True)
+[2026-09-07T05:43:07.407+0000] {sql.py:562} INFO - Rows affected: 1
+[2026-09-07T05:43:07.414+0000] {sql.py:553} INFO - Running statement: 
+    INSERT INTO steam_games (
+        snapshot_date, appid, name, developer, publisher,
+        price_thb, original_price, discount_pct, ccu,
+        positive_reviews, negative_reviews, review_score,
+        owners_estimate, genres, header_image, is_free
+    ) VALUES (
+        %s, %s, %s, %s, %s,
+        %s, %s, %s, %s,
+        %s, %s, %s,
+        %s, %s, %s, %s
+    )
+    ON CONFLICT (snapshot_date, appid) DO UPDATE SET
+        name = EXCLUDED.name,
+        developer = EXCLUDED.developer,
+        publisher = EXCLUDED.publisher,
+        price_thb = EXCLUDED.price_thb,
+        original_price = EXCLUDED.original_price,
+        discount_pct = EXCLUDED.discount_pct,
+        ccu = EXCLUDED.ccu,
+        positive_reviews = EXCLUDED.positive_reviews,
+        negative_reviews = EXCLUDED.negative_reviews,
+        review_score = EXCLUDED.review_score,
+        owners_estimate = EXCLUDED.owners_estimate,
+        genres = EXCLUDED.genres,
+        header_image = EXCLUDED.header_image,
+        is_free = EXCLUDED.is_free,
+        ingested_at = NOW();
+    , parameters: ('2026-09-07', 252490, 'Rust', 'Facepunch Studios', 'Facepunch Studios', 799.0, 799.0, 0, 143870, 1071135, 156649, 87.24, '20,000,000 .. 50,000,000', 'แอ็คชัน, ผจญภัย, อินดี้, ผู้เล่นหลายคนจำนวนมาก, เกมสวมบทบาท', 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/252490/header.jpg?t=1781536981', False)
+[2026-09-07T05:43:07.416+0000] {sql.py:562} INFO - Rows affected: 1
+[2026-09-07T05:43:07.423+0000] {sql.py:553} INFO - Running statement: 
+    INSERT INTO steam_games (
+        snapshot_date, appid, name, developer, publisher,
+        price_thb, original_price, discount_pct, ccu,
+        positive_reviews, negative_reviews, review_score,
+        owners_estimate, genres, header_image, is_free
+    ) VALUES (
+        %s, %s, %s, %s, %s,
+        %s, %s, %s, %s,
+        %s, %s, %s,
+        %s, %s, %s, %s
+    )
+    ON CONFLICT (snapshot_date, appid) DO UPDATE SET
+        name = EXCLUDED.name,
+        developer = EXCLUDED.developer,
+        publisher = EXCLUDED.publisher,
+        price_thb = EXCLUDED.price_thb,
+        original_price = EXCLUDED.original_price,
+        discount_pct = EXCLUDED.discount_pct,
+        ccu = EXCLUDED.ccu,
+        positive_reviews = EXCLUDED.positive_reviews,
+        negative_reviews = EXCLUDED.negative_reviews,
+        review_score = EXCLUDED.review_score,
+        owners_estimate = EXCLUDED.owners_estimate,
+        genres = EXCLUDED.genres,
+        header_image = EXCLUDED.header_image,
+        is_free = EXCLUDED.is_free,
+        ingested_at = NOW();
+    , parameters: ('2026-09-07', 359550, "Tom Clancy's Rainbow Six Siege", 'Ubisoft Montreal', 'Ubisoft', 0.0, 0.0, 0, 51847, 1172854, 225730, 83.86, '20,000,000 .. 50,000,000', 'แอ็คชัน, เล่นฟรี', 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/359550/2c5d32a3077a8dfd1929eba95e6a29a06637e61d/header_alt_assets_24.jpg?t=1788460816', True)
+[2026-09-07T05:43:07.425+0000] {sql.py:562} INFO - Rows affected: 1
+[2026-09-07T05:43:07.431+0000] {sql.py:553} INFO - Running statement: 
+    INSERT INTO steam_games (
+        snapshot_date, appid, name, developer, publisher,
+        price_thb, original_price, discount_pct, ccu,
+        positive_reviews, negative_reviews, review_score,
+        owners_estimate, genres, header_image, is_free
+    ) VALUES (
+        %s, %s, %s, %s, %s,
+        %s, %s, %s, %s,
+        %s, %s, %s,
+        %s, %s, %s, %s
+    )
+    ON CONFLICT (snapshot_date, appid) DO UPDATE SET
+        name = EXCLUDED.name,
+        developer = EXCLUDED.developer,
+        publisher = EXCLUDED.publisher,
+        price_thb = EXCLUDED.price_thb,
+        original_price = EXCLUDED.original_price,
+        discount_pct = EXCLUDED.discount_pct,
+        ccu = EXCLUDED.ccu,
+        positive_reviews = EXCLUDED.positive_reviews,
+        negative_reviews = EXCLUDED.negative_reviews,
+        review_score = EXCLUDED.review_score,
+        owners_estimate = EXCLUDED.owners_estimate,
+        genres = EXCLUDED.genres,
+        header_image = EXCLUDED.header_image,
+        is_free = EXCLUDED.is_free,
+        ingested_at = NOW();
+    , parameters: ('2026-09-07', 1091500, 'Cyberpunk 2077', 'CD PROJEKT RED', 'CD PROJEKT RED', 1799.0, 1799.0, 0, 22265, 713071, 131850, 84.39, '20,000,000 .. 50,000,000', 'เกมสวมบทบาท', 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1091500/e9047d8ec47ae3d94bb8b464fb0fc9e9972b4ac7/header.jpg?t=1784714077', False)
+[2026-09-07T05:43:07.433+0000] {sql.py:562} INFO - Rows affected: 1
+[2026-09-07T05:43:07.440+0000] {sql.py:553} INFO - Running statement: 
+    INSERT INTO steam_games (
+        snapshot_date, appid, name, developer, publisher,
+        price_thb, original_price, discount_pct, ccu,
+        positive_reviews, negative_reviews, review_score,
+        owners_estimate, genres, header_image, is_free
+    ) VALUES (
+        %s, %s, %s, %s, %s,
+        %s, %s, %s, %s,
+        %s, %s, %s,
+        %s, %s, %s, %s
+    )
+    ON CONFLICT (snapshot_date, appid) DO UPDATE SET
+        name = EXCLUDED.name,
+        developer = EXCLUDED.developer,
+        publisher = EXCLUDED.publisher,
+        price_thb = EXCLUDED.price_thb,
+        original_price = EXCLUDED.original_price,
+        discount_pct = EXCLUDED.discount_pct,
+        ccu = EXCLUDED.ccu,
+        positive_reviews = EXCLUDED.positive_reviews,
+        negative_reviews = EXCLUDED.negative_reviews,
+        review_score = EXCLUDED.review_score,
+        owners_estimate = EXCLUDED.owners_estimate,
+        genres = EXCLUDED.genres,
+        header_image = EXCLUDED.header_image,
+        is_free = EXCLUDED.is_free,
+        ingested_at = NOW();
+    , parameters: ('2026-09-07', 1145360, 'Hades', 'Supergiant Games', 'Supergiant Games', 495.0, 495.0, 0, 2253, 274829, 4912, 98.24, '5,000,000 .. 10,000,000', 'แอ็คชัน, อินดี้, เกมสวมบทบาท', 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1145360/header.jpg?t=1758127023', False)
+[2026-09-07T05:43:07.442+0000] {sql.py:562} INFO - Rows affected: 1
+[2026-09-07T05:43:07.449+0000] {sql.py:553} INFO - Running statement: 
+    INSERT INTO steam_games (
+        snapshot_date, appid, name, developer, publisher,
+        price_thb, original_price, discount_pct, ccu,
+        positive_reviews, negative_reviews, review_score,
+        owners_estimate, genres, header_image, is_free
+    ) VALUES (
+        %s, %s, %s, %s, %s,
+        %s, %s, %s, %s,
+        %s, %s, %s,
+        %s, %s, %s, %s
+    )
+    ON CONFLICT (snapshot_date, appid) DO UPDATE SET
+        name = EXCLUDED.name,
+        developer = EXCLUDED.developer,
+        publisher = EXCLUDED.publisher,
+        price_thb = EXCLUDED.price_thb,
+        original_price = EXCLUDED.original_price,
+        discount_pct = EXCLUDED.discount_pct,
+        ccu = EXCLUDED.ccu,
+        positive_reviews = EXCLUDED.positive_reviews,
+        negative_reviews = EXCLUDED.negative_reviews,
+        review_score = EXCLUDED.review_score,
+        owners_estimate = EXCLUDED.owners_estimate,
+        genres = EXCLUDED.genres,
+        header_image = EXCLUDED.header_image,
+        is_free = EXCLUDED.is_free,
+        ingested_at = NOW();
+    , parameters: ('2026-09-07', 814380, 'Sekiro™: Shadows Die Twice - GOTY Edition', 'FromSoftware, Inc.', 'Activision (Excluding Japan and Asia), FromSoftware, Inc. (Japan), 方块游戏 (Asia)', 2099.0, 2099.0, 0, 6767, 307041, 15193, 95.29, '10,000,000 .. 20,000,000', 'แอ็คชัน, ผจญภัย', 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/814380/header.jpg?t=1762888662', False)
+[2026-09-07T05:43:07.451+0000] {sql.py:562} INFO - Rows affected: 1
+[2026-09-07T05:43:07.458+0000] {sql.py:553} INFO - Running statement: 
+    INSERT INTO steam_games (
+        snapshot_date, appid, name, developer, publisher,
+        price_thb, original_price, discount_pct, ccu,
+        positive_reviews, negative_reviews, review_score,
+        owners_estimate, genres, header_image, is_free
+    ) VALUES (
+        %s, %s, %s, %s, %s,
+        %s, %s, %s, %s,
+        %s, %s, %s,
+        %s, %s, %s, %s
+    )
+    ON CONFLICT (snapshot_date, appid) DO UPDATE SET
+        name = EXCLUDED.name,
+        developer = EXCLUDED.developer,
+        publisher = EXCLUDED.publisher,
+        price_thb = EXCLUDED.price_thb,
+        original_price = EXCLUDED.original_price,
+        discount_pct = EXCLUDED.discount_pct,
+        ccu = EXCLUDED.ccu,
+        positive_reviews = EXCLUDED.positive_reviews,
+        negative_reviews = EXCLUDED.negative_reviews,
+        review_score = EXCLUDED.review_score,
+        owners_estimate = EXCLUDED.owners_estimate,
+        genres = EXCLUDED.genres,
+        header_image = EXCLUDED.header_image,
+        is_free = EXCLUDED.is_free,
+        ingested_at = NOW();
+    , parameters: ('2026-09-07', 1174180, 'Red Dead Redemption 2', 'Rockstar Games', 'Rockstar Games', 474.75, 1899.0, 75, 29885, 676667, 56875, 92.25, '10,000,000 .. 20,000,000', 'แอ็คชัน, ผจญภัย', 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1174180/header.jpg?t=1759502961', False)
+[2026-09-07T05:43:07.460+0000] {sql.py:562} INFO - Rows affected: 1
+[2026-09-07T05:43:07.467+0000] {sql.py:553} INFO - Running statement: 
+    INSERT INTO steam_games (
+        snapshot_date, appid, name, developer, publisher,
+        price_thb, original_price, discount_pct, ccu,
+        positive_reviews, negative_reviews, review_score,
+        owners_estimate, genres, header_image, is_free
+    ) VALUES (
+        %s, %s, %s, %s, %s,
+        %s, %s, %s, %s,
+        %s, %s, %s,
+        %s, %s, %s, %s
+    )
+    ON CONFLICT (snapshot_date, appid) DO UPDATE SET
+        name = EXCLUDED.name,
+        developer = EXCLUDED.developer,
+        publisher = EXCLUDED.publisher,
+        price_thb = EXCLUDED.price_thb,
+        original_price = EXCLUDED.original_price,
+        discount_pct = EXCLUDED.discount_pct,
+        ccu = EXCLUDED.ccu,
+        positive_reviews = EXCLUDED.positive_reviews,
+        negative_reviews = EXCLUDED.negative_reviews,
+        review_score = EXCLUDED.review_score,
+        owners_estimate = EXCLUDED.owners_estimate,
+        genres = EXCLUDED.genres,
+        header_image = EXCLUDED.header_image,
+        is_free = EXCLUDED.is_free,
+        ingested_at = NOW();
+    , parameters: ('2026-09-07', 289070, 'Sid Meier’s Civilization® VI', 'Firaxis Games, Aspyr (Mac), Aspyr (Linux)', '2K, Aspyr (Mac), Aspyr (Linux)', 160.0, 1600.0, 90, 25420, 304053, 45867, 86.89, '10,000,000 .. 20,000,000', 'กลยุทธ์', 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/289070/header.jpg?t=1784651829', False)
+[2026-09-07T05:43:07.469+0000] {sql.py:562} INFO - Rows affected: 1
+[2026-09-07T05:43:07.470+0000] {logging_mixin.py:190} INFO - 💾 บันทึก/อัปเดตข้อมูลเกม 25 แถว ประจำวันที่ 2026-09-07 สำเร็จ!
+[2026-09-07T05:43:07.472+0000] {python.py:240} INFO - Done. Returned value was: None
+[2026-09-07T05:43:07.484+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2026-09-07T05:43:07.485+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=steam_etl_dag, task_id=load_to_postgres, run_id=scheduled__2026-09-06T00:00:00+00:00, execution_date=20260906T000000, start_date=20260907T054306, end_date=20260907T054307
+[2026-09-07T05:43:07.518+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2026-09-07T05:43:07.542+0000] {taskinstance.py:3895} INFO - 2 downstream tasks scheduled from follow-on schedule check
+[2026-09-07T05:43:07.544+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
